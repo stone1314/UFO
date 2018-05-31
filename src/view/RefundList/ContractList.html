@@ -1,0 +1,50 @@
+﻿
+<ion-view ng-controller="ContractListController">
+    <ion-header-bar class="bar-orange" align-title="center">
+        <a back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title">
+            {{model.title}}
+        </h1>
+    </ion-header-bar>
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content has-header" style="background-color:#f0f0f0;">
+
+        <div class="list ufo_list" ng-if="model.has_ProDetail">
+            <a class="item" ng-repeat="item in AgreementList" ng-click="ContactHref($index+1,item.Url,item.TypeName)">
+                <div class="item-content  item-icon-right">
+                    {{item.TypeName}}
+                    <i class="icon ion-ios-arrow-right "></i>
+                </div>
+            </a>
+        </div> 
+        <div class="list ufo_list" ng-if="model.has_PaymentOrder">
+            <a class="item" ng-click="ContactHref(1,'出借咨询与服务协议')">
+                <div class="item-content  item-icon-right">
+                    《出借咨询与服务协议》
+                    <i class="icon ion-ios-arrow-right "></i>
+                </div>
+            </a>
+            <a class="item" ng-click="ContactHref(2,'授权委托书-出借确认和债权转让')">
+                <div class="item-content  item-icon-right">
+                    《授权委托书-出借确认和债权转让》
+                    <i class="icon ion-ios-arrow-right "></i>
+                </div>
+            </a>
+            <a class="item" ng-click="ContactHref(3,'授权委托书-催收及诉讼')">
+                <div class="item-content  item-icon-right">
+                    《授权委托书-催收及诉讼》
+                    <i class="icon ion-ios-arrow-right "></i>
+                </div>
+            </a>
+        </div> 
+        <!--<div class="accountPanel">
+            <div class="list Account">
+                <a ng-repeat="item in AgreementList" class="item  item-icon-right fontColor-333333" style="border-top:0px;margin-top:1px;padding: 16px 5px;" ng-click="ContactHref($index+1,item.Url,item.TypeName)">
+                    {{item.TypeName}}
+                    <i class="icon ion-ios-arrow-right"></i>
+                </a> 
+            </div>
+        </div>-->
+
+    </ion-content>
+
+</ion-view>

@@ -1,0 +1,83 @@
+﻿
+<ion-view ng-controller="CalculatorController">
+    <ion-header-bar class="bar-orange" align-title="center">
+        <a back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title">
+            计算器
+        </h1>
+    </ion-header-bar> 
+    <ion-content style="bottom:140px;" has-bouncing="true" overflow-scroll="false" id="CalculatorContent">
+
+        <div class="cursor-container" style="position:relative;height:auto;padding-top:0px;">
+            <img src="img/orthericon/zuo.png" id="imgZuo" style="position: absolute; left: 28%;top: 37px;z-index:20;height:2rem; " />
+            <img src="img/orthericon/you.png" id="imgYou" style="position: absolute;right: 28%;top: 37px;z-index:20;height:2rem;" />
+            <ion-scroll direction="x" delegate-handle="paroductHandle" class="cursor-scroll caidan"
+                        on-release="onCompleteT()"
+                        on-drag="onDragT()"
+                        on-scroll="onScrollT();"
+                        has-bouncing="false" overflow-scroll="false">
+                <div class="button-bar" style="min-height:100px;">
+
+                    <div class="button buttonLeft">
+
+                    </div>
+                    <div ng-repeat="data in viewModel.productDatas" id="divProductName{{$index+1}}" ng-class="{'buttonLeft':($index+1<productIndex),'buttonRight':($index+1>productIndex),'buttonMiddle':($index+1==productIndex)}" class="button ">
+                        <div id="labelProductName{{$index+1}}" style="text-align:center;width:100%; font-weight: normal;display: initial;">{{data.ProductName}}</div> 
+                    </div>
+
+                    <div class="button buttonRight">
+
+                    </div>
+                </div>
+            </ion-scroll>
+        </div>
+
+        <!---试算表单-->
+        <div ng-include="viewModel.FromView">
+        </div>
+        <div calss="row">
+            <div class="col text-center fontSize-orange fontSize-1" style="padding-bottom:0px;">
+                <lable>投资金额</lable><label class="fontSize-1">(元)</label>
+            </div>
+        </div>
+        <div calss="row">
+            <div class="col text-center fontSize-orange fontSize-1">
+                <input type="text" ng-model="viewModel.InvestmentAmount" max="10000000000" maxlength="11" style="display:initial;border-bottom:1px solid #808080;text-align:center;width:8rem;ime-mode:disabled;" id="txtInvestmentAmount" ng-blur="ResultDisplay(1)" ng-focus="ResultDisplay(0)" ng-keypress="keyPress()" ng-keyup="keyUp()"   />
+            </div>
+        </div>
+        <qk-cursor point="500"
+                   point-width="10"
+                   height="60"
+                   number-distance="1000"
+                   text="viewModel.InvestmentAmount">
+        </qk-cursor>
+
+
+
+        <div class="row" style="margin-top:95px;padding-left:30%;padding-right:30%;">
+            <div class="col">
+                <button class="button button-orange button-fontsize-2 " style="margin:0px;" ng-click="submit()">
+                    计算
+                </button>
+            </div>
+        </div>
+    </ion-content>
+
+    <div class="bottomResult" ng-if="IsResultDisplay">
+        <!--<div style="height: 20px; color: rgba(237, 121, 25, 1);text-align:right;padding-right:15px;">
+            * 该试算器仅供参考
+        </div>-->
+
+        <div class="row text-center " style=" margin:0px; padding-top:0px;padding-bottom:0px;">
+            <div class="col text-left">
+                预计收益(元)
+            </div>
+            <div class="col text-right">
+                * 该试算器仅供参考
+            </div>
+        </div>
+        <!---试算结果-->
+        <div ng-include="viewModel.ResultView">
+        </div>
+    </div>
+</ion-view>

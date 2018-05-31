@@ -1,0 +1,67 @@
+﻿ <ion-view ng-controller="TelGetCodeController">
+    <ion-header-bar class="bar-light " align-title="center">
+        <a href="javascript:void(0);" style="color: #F89327;" back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title" style="color: #F89327;">
+            修改绑定手机号
+        </h1>
+    </ion-header-bar>
+     <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content has-header">
+
+         <div class="formTable">
+             <div class="row colLeft">
+                 <div class="col colIcon">
+                     <img src="img/oldphone.png" />
+                 </div>
+
+                 <div class="col borderBottom">
+                     <input type="number" placeholder="请输入手机号码" style=" width: 100%; " maxlength="11">
+                 </div> 
+             </div> 
+
+             <div class="row colLeft">
+                 <div class="col colIcon">
+                     <img src="img/mp.png" />
+                 </div>
+
+                 <div class="col borderBottom">
+                     <input type="number" placeholder="请输入新手机号码" style=" width: 100%; " maxlength="11">
+                 </div>
+             </div>
+
+             <div class="row colLeft">
+                 <div class="col colIcon">
+                     <img src="img/huoquyanzheng.png" style="width: 18px;   margin-right:10px;">
+                 </div>
+                 <div class="col borderBottom">
+                     <input type="text" placeholder="请输入验证码" style=" width: 100%; ">
+                 </div>
+                 <div class="col borderBottom" style="width:6rem;max-width:6rem">
+                     <button class=" button button-small button-light" style="color: #E97218;border: 1px solid #F89327;width: 6rem;float: right;margin-bottom: 0px;">
+                         获取验证码
+                     </button>
+                 </div>
+             </div> 
+             <div class="row colLeft">
+                 <div class="col-50   " style=" padding-top: 15px; text-align:center">
+                    输入验证码
+                 </div>
+                 <div class="col-20  ">
+                     <input type="text"  style="width: 100%; border: 1px solid #f1efef; ">
+                 </div>
+                 <div class="col title " style=" padding-top: 15px;max-width:90px;">
+                     验证码内容
+                 </div>
+             </div> 
+         </div>
+          
+
+             <div class="row">
+                 <div class="col">
+                     <a class="button button-orange button-fontsize-2 " style="margin:0px;" href="#/TelSetPwd">
+                         下一步
+                     </a>
+                 </div>
+             </div>
+
+</ion-content>
+</ion-view>

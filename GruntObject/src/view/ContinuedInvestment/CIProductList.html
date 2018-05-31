@@ -1,0 +1,63 @@
+﻿<ion-view ng-controller="CIProductListController">
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content ValueAddedPlan" style="background-color:#f0f0f0">
+        <ion-refresher pulling-text="下拉刷新..."
+                       spinner="bubbles" class="spinner-balanced" spinner-class="spinner-balanced" on-refresh="doRefresh()">
+        </ion-refresher>
+
+        <div ng-include="viewModel.viewForm" ng-show="viewModel.viewForm_state">
+        </div>
+
+
+        <div class="CIProductList" ng-repeat="item in viewModel.CIProductList" ng-click="GoToProDetail(item.ContractId)">
+            <div class="ciItemTop" style="position:relative">
+                <img src="img/NewUI/arow@3x.png" class="imgicon" />
+                <div class="row">
+                    <div class="col fontSize-1-2 fontColor-333333">
+                        {{item.ProductName}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col fontColor-666666">
+                        {{item.TxTime}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col fontColor-333333">
+                        合同编号：{{item.ContractNo}}
+                    </div>
+                </div>
+            </div>
+            <div class="ciItemBottom row">
+                <div class="col text-center col_right_line" ng-show="item.IsExt">
+                    <div class=" fontSize-1-2  fontColor-333333">
+                        {{item.ExitDescription}}天
+                    </div>
+                    <div class=" fontColor-666666">
+                        预约退出天数
+                    </div>
+                </div>
+                <div class="col text-center">
+                    <div class=" fontSize-1-2  fontSize-orange">
+                        {{item.Amount | currency:''}} 元
+                    </div>
+                    <div class=" fontColor-666666">
+                        理财金额
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center buttomBlank" ng-show="!viewModel.viewForm_state">
+            <img src="../../img/newVersion/safe@2x.png" /> 恒丰银行资金存管
+        </div>
+        <ufo-infinite-scroll pulling="noMoreItemsAvailable" ufo-loadmore="loadMore" has-data="false">
+        </ufo-infinite-scroll>
+    </ion-content>
+
+</ion-view>
+
+
+
+
+
+

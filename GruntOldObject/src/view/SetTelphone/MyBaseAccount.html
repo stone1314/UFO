@@ -1,0 +1,79 @@
+﻿<ion-view ng-controller="MyBaseAccountController">
+    <ion-header-bar class="bar-light " align-title="center">
+        <a href="javascript:void(0);" style="color: #F89327; " back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title" style="color: #F89327;">
+
+            我的账户
+        </h1>
+    </ion-header-bar>
+
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content has-header">
+        <div class="formTable">
+            <div class="row colLeft">
+                <div class="col colIcon">
+                    <img src="img/user.png" />
+                </div>
+                <div class="col coltitle" style="min-width:80px;">
+                    姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名
+                </div>
+                <div class="col borderBottom">
+                    <span class="item-note" style="margin-right: 33px; padding-top: 5px; ">
+                        {{User.name}}
+                    </span>
+                </div>
+            </div>
+
+
+            <div class="row colLeft">
+                <div class="col colIcon">
+                    <img src="img/idcard.png" style="width: 20px;" />
+                </div>
+                <div class="col coltitle" style="min-width: 80px; ">
+                    身&nbsp;&nbsp;份&nbsp;&nbsp;证
+                </div>
+                <div class="col borderBottom">
+                    <span class="item-note" style="margin-right: 33px; padding-top: 5px; ">
+                        {{User.identificationNo}}
+                    </span>
+                </div>
+            </div>
+
+
+            <div class="row colLeft">
+                <div class="col colIcon">
+                    <img src="img/mp.png" style=" width: 16px;" />
+                </div>
+                <div class="col coltitle" style="min-width: 80px; ">
+                    绑定手机
+                </div>
+                <a class="col borderBottom" href="">
+                    <span class="item-note" style="margin-right: 33px; padding-top: 5px; ">
+                        {{User.phone}}
+                    </span>
+                </a>
+            </div>
+
+
+            <div class="row colLeft">
+                <div class="col colIcon">
+                    <img src="img/key.png" />
+                </div>
+                <div class="col coltitle" style="min-width: 80px; ">
+                    修改密码
+                </div>
+                <a class="col borderBottom" href="#/TelSetPwd">
+                    <img src="img/arrows.png" style="width: 10px; float: right; margin-right: 20px; padding-top: 5px;" />
+                </a>
+            </div>
+
+        </div>
+        <div class="row" style=" margin-top: 15px;">
+            <div class="col">
+                <button class="button button-orange button-fontsize-2 " style="margin:0px;" ng-click="Loginout()">
+                    安全退出
+                </button>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

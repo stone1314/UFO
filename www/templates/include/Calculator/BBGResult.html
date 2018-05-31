@@ -1,0 +1,11 @@
+﻿<!--<div style="height: 0.7rem;background-color:rgba(236, 236, 236, 1)"></div>-->
+<div class="row listrow text-center" style="border-top: 1px solid #dddddd;margin-top:0.7rem">
+    <div class="col">产品期数</div>
+    <div class="col">预期年化收益率</div>
+    <div class="col">预期本息收益</div>
+</div>
+<div class="row listrow text-center" ng-repeat="item in viewModel.datas">
+    <div class="col">{{item[0].termnum}}</div>
+    <div class="col">{{item[0].rate}}%</div>
+    <div class="col">{{item[0].returnsum}}</div>
+</div>

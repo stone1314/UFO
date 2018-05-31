@@ -1,0 +1,167 @@
+﻿
+<html>
+<head>
+
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width" ng-if="viewModel.IsBanner">
+
+
+    <style type="text/css" ng-if="viewModel.IsBanner">
+        @media screen and (min-width:320px) and (max-width:349px) {
+            html {
+                font-size: 12px;
+            }
+        }
+
+        @media screen and (min-width:350px) and (max-width:399px) {
+            html {
+                font-size: 13px;
+            }
+        }
+
+        @media screen and (min-width:400px) and (max-width:499px) {
+            html {
+                font-size: 14px;
+            }
+        }
+
+        @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) {
+            html {
+                font-size: 14px;
+            }
+        }
+
+        @media screen and (min-width:500px) and (max-width:599px) {
+            html {
+                font-size: 16px;
+            }
+        }
+
+        body {
+            margin: 0px;
+        }
+
+        .fgjhd {
+            background-color: #FF5555;
+            color: #FFFFFF;
+        }
+
+            .fgjhd img {
+                width: 100%;
+            }
+
+        .fgjhtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 45px;
+        }
+
+        .fgjh-margig-t-20 {
+            margin-top: 20px;
+        }
+
+        .fgjh-margig-t-5 {
+            margin-top: 5px;
+        }
+
+        .fgjh-float-title {
+            position: absolute;
+            padding: 5px 10px 5px 10px;
+            bottom: 0px;
+            background: transparent;
+            background-color: rgba(52, 51, 49,0.8);
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .fgjhbtn {
+            height: 55px;
+            width: 192px;
+            border-radius: 30px;
+            border: 0px;
+            background-color: #FFFFFF;
+            color: #ff5555;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="fgjhd">
+        <img src="/img/NewUI/Detail/title@2x.png" style="width:100%;">
+        <div style="margin: 0px 16px;padding-bottom: 30px;">
+            <div class="fgjhtitle">
+                <span>“WABC-夸客公益艺术中心”</span>
+            </div>
+            <div>
+                <span style="line-height: 30px;">2015年12月9日，夸客金融通过“上海市慈善基金会夸客公益慈善专项基金”向WABC无障碍艺途捐助35万元，共同建立“WABC-夸客公益艺术中心”。2016年6月1日，公益艺术中心正式揭牌并投入使用，为精智障碍特殊人群提供免费绘画潜能开发课程及作品展览和志愿服务的活动场地，帮助学员们恢复并建立自信，稳定和提升心理和精神的健康状况，促进学员们及其家庭更好地融入社会。</span>
+            </div>
+            <div class="fgjh-margig-t-20" style="position: relative;">
+                <img src="/img/NewUI/Detail/bg_01@2x.png" />
+                <div class="fgjh-float-title">
+                    <span style="line-height: 25px;">“夸客金融创始人兼CEO郭震洲博士(左一)&无障碍艺途创始人苗世明先生(左二)”</span>
+                </div>
+            </div>
+            <div class="fgjh-margig-t-20">
+                <div class="fgjhtitle">
+                    <span>“梵高计划”公益理财简介</span>
+                </div>
+                <div>
+                    <span style="line-height: 30px;">用户捐赠预期收益的10% ，夸客跟捐用户捐赠金额的40%，共同为“WABC-夸客公益艺术中心”的持续发展奉献爱心。</span>
+                </div>
+
+            </div>
+            <div class="fgjh-margig-t-20">
+                <img src="/img/NewUI/Detail/gongshi@2xs.jpg" />
+            </div>
+            <div>
+                <div class="fgjhtitle">
+                    <span>学员作品欣赏</span>
+                </div>
+                <img src="/img/NewUI/Detail/pic@2x.png" class="fgjh-margig-t-5" />
+                <img src="/img/NewUI/Detail/pic01@2x.png" class="fgjh-margig-t-5" />
+                <img src="/img/NewUI/Detail/pic02@2x.png" class="fgjh-margig-t-5" />
+            </div>
+            <div class="fgjh-margig-t-20" style="text-align:center">
+                <span style="line-height: 30px;font-size: 0.85rem;">详情可询客服热线:  <label>400-680-0388</label> 或至夸客财富职场了解</span>
+            </div>
+            <div id="bannerscanClick" class="fgjh-margig-t-20" style="text-align:center" ng-if="viewModel.IsBanner">
+                <button class="fgjhbtn" onclick="scanClick()">立即投资</button>
+                <script type="application/javascript">
+
+                    function getQueryString(name) {
+                        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                        var r = window.location.search.substr(1).match(reg);
+                        if (r != null) return unescape(r[2]); return null;
+                    }
+                    if(getQueryString('from')!="banner"){
+                        document.getElementById("bannerscanClick").style.display="none";
+
+                    }
+
+
+                    var u = navigator.userAgent;
+                    //var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+                    var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+                    function scanClick() {
+
+                        if(isiOS) {
+
+
+                                    var data={
+                                    type:"100000007",
+                                    pid:getQueryString('pid')
+                                };
+                            window.webkit.messageHandlers.ScanAction.postMessage(JSON.stringify(data));
+
+                        }else{
+                            window.webkit.ImmediateInvestment("100000007",getQueryString('pid'));
+                        }
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+

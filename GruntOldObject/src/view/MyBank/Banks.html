@@ -1,0 +1,47 @@
+﻿<style>
+    .Banks .item {
+        border-width: 0px;
+    }
+
+</style>
+<ion-view ng-controller="BanksController">
+    <ion-header-bar class="bar-header " align-title="center">
+        <a href="javascript:void(0);" style="color: #F89327; " back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title" style="color: #F89327;  ">
+            选择所属银行
+        </h1>
+    </ion-header-bar>
+
+ 
+
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content has-header">
+        <div class="list Banks">
+            <div class="item item-input " ng-repeat="bank in banks">
+                <i style="margin-right: 20px;  "> <img src="img/chinabank.png" style="width:30px;"></i>
+                <div style="width: 100%; height: 46px; border-bottom: 1px solid #f1efef; " ng-click="choseBank(bank.bankId,bank.bankName);">
+                    <span style="  font-size: 1.2rem;">{{bank.bankName}}</span><br />
+                    <span style="color: #989898; font-size: 0.9rem; ">{{bank.hotLine}}</span>
+                </div>
+            </div>
+
+            <!--<div class="item item-input Banks">
+                <i style="margin-right: 20px;  "> <img src="img/chinabank.png" style="width:30px;"></i>
+                <div style="width: 100%; height: 46px; border-bottom: 1px solid #f1efef; ">
+                    <span style="  font-size: 1.2rem;">中国银行</span><br />
+                    <span style="color: #989898; font-size: 0.9rem; ">5万/笔 50万/日</span>
+                </div>
+            </div>
+
+            <div class="item item-input Banks">
+                <i style="margin-right: 20px;  ">  <img src="img/chinabank.png" style="width:30px;"></i>
+                <div style="width: 100%; height: 46px; border-bottom: 1px solid #f1efef; ">
+                    <span style="  font-size: 1.2rem;">中国银行</span><br />
+                    <span style="color: #989898; font-size: 0.9rem; ">5万/笔 50万/日</span>
+                </div>
+            </div>-->
+        </div>
+</ion-content>
+
+
+
+</ion-view>

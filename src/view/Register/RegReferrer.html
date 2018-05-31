@@ -1,0 +1,132 @@
+﻿<style>
+    .Referrer-col-middle {
+        padding-top: 16px !important;
+    }
+</style>
+<ion-view ng-controller="RegReferrerController">
+    
+    <ion-header-bar class="bar-orange" align-title="center">
+        <a back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title">
+            注册
+        </h1>
+    </ion-header-bar>
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content has-header">
+        <div class="formTable" style="border-bottom: 10px solid #f1efef;min-height:5rem;">
+            <div class="fontSize-1-2">
+                <b>填写推荐人</b>
+            </div>
+
+
+            <div class="row colLeft">
+                <div class="col colIcon" style="max-width:25px;margin-top:0px;">
+                    <img src="{{chose1.pic}}" ng-click="changPic(chose1.state,chose1.number)" style="width: 20px;/* margin-right:10px; */" />
+                </div>
+                <div class="col fontSize-1-2">
+                    <span style="color:#656565">理财经理 </span>
+                </div>
+            </div>
+            <div class="row colLeft">
+                <div class="col colIcon" style="max-width: 25px; margin-top: 0px;">
+                    <img src="{{chose2.pic}}" ng-click="changPic(chose2.state,chose2.number)" style="width: 20px;/* margin-right:10px; */" />
+                </div>
+                <div class="col fontSize-1-2">
+                    <span style="color:#656565">推荐人 </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="formTable ">
+            <div ng-show="chose1.state">
+                <div class="fontSize-1-2">
+                    <b>我的理财经理</b>
+                </div>
+
+                <div class="row colLeft">
+                    <div class="col colIcon" style="max-width:25px;padding-top:11px;">
+                        <img src="img/name.png" style="width: 18px" />
+                    </div>
+                    <div class="col borderBottom coltitle Referrer-col-middle">
+                        姓&nbsp;&nbsp;&nbsp;名
+                    </div>
+                    <div class="col borderBottom">
+                        <input type="text" ng-model="User.refName1" style=" width: 100%; ">
+                    </div>
+
+                </div>
+                <div class="row colLeft colIconRight">
+                    <div class="col colIcon" style="max-width:25px;padding-top:11px;">
+                        <img src="img/city.png" style="width: 18px" />
+                    </div>
+                    <div class="col borderBottom coltitle Referrer-col-middle">
+                        城&nbsp;&nbsp;&nbsp;市
+                    </div>
+
+                    <div class="col borderBottom" style="color:#676565;padding-top:13px;" ng-click="SelectCity()">
+                        {{User.cityName}}
+                        <img src="img/huang1.png" class="col-note" style="width: 18px;">
+                    </div>
+                </div>
+                <div class="row colLeft">
+                    <div class="col colIcon" style="max-width:25px;padding-top:11px;">
+                        <img src="img/telnumber.png" style="width: 18px" />
+                    </div>
+                    <div class="col borderBottom coltitle Referrer-col-middle">
+                        手机号
+                    </div>
+                    <div class="col borderBottom">
+                        <input type="text" ng-model="User.Phone1" style=" width: 100%; ">
+                    </div>
+
+                </div>
+            </div>
+                <!--推荐人-->
+
+
+
+            <div ng-show="chose2.state">
+                <div class="fontSize-1-2">
+                    <b>推荐人</b>
+                </div>
+
+                <div class="row colLeft">
+                    <div class="col colIcon" style="max-width:25px;padding-top:11px;">
+                        <img src="img/name.png" style="width: 18px" />
+                    </div>
+                    <div class="col borderBottom coltitle Referrer-col-middle">
+                        姓&nbsp;&nbsp;&nbsp;名
+                    </div>
+                    <div class="col borderBottom">
+                        <input type="text" ng-model="User.refName2" style=" width: 100%; ">
+                    </div>
+
+                </div>
+                <div class="row colLeft">
+                    <div class="col colIcon" style="max-width:25px;padding-top:11px;">
+                        <img src="img/telnumber.png" style="width: 18px" />
+                    </div>
+                    <div class="col borderBottom coltitle Referrer-col-middle">
+                        手机号
+                    </div>
+                    <div class="col borderBottom">
+                        <input type="text" ng-model="User.Phone2" style=" width: 100%; ">
+                    </div>
+                </div>
+            </div>
+
+            </div>
+        <div class="row">
+            <div class="col">
+                <a class="button button-orange button-fontsize-2 " style="margin:0px;" ng-click="Commit(1);">
+                    下一步
+                </a>
+            </div> 
+        </div>
+        <div class="row">
+            <div class="col text-right">
+                <a style="color: #F89327; font-size: 1rem; text-decoration:none;" ng-click="Commit(2);">忽略 </a>
+            </div>
+        </div>
+       
+    </ion-content>
+</ion-view>

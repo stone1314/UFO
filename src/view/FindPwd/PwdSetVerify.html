@@ -1,0 +1,41 @@
+﻿<ion-view ng-controller="PwdSetVerifyController">
+    <ion-header-bar class="bar-orange" align-title="center">
+        <a back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title">
+            忘记密码
+        </h1>
+    </ion-header-bar> 
+    <ion-content> 
+        <div class="formTable">
+            <div class="row colLeft">
+                <div class="col colIcon">
+                    <img src="img/user.png" style=" padding-top: 2px;" />
+                </div> 
+                <div class="col borderBottom">
+                    <input type="text" placeholder="请输入姓名" ng-model="viewModel.userName">
+                </div>
+            </div> 
+            <div class="row colLeft">
+                <div class="col colIcon">
+                    <img src="img/idcard.png" style="padding-top: 8px;width: 21px;margin-right: 8px;">
+                </div>
+                <div class="col borderBottom">
+                    <input type="text" placeholder="请输入身份证" ng-model="viewModel.userID" maxlength="18">
+                </div>
+            </div> 
+        </div>
+         
+        <div class="row">
+            <div class="col">
+                <button class="button button-orange button-fontsize-2 " ng-click="NextPage()" style="margin:0px;">
+                    下一步
+                </button>
+            </div>
+        </div> 
+        <!--<div class="row">
+            <a class="col text-right fontSize-orange " href="#/PwdSetNewPwd">
+                忽略
+            </a>
+        </div>--> 
+</ion-content>
+</ion-view>

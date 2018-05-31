@@ -1,0 +1,57 @@
+﻿<div class="divTrialResult"  >
+
+    <div class="row text-center light fontSize-1" style="  margin-left: 10px;  padding-top: 0px; padding-bottom: 0px;">
+        <div>
+            优享
+        </div>
+    </div>
+    <div class="row text-center light fontSize-1-5 " style=" margin-top: -5px; padding-top: 0px; padding-bottom: 0px;">
+        <div class="col-33">
+            {{viewModel.result.data[0].interest- viewModel.result.data[0].pdonate| currency: ""}}
+        </div>
+        <div class="col-33">
+            {{viewModel.result.data[0].pdonate-0| currency: ""}}
+        </div>
+        <div class="col-33">
+             {{viewModel.result.data[0].cdonate-0| currency: ""}}
+        </div>
+    </div>
+    <div class="row text-center light fontSize-1" style=" padding-bottom: 0px;">
+        <div class="col-33">
+            实际收益
+        </div>
+        <div class="col-33">
+            捐赠收益
+        </div>
+        <div class="col-33">
+            夸客捐助
+        </div>
+    </div>
+    <div class="row text-center light fontSize-1" style="  margin-left: 10px;  padding-top: 0px; padding-bottom: 0px;">
+        <div>
+            VIP
+        </div>
+    </div>
+    <div class="row text-center light fontSize-1-5 " style="  margin-top: -5px; padding-top: 0px;  padding-bottom: 0px;">
+        <div class="col-33">
+            {{viewModel.result.dataVip[0].interest-viewModel.result.dataVip[0].pdonate| currency: ""}}
+        </div>
+        <div class="col-33">
+            {{viewModel.result.dataVip[0].pdonate-0| currency: ""}}
+        </div>
+        <div class="col-33">
+            {{viewModel.result.dataVip[0].cdonate-0| currency: ""}}
+        </div>
+    </div>
+    <div class="row text-center light fontSize-1">
+        <div class="col-33">
+            实际收益
+        </div>
+        <div class="col-33">
+            捐赠收益
+        </div>
+        <div class="col-33">
+            夸客捐助
+        </div>
+    </div>
+</div>

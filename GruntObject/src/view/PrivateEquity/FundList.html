@@ -1,0 +1,58 @@
+﻿
+<ion-view ng-controller="FundListController"  ng-init="DataLoad()">
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content" style="background-color:#f0f0f0">
+       
+
+        <ion-refresher pulling-text="下拉刷新..."
+                       spinner="bubbles" class="spinner-balanced" spinner-class="spinner-balanced" on-refresh="doRefresh()">
+        </ion-refresher>
+        <div class="FundList" ng-repeat="item in Model.FundList">
+            <div class="ciItemTop">
+                <div class="row">
+                    <div class="col fontSize-1-2 fontColor-333333">
+                        {{item.Name}}
+                    </div>
+                    <div class="col">
+                        <div class="fontSize-0-8 upcoming" ng-if="item.Status=='100000001'">
+                            即将发售
+                        </div>
+                        <div class="fontSize-0-8 raise" ng-if="item.Status=='100000002'">
+                            募集中
+                        </div>
+                        <div class="fontSize-0-8 sold_out" ng-if="item.Status=='100000003'">
+                            售罄
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ciItemBottom row" ng-click="GoFundDetail(item.ProductId)">
+                <div class="col text-center col_right_line">
+                    <div class="fontSize-fb4747 fontSize-1" ng-if="item.HiRate!=null">
+                        {{item.LoRate| currency:''}}%~<label class="fontSize-1-5">{{item.HiRate| currency:''}}<label class="fontSize-fb4747 fontSize-1">%</label></label>
+                    </div>
+                    <div class="fontSize-fb4747 fontSize-1" ng-if="item.HiRate==null">
+                        <label class="fontSize-1-5" ng-if="item.LoRate>0">{{item.LoRate| currency:''}}<label class="fontSize-fb4747 fontSize-1">%</label></label>
+                    </div>
+                    <div class=" fontColor-666666">
+                        比较基准收益率
+                    </div>
+                </div>
+                <div class="col text-center fontColor-666666 fontSize-1">
+                    <div>
+                        起投金额<label class="lab">{{item.MinAmount}} 万</label>
+                    </div>
+                    <div>
+                        产品期限<label class="lab"> {{item.Period}} 天</label>
+                    </div>
+                </div>
+                <img src="img/NewUI/arow@3x.png" class="imgicon" />
+            </div>
+        </div>
+         
+        
+        <ufo-infinite-scroll pulling="noMoreItemsAvailable" ufo-loadmore="loadMore" has-data="false">
+        </ufo-infinite-scroll>
+
+    </ion-content>
+
+</ion-view>

@@ -1,0 +1,152 @@
+﻿
+
+<ion-view ng-controller="PaymentResultSuccessController">
+
+    <ion-header-bar class="bar-light " align-title="center">
+        <h1 class="title" style="color: #F89327;  ">
+            交易结果
+        </h1>
+    </ion-header-bar>
+
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content PaymentResultSuccess">
+        <div ng-if="viewModel.resultType==1">
+            <div class="tolMoney">
+                <div class="row">
+                    <div class="col text-right fontSize-1-2 textrl">
+                        {{viewModel.txMap.txDate}}
+                        <p class="fontSize-1">{{viewModel.txMap.txTimes}}</p>
+                    </div>
+                    <div class="col img_circular">
+                        {{viewModel.txMap.TxAmt/10000}}<label style="font-size:1rem;">万</label>
+                    </div>
+                    <div class="col text-left  fontSize-1-2 textrl">
+                        交易完成
+                    </div>
+                </div>
+            </div>
+            <div style="width:100%;text-align:center;">
+                <img src="img/ProductInfo/su.png" style="height:50px;width:5px;" />
+            </div>
+            <div class="row" style="color:#656565">
+                <div class="col text-right" style="padding-top:12px;">{{viewModel.txMap.ValueDate}}</div>
+                <div class="col" style="max-width:45px;padding:0px;margin:0px;">
+                    <img src="img/ProductInfo/pstime.png" style="max-width:45px;" />
+                </div>
+                <div class="col" style="padding-top:12px;">起息日</div>
+            </div>
+            <div style="width:100%;text-align:center;">
+                <img src="img/ProductInfo/su.png" style="height:30px;width:5px;" />
+            </div>
+            <div class="row" style="color:#656565">
+                <div class="col text-right" style="padding-top:12px;">{{viewModel.txMap.DueDate}}</div>
+                <div class="col" style="max-width:45px;padding:0px;margin:0px;">
+                    <img src="img/ProductInfo/pstime.png" style="max-width:45px;" />
+                </div>
+                <div class="col" style="padding-top:12px;">到期日</div>
+            </div>
+            <div style="width:100%;text-align:center;color:#656565;margin-top:10px;margin-bottom:10px;">
+                <div>收益结算后3个工作日内回款至银</div>
+                <div>行卡，具体到账时间以银行为准</div>
+            </div>
+            <div style="width:100%;text-align:center;color:#656565;padding: 10px 34px;">
+                <div>{{viewModel.txMap.IvcDesc}}</div> 
+            </div>
+            <div>
+                <div class="row">
+                    <div class="col">
+                        <button class="button button-orange button-fontsize-2 " style="margin:0px;" ng-click="OK()">
+                            确认
+                        </button>
+                    </div>
+                </div>
+                <div style="width:100%;text-align:center;color:#656565;margin-bottom:15px;">提示：稍后请到“我的-合同查询”查看理财合同。</div>
+            </div>
+        </div>
+        <div ng-if="viewModel.resultType==2">
+            <div class="row" style="margin-top:30px;">
+                <div class="col text-center">
+                    <img src="img/orthericon/Waiting.gif" />
+                </div>
+            </div>
+            
+            <div class="row" style="margin-top:20px;">
+                <div class="col text-center fontSize-1-2" style="color:#656565">
+                    {{viewModel.waitText}}
+                </div>
+
+            </div>
+            <div ng-if="viewModel.isShowButton">
+                <div style="width:100%;text-align:center;color:#656565;">稍后请在“我的-交易记录”中查询交易状态</div>
+ 
+                
+            </div>
+        </div>
+        <div ng-if="viewModel.resultType==3">
+            <div class="row">
+                <div class="col text-center">
+                    <img src="img/ProductInfo/Success.png" style="width:5rem" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col text-center fontSize-1-2" style="color:#656565">
+                    由于银行划扣限制，末笔资金划扣<br />成功后的下一个自然日开始计息。
+                </div>
+            </div>
+            <div class="row" style="background-color:rgba(236, 236, 236, 1);padding-top:3px;padding-bottom:3px;margin-bottom:30px;margin-top:20px">
+                <div class="col text-center fontSize-red fontSize-1-2">
+                    如有任何疑问请联系您的理财经理
+                </div>
+            </div>
+            <div style="width:100%;text-align:center;color:#656565;padding: 10px 34px;">
+                <div>{{viewModel.txMap.IvcDesc}}</div>
+            </div>
+            <div class="row">
+                <div class="col text-center  fontSize-1-2 fontColor-666666">
+                    可在“我的-交易记录”中查看该笔交易结果，<br />请勿重复提交。
+                </div>
+            </div>
+           
+            <div>
+                <div class="row">
+                    <div class="col">
+                        <button class="button button-orange button-fontsize-2 " style="margin:0px;" ng-click="OK()">
+                            确认
+                        </button>
+                    </div>
+                </div>
+                <div style="width:100%;text-align:center;color:#656565;margin-bottom:15px;">提示：稍后请到“我的-合同查询”查看理财合同。</div>
+            </div>
+        </div>
+
+
+        <div ng-if="viewModel.resultType==0">
+            <div class="row">
+                <div class="col text-center">
+                    <img src="img/ProductInfo/failure.png" style="width:5rem" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center fontSize-1-5" style="color:red;">
+                    交易失败
+                </div>
+            </div>
+            <div class="row" style="margin-top:20px;">
+                <div class="col text-center fontSize-1-2" style="color:#656565">
+                  
+                    {{viewModel.waitText}}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button class="button button-orange button-fontsize-2 " style="margin:0px;" ng-click="OK()">
+                        确认
+                    </button>
+                </div>
+            </div>
+            <div ng-if="viewModel.resultType==1" style="width:100%;text-align:center;color:#656565;margin-bottom:15px;">提示：稍后请到“我的-合同查询”查看理财合同。</div>
+        </div>
+        
+    </ion-content>
+</ion-view>

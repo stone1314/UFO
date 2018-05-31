@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<!-- saved from url=(0034)http://172.30.30.190:8000/download -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夸客优富</title>
+    <link rel="stylesheet" type="text/css" href="./UFO_files/application_packages_download.css">
+</head>
+<body id="todos-app">
+
+    <div class="container todos-container home">
+        <div class="wrapper">
+            <img src="./UFO_files/logo.png">
+        </div>
+        <p class="content">
+            <span style="font-size:3rem;font-family:&#39;Cordia New&#39;">夸客优富</span>
+        </p>
+        <div class="download">
+            <ul>
+                <li class="android">
+                    <i></i>
+                    <p>Android</p>
+                    <p>立即下载</p>
+                </li>
+                <li class="iphone">
+                    <i></i>
+                    <p>iPhone</p>
+                    <p>立即下载</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="leading" class="leading">
+        <div class="curtain"></div>
+        <img src="./UFO_files/arrow.png">
+        <p class="tips">微信内无法下载，请点击右上角按钮，先选择<span>「在Safari中打开」</span>，再点击<span>iphone立即下载</span></p>
+    </div>
+    <div id="leading-android" class="leading">
+        <div class="curtain"></div>
+        <img src="./UFO_files/arrow.png">
+        <p class="tips">微信内无法下载，请点击右上角按钮，先选择<span>「在浏览器中打开」</span>，再点击<span>android立即下载</span></p>
+    </div>
+    <script src="./UFO_files/jquery.2.1.1.min.js" type="text/javascript"></script>
+    <script>
+        function is_weixin() {
+            var ua = navigator.userAgent.toLowerCase();
+            if (ua.match(/MicroMessenger/i) == "micromessenger" || ua.match(/WeiBo/i) == "weibo" || ua.indexOf('qq/') > -1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        $('.download').find('li').on('click', function () {
+            var _this = this;
+            $(this).addClass('active');
+            setTimeout(function () {
+                $(_this).removeClass('active');
+            }, 300);
+            if ($(this).hasClass('iphone')) {
+                if (is_weixin()) {
+                    $('#leading').show();
+                } else {
+                    location.href = 'https://itunes.apple.com/cn/app/kua-ke-you-fu/id1129233664?mt=8';
+                }
+            } else {
+                if (is_weixin()) {
+                    $('#leading-android').show();
+                } else {
+                    location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.quarkfinance.ufo';
+                }
+            }
+        });
+        $('#leading').on('click', function () {
+            $(this).hide();
+        });
+
+    </script>
+
+
+
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(chrome-extension://ikkbfngojljohpekonpldkamedehakni/imgs/map/tip-left-top.png);"></div><div id="tip-top" style="background: url(chrome-extension://ikkbfngojljohpekonpldkamedehakni/imgs/map/tip-top.png) repeat-x;"></div><div id="tip-right-top" style="background: url(chrome-extension://ikkbfngojljohpekonpldkamedehakni/imgs/map/tip-right-top.png);"></div><div id="tip-right" style="background: url(chrome-extension://ikkbfngojljohpekonpldkamedehakni/imgs/map/tip-right.png) repeat-y;"></div><div id="tip-right-bottom" style="background: url(chrome-extension://ikkbfngojljohpekonpldkamedehakni/imgs/map/tip-right-bottom.png);"></div><div id="tip-bottom" style="background: url(chrome-extension://ikkbfngojljohpekonpldkamedehakni/imgs/map/tip-bottom.png) repeat-x;"></div><div id="tip-left-bottom" style="background: url(chrome-extension://ikkbfngojljohpekonpldkamedehakni/imgs/map/tip-left-bottom.png);"></div><div id="tip-left" style="background: url(chrome-extension://ikkbfngojljohpekonpldkamedehakni/imgs/map/tip-left.png);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(chrome-extension://ikkbfngojljohpekonpldkamedehakni/imgs/map/tip-arrow-bottom.png);"></div><div id="tip-arrow-top" style="background: url(chrome-extension://ikkbfngojljohpekonpldkamedehakni/imgs/map/tip-arrow-top.png);"></div></div></body></html>

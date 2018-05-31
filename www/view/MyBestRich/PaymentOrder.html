@@ -1,0 +1,92 @@
+﻿ 
+<ion-view ng-controller="PaymentOrderController" ng-init="init()">
+    <ion-header-bar class="bar-light " align-title="center">
+        <a href="javascript:void(0);" style="color: rgba(237, 121, 25, 1);" back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title" style="color: rgba(237, 121, 25, 1);">
+            支付订单
+        </h1>
+    </ion-header-bar>
+    <ion-content id="PaymentOrderContent" has-bouncing="true" class="scroll scroll-content" >
+        
+
+
+            <div class="list" style="border:0px;">
+                <div class="item" style="border-bottom:6px solid #dddddd;padding-left:20px;padding-right:20px;">
+                    {{viewModel.dataDetail.Name}}
+                    <span class="item-note fontColor-333333 fontSize-1" ng-if="viewModel.dataDetail.ProductDetail.ContractType!='100000001'">
+                        预约退出天数：{{viewModel.dataDetail.ExitDescription}} 天
+                    </span>
+                </div>
+ 
+                <a class="item item-icon-left  item-icon-right" style="    border-bottom: 1px solid #dddddd;
+    margin-left: 20px;
+    margin-right: 20px;padding-left:40px;padding-right:40px;margin-top:1px;margin-bottom:1px;" ng-click="InvitationCode()" ng-if="viewModel.InviteCode==''">
+                    <i class="icon" style="left:0px"><img src="img/newVersion/yaoqingma@2x.png" style="width:25px;" /></i>
+                    邀请码
+                    <span class="item-note">
+                        选填
+                    </span>
+                    <i class="icon ion-ios-arrow-right" style="color:#c1c0c0;right:0px;"></i>
+                </a>
+                <div class="item item-icon-left  item-icon-right" style="border-bottom: 1px solid #dddddd;
+    margin-left: 20px;
+    margin-right: 20px;padding-left:40px;padding-right:40px;margin-top:1px;margin-bottom:1px;" ng-if="viewModel.InviteCode!=''">
+                    <i class="icon" style="left:0px"><img src="img/newVersion/yaoqingma@2x.png" style="width:25px;" /></i>
+                    邀请码
+                    <span class="item-note">
+                        {{viewModel.InviteCode}}
+                    </span>
+                    <i class="icon ion-android-cancel" style="color:#c1c0c0;right:0px;" ng-click="DeleteCode()"></i>
+                </div>
+                <div class="text-center" style="margin:0px 20px;padding:5px;color:#666666;background-color:#dddddd"  ng-if="viewModel.InviteCode!=''">
+                    {{viewModel.InviteCodeMessage}}
+                </div>
+                <div class="formTable">
+                    <div class="row colLeft">
+                        <div class="col colIcon" style="line-height:1.5rem;">
+                            金 额
+                        </div>
+                        <div class="col borderBottom">
+                            <input type="text" style="text-align:right;font-size:1rem !important;" id="txAmt" ng-model="viewModel.txAmt" placeholder="请输入金额" maxlength="11">
+                        </div>
+                        <div class="col colIcon borderBottom text-right">
+                            (元)
+                        </div>
+                    </div>
+                </div>
+                <div class="item item-icon-left item-icon-right" style="padding-left:70px;padding-top: 21px;line-height:17px;margin-left:20px;margin-right:20px;" ng-click="ChoseCard()" ng-if="viewModel.dataCard!=null">
+                    <img ng-src="{{viewModel.dataCard.BankImgUrl}}" class="icon" style="top:16px;height: 45px;left:15px;" />
+                    <p style="font-size:1rem;">{{viewModel.dataCard.BankName}}<span style="color: #989898; font-size: 0.8rem; ">尾号({{viewModel.dataCard.TailNo}})</span></p>
+                    <p style="color: #989898; font-size: 0.9rem; ">{{viewModel.dataCard.TxtDealLimit}} <label ng-if="viewModel.dataCard.TxtDayLimit!=''" style="color: #989898; font-size: 0.9rem;">{{  viewModel.dataCard.TxtDayLimit}}</label></p>
+                    <i class="icon ion-ios-arrow-right" style="color:#c1c0c0;top:4px;"></i>
+                </div>
+               
+                <div class="row" style="padding-left:35px;padding-right:35px;color:#656565" ng-if="viewModel.dataCard==null">
+                    <div class="col fontSize-1-2" style="padding-right:0px;padding-left:0px;line-height:3rem;height:4rem;">
+                        添加银行卡
+                        <a class="item-note" style="color:#c1c0c0;font-size:1rem;" ng-click="AddBankCardsFun()">
+                            <img src="img/orthericon/AddCard.png" style="width: 3rem" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button class="button button-orange  button-fontsize-1-6" ng-click="Commit()" style="margin:0px;" ng-disabled="viewModel.disableSubmit">
+                        下一步
+                    </button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-33 text-right" style="padding-right:8px;padding-top:3px;">
+                    <ufo-radio has-checked="viewModel.isshow" ufo-style="height:1.5rem" ufo-click="clicks"></ufo-radio>
+                </div>
+                <div class="col-66 fontColor fontSize-1" style="padding-top:0.2rem" ng-click="agreement()">
+                    《出借咨询与服务协议》
+                </div>
+            </div>
+
+</ion-content>
+</ion-view>

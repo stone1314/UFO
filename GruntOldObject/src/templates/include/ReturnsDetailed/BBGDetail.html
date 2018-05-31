@@ -1,0 +1,101 @@
+﻿<!--<ion-view ng-controller="BBGResultController">
+    <ion-header-bar class="bar-header " align-title="center">
+        <a href="javascript:void(0);" style="color: #F89327; " back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title" style="color: rgba(237, 121, 25, 1); ">
+            预期产品收益
+        </h1>
+    </ion-header-bar>
+
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content has-header ProDetail">
+
+        <div class="Earnings bbg">
+        <div class="row">
+            <div class="col text-center">
+                产品期数
+            </div>
+            <div class="col  text-center">
+                预期年化收益率
+            </div>
+            <div class="col  text-center">
+                预期退出收益
+            </div>
+        </div>
+    </div>
+
+    <div class="Earnings" style="margin-bottom:8rem;">
+        <div ng-repeat="data in Model.list">
+            <div class="row " style=" padding-top: 10px; padding-bottom: 10px; color: rgba(237, 121, 25, 1);" ng-if="data.IsInTerms==1">
+                <div class="col text-center">
+                    {{data.TermNo}}
+                </div>
+                <div class="col text-center">
+                    {{data.Rate}}%
+                </div>
+                <div class="col text-center" ng-if="data.TermNo==1">
+                    --
+                </div>
+                <div class="col text-center" ng-if="data.TermNo!=1">
+                    {{data.Amount}}
+                </div>
+            </div>
+
+
+            <div class="row " style="padding-top: 10px; padding-bottom: 10px; color: white; background-color: #FF9600; " ng-if="data.IsInTerms==2">
+                <div class="col text-center">
+                    {{data.TermNo}}
+                </div>
+                <div class="col text-center">
+                    {{data.Rate}}%
+                </div>
+
+                <div class="col text-center" ng-if="data.TermNo==1">
+                    --
+                </div>
+                <div class="col text-center" ng-if="data.TermNo!=1">
+
+                    {{data.Amount}}
+                </div>
+            </div>
+
+            <div class="row " style=" padding-top: 10px;  padding-bottom: 10px;" ng-if="data.IsInTerms==0">
+                <div class="col text-center">
+                    {{data.TermNo}}
+                </div>
+                <div class="col text-center">
+                    {{data.Rate}}%
+                </div>
+
+                <div class="col text-center" ng-if="data.TermNo==1">
+                    --
+                </div>
+                <div class="col text-center" ng-if="data.TermNo!=1">
+                    {{data.Amount}}
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+<img src="../../../img/NewUI/fenge@2x.png" />
+    </ion-content>
+</ion-view>-->
+
+ 
+
+<div class="row listrow text-center">
+    <div class="col tab_right_line">产品期数</div>
+    <div class="col tab_right_line">预期年化收益率</div>
+    <div class="col">预期本息收益(元)</div>
+</div>
+<div class="row listrow  text-center" ng-repeat="data in Model.list" ng-class="{'currentRow':(data.IsInTerms==1||data.IsInTerms==2)}">
+    <div class="col"><span>{{data.TermNo}}<label class="current_text" ng-if="data.IsInTerms==2">本期</label></span></div>
+    <div class="col">{{data.Rate| currency:''}}%</div>
+   
+    <div class="col" ng-if="data.TermNo==1">
+        --
+    </div>
+    <div class="col" ng-if="data.TermNo!=1">
+       {{data.Amount| currency:''}}
+    </div>
+</div>
+ 

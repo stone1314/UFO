@@ -1,0 +1,7 @@
+﻿<div style="width:100%;text-align:left;margin-top:15px;padding-left:10px;">
+    <p ng-repeat="item in Model.AgreementList">
+        <a style="color:#F89327; text-decoration: underline; " ng-click="ContactHref($index+1,item.Url,item.TypeName)">{{item.TypeName}}</a>
+
+    </p>
+   
+</div>

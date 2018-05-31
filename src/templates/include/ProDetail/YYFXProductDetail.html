@@ -1,0 +1,15 @@
+﻿<div class="YYFX">
+    <div class="row">
+        <div class="col text-left">回款至</div>
+        <div class="col text-right">{{Model.data.BankName}}(*{{Model.data.BankCardNo}})</div>
+    </div>
+    <div class="row">
+        <div class="col text-left">实际投资</div>
+        <div class="col text-right">{{Model.data.InvestAmt| currency:''}} 元</div>
+    </div>
+    <div class="row">
+        <div class="col text-left">意向投资</div>
+        <div class="col text-right">{{Model.data.IntentionAmt| currency:''}} 元</div>
+    </div>
+  
+</div>

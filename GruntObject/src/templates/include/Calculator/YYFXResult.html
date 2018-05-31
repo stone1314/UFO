@@ -1,0 +1,36 @@
+﻿<!--<div style="height: 0.7rem;background-color:rgba(236, 236, 236, 1)"></div>-->
+<div class="row" style="margin-top:0.7rem;padding-top:25px;border-top: 1px solid #dddddd;">
+    <div class="col text-center fontSize-2-5 fontSize-orange" ng-bind="viewModel.totalAmt"></div>
+</div>
+<div class="row" style="margin-top:0px;">
+    <div class="col text-center fontSize-1-5">总派息金额<label class="fontSize-1">(元)</label></div>
+</div>
+<div class="row" style="color:#666666;padding-bottom:25px;padding-top:15px;">
+    <div class="col text-center  fontSize-1" style="border-right:1px solid #666666;padding:0px;">
+        <div>起息日期 </div>
+        <div ng-bind="viewModel.VoteDate">
+            --
+        </div>
+    </div>
+    <div class="col text-center  fontSize-1" style="padding:0px;">
+        <div>到期日期 </div>
+        <div ng-bind="viewModel.EndDate">
+            --
+        </div>
+    </div>
+</div>
+
+<div class="row listrow text-center" style="border-top: 1px solid #dddddd;background-color:rgba(248, 248, 248, 1);padding-left:10px;">
+    <div class="col text-left" style="background-color:rgba(248, 248, 248, 1);">派息日期</div>
+    <div class="col text-right" style="background-color:rgba(248, 248, 248, 1);">派息金额(元)</div>
+</div>
+
+<div class="row listrow" ng-repeat="item in viewModel.datas[0]" style="padding-left:0px;margin-left:15px;width:auto;">
+    <div class="col  text-left" style="padding-left:0px;"><ufo-dateformat2 ufo-date="item.enddate"></ufo-dateformat2></div>
+    <div class="col text-right fontSize-orange">{{item.interest}}</div>
+</div>
+<span class="row" style="border-top: 1px solid #dddddd;background-color:rgba(248, 248, 248, 1);">
+    <label class="col text-center fontSize-1" style="color:#666666">
+        本试算器不考虑节假日延期，试算结果仅供参考
+        </div>
+        </div>

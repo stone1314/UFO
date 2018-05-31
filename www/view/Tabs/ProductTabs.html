@@ -1,0 +1,72 @@
+﻿
+<ion-view ng-controller="ProductTabsController">
+    <ion-header-bar  align-title="center">
+        <a href="javascript:void(0);" style="color: rgba(237, 121, 25, 1);" back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title">
+            产 品 列 表
+        </h1>
+    </ion-header-bar>
+    <div class="bar bar-subheader" >
+        <div class="tabs tabs-stable ">
+            <a class="tab-item active ">
+                <div ng-class="ViewModel.tab1" ng-click="status(0)"> 增值计划</div>
+            </a>
+            <!--<a class="tab-item active" href="#/ProductTabs/FundList">
+                <div ng-class="ViewModel.tab3">私募基金</div>
+            </a>-->
+            <a class="tab-item active" ng-click="status(1)">
+
+                <div ng-class="ViewModel.tab2">续投产品</div>
+            </a>
+        </div>
+    </div>
+    <!--<ion-nav-view name="tab-product"></ion-nav-view>-->
+    <ion-content has-bouncing="true" scroll="false" overflow-scroll="false" class="has-header has-footer has-subheader" style="background-color:#f3f0f0">
+        <ion-slide-box on-slide-changed="slideHasChangeds(index)" style="width:100%;height:100%;" show-pager="false" delegate-handle="slideimgs">
+            <ion-slide>
+                <ion-nav-view name="tab-ValueAddedPlan" animation='no-animation'></ion-nav-view>
+            </ion-slide>
+            <!--<ion-slide>
+            <ion-nav-view name="tab-FundList"></ion-nav-view>
+        </ion-slide>-->
+            <ion-slide>
+                <ion-nav-view name="tab-CIProductList" ></ion-nav-view>
+            </ion-slide>
+
+        </ion-slide-box>
+    </ion-content>
+
+
+    <div class="tabs tabs-icon-top">
+        <a class="tab-item">
+            <div class="row">
+                <div class="col">
+                    <img src="img/line_chart.png" style="width: 30px; float: right;" />
+                </div>
+                <div class="col">
+                    <span style=" float: left; margin-top: 10px; ">产品</span>
+                </div>
+            </div>
+        </a>
+        <a class="tab-item" href="#/MyAccount">
+            <div class="row">
+                <div class="col">
+                    <img src="img/unmy.png" style="width: 30px; float: right;" />
+                </div>
+                <div class="col">
+                    <span style=" float: left; margin-top: 10px; ">我的</span>
+                </div>
+            </div>
+        </a>
+    </div>
+    <!--<div class="tabs tabs-icon-top" >
+        <a class="tab-item">
+            <i class="icon ion-ios-list"></i>
+            产品
+        </a>
+        <a class="tab-item">
+            <i class="icon ion-android-contact"></i>
+            我的
+        </a>
+    </div>-->
+</ion-view>

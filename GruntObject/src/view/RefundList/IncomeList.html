@@ -1,0 +1,16 @@
+﻿ 
+<ion-view ng-controller="IncomeListController">
+ 
+    <ion-header-bar class="bar-orange" align-title="center">
+        <a href="javascript:void(0);" back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title">
+            {{Model.title}}
+        </h1>
+    </ion-header-bar>
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content has-header prdDetail">
+
+
+        <div ng-include="Model.includeView">
+        </div>
+    </ion-content>
+</ion-view>

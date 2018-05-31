@@ -1,0 +1,69 @@
+﻿ 
+<ion-view ng-controller="PaymentResultfailureController">
+
+    <ion-header-bar class="bar-orange" align-title="center">
+        <a href="javascript:void(0);" back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title">
+            交易结果
+        </h1>
+    </ion-header-bar>
+    <ion-content has-bouncing="true" overflow-scroll="false" style="background-color:#f0f0f0">
+        <div ng-if="viewModel.resultType==1">
+            <div class="ufo_paymentResult_top">
+                <div><img src="img/NewUI/PayOrder/duihao@2x.png" /></div>
+                <div>交易成功！</div>
+            </div>
+            <div class="list ufo_list">
+
+                <div class="item item-content-row item-content-row-icon-left  item-icon-left fontColor-666666">
+                    <i class="icon"><img src="img/NewUI/PayOrder/biaoti@2x.png" style="width:12px;" /></i>
+                    由于银行划扣限制，末笔资金划扣成功后的下一个自然日开始计息。
+                </div>
+                <div class="item item-content-row item-content-row-icon-left  item-icon-left fontColor-666666">
+                    <i class="icon"><img src="img/NewUI/PayOrder/biaoti@2x.png" style="width:12px;" /></i>
+                    可在"我的-交易记录"中查看该笔交易结果,请勿重复提交。
+                </div>
+                <div class="item item-content-row item-content-row-icon-left  item-icon-left fontColor-666666">
+                    <i class="icon"><img src="img/NewUI/PayOrder/biaoti@2x.png" style="width:12px;" /></i>
+                    如有任何疑问请联系您的理财经理。
+                </div>
+            </div>
+            <div class="list ufo_list">
+
+                <div class="item item-content-row item-content-row-icon-left  item-icon-left fontColor-000000" style="padding-left:40px;">
+                    <i class="icon">
+                        <img src="img/NewUI/PayOrder/yaoqingma2.png" />
+                    </i>
+                    邀请码：88888888
+                </div>
+                <div class="item item-content-row fontColor-666666" style="padding-left:0px;">
+                    感谢您在购买理财产品时填写邀请码，购买成功后，您将会获得定制茶饮礼盒一个，请注意查收。
+                </div>
+
+            </div>
+        </div>
+        <div ng-if="viewModel.resultType==2">
+            <div class="ufo_paymentResult_top">
+                <div><img src="img/NewUI/PayOrder/shibai@2x.png" /></div>
+                <div>交易失败！</div>
+            </div>
+            <div class="list ufo_list">
+
+                <div class="item item-content-row  item-content-row-icon-left  item-icon-left fontColor-666666">
+                    <i class="icon"><img src="img/NewUI/PayOrder/biaoti@2x.png" style="width:12px;" /></i>
+                    请核对银行卡余额或更换银行卡
+                </div>
+            </div>
+
+        </div>
+
+
+        
+
+    </ion-content>
+    <ion-footer-bar class="ufo-bar-footer" align-title="center" style="padding:0px;">
+        <button class="button button-fd8026  button-full" ng-click="OK()">
+            {{viewModel.btn_text}}
+        </button>
+    </ion-footer-bar>
+</ion-view>

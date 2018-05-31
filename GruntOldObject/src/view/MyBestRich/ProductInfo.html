@@ -1,0 +1,114 @@
+﻿
+<ion-view ng-controller="ProductInfoController">
+    <ion-header-bar class="bar-light " align-title="center">
+        <a href="javascript:void(0);" style="color: rgba(237, 121, 25, 1);" back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title" style="color: rgba(237, 121, 25, 1);">
+            产品详情
+        </h1>
+    </ion-header-bar>
+    <ion-content id="ProductInfoContent" has-bouncing="true" overflow-scroll="false" class="scroll scroll-content" ng-class="{Has_been_sold_out:viewModel.productInfo.raiseState==2}">
+
+        <div class="row  ">
+
+            <div class="col fontSize-1-2 productName" style="position:relative">
+                {{viewModel.product.Name}}   <span class="fontSize-0-8 tags" style="height:auto;" ng-repeat="tag in viewModel.product.Tags">{{tag}}</span>
+            </div>
+        </div> 
+
+
+
+        <div ng-include="viewModel.RateView">
+        </div>
+
+
+        <div class="list" style="margin-left:1.3rem;border:0px;padding-top:15px;">
+
+            <a class="item item-icon-right" ng-click="ProductDescribeFun(viewModel.productInfo.DetailUrl)">
+                产品描述
+                <i class="icon ion-ios-arrow-right"></i>
+            </a>
+
+            <div class="item item-icon-left" ng-if="viewModel.productInfo.IsMultiRate">
+                <img src="img/ProductInfo/iconfont-shouyi.png" class="icon" />
+                预期收益率：
+            </div>
+            <div class="item item-icon-left" style="padding-top:0px; white-space: initial;color:#a9a6a6;" ng-if="viewModel.productInfo.IsMultiRate">
+                <p style="color:#a9a6a6;font-size: 1.1rem;white-space:initial;"> 累计投资金额&lt;{{viewModel.productInfo.MultiRates[1].TxtLeft}}，预期年化收益率为{{viewModel.productInfo.MultiRates[0].Rate | currency:''}}%；</p>
+                <p style="color:#a9a6a6;font-size: 1.1rem;white-space:initial;"> 累计投资金额≧{{viewModel.productInfo.MultiRates[1].TxtLeft}}，预期年化收益率为{{viewModel.productInfo.MultiRates[1].Rate | currency:''}}%；</p>
+            </div>
+            <div class="item item-icon-left" ng-if="viewModel.productInfo.ContractType=='100000009'">
+                <img src="img/ProductInfo/newusertitlt.png" class="icon" />
+                新手专享：
+            </div>
+            <div class="item item-icon-left" style="padding-top:0px; white-space: initial;" ng-if="viewModel.productInfo.ContractType=='100000009'">
+                {{viewModel.productInfo.ProductDescription}}
+            </div>
+            <div class="item item-icon-left">
+                <img src="img/ProductInfo/DateIcon.png" class="icon" />
+                起 息 日：
+                <span class="item-note">
+                    {{viewModel.productInfo.TxtValueDate}}
+                </span>
+            </div>
+            <div class="item item-icon-left">
+                <img src="img/ProductInfo/huankuan_icon.png" class="icon" />
+                还款方式：
+                <span class="item-note">
+                    {{viewModel.productInfo.TxtRepaymentWay}}
+                </span>
+            </div>
+            <div class="item item-icon-left">
+                <img src="img/ProductInfo/exit_icon.png" class="icon" />
+                退出方式：
+                <span class="item-note">
+                    {{viewModel.productInfo.TxtExitWay}}
+                </span>
+            </div>
+            <div class="item item-icon-left">
+                <img src="img/ProductInfo/purse.png" class="icon" />
+                资金回款：
+            </div>
+            <div class="item item-icon-left" style="padding-top:0px; white-space: initial;">
+                {{viewModel.productInfo.TxtFundCollect}}
+                <!--到期后3个工作日内自动回款至付款银行卡<br/>到款时间以银行清算时间为准-->
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="col" style="padding-right:0px;margin-right:0px;">
+                <button ng-class="{'button button-orange  button-fontsize-1-5  ':viewModel.pdtClassTyle1,
+                                'button button-gray  button-fontsize-1-5  ':viewModel.pdtClassTyle2 }"
+                        ng-click="lijitouzi()"
+                        ng-disabled="viewModel.pdtDis"
+                        ng-if="viewModel.productInfo.raiseState!=2 "
+                        style="margin:0px;width:100%;border-radius:0px;border-top-left-radius:4px;border-bottom-left-radius:4px;border-right:1px solid #ffffff;">
+                    立即投资
+                </button>
+                <button class="button button-orange  button-fontsize-1-5" style="margin:0px;width:100%;" ng-if="viewModel.productInfo.raiseState==2">
+                    已售罄
+                </button>
+            </div>
+            <div class="col" style="max-width:70px;padding-left:0px;margin-left:0px;  ">
+                <a class="button button-orange  button-fontsize-1-5" style="margin:0px;width:100%;border-radius:0px;border-top-right-radius:4px;border-bottom-right-radius:4px;padding-top:0.3rem" href="#/Calculator/{{viewModel.productInfo.ProductId}}/0">
+                    <img src="img/shisuanqi.png" style="height:70%" />
+                </a>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col" ng-show="viewModel.pdtDis" style="text-align: center; color: #a9a6a6">
+                此产品为新手专享，推荐好友投资。
+            </div>
+        </div>
+        <!--<div class="row" ng-if="viewModel.productInfo.contractAgreement==5">
+            <div class="col" >
+                <button class="button button-red  button-fontsize-1-5" style="margin:0px;width:100%;" ng-click="lijitouzi()">
+                    立即投资
+                </button>
+            </div>
+        </div>-->
+    </ion-content>
+</ion-view>

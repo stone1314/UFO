@@ -1,0 +1,40 @@
+﻿<ion-view ng-controller="RegSetIdentificationController">
+    <ion-header-bar class="bar-light " align-title="center">
+        <a href="javascript:void(0);" style="color: #F89327;" back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title" style="color: #F89327;">
+            {{viewModel.title}}
+        </h1>
+    </ion-header-bar>
+
+
+    <!--<ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content has-header">
+        <iframe class="iframeAgree" src="https://www.baidu.com"></iframe>
+
+
+    </ion-content>-->
+
+    <ion-content class="has-header has-footer content-overflow-scroll" has-bouncing="true" scroll="true" overflow-scroll="true" >
+        <!--<div class="list list-height-100">-->
+
+        <iframe class="iframeAgree" ng-src="{{viewModel.url}}"></iframe>
+        <!--</div>-->
+    </ion-content>
+     
+
+    <!--<ion-footer-bar class="bar-subfooter" style="height:70px;bottom:0px;" align-title="center"> 
+        <div class="row">
+            <div class="col">
+                <button class="button button-orange button-fontsize-2 " ng-click="Ok()" style=" line-height: 3rem!important;margin:0px;">
+                    确认
+                </button>
+            </div>
+        </div> 
+    </ion-footer-bar>-->
+
+    <ion-footer-bar align-title="center" class="ufo-bar-footer" style="padding:0px;">
+        <button class="button button-orange  button-full" ng-click="Ok()" >
+            确认
+        </button>
+    </ion-footer-bar>
+</ion-view>
+

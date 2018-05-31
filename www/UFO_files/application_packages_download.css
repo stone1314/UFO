@@ -1,0 +1,41 @@
+﻿body { background: #FE643D; margin: 0; padding: 0; }
+        .home { padding-top: 20%; text-align: center; }
+        .wrapper { }
+        .wrapper img { width: 35%; }
+        .home .title { font-weight: bold; font-size: 20px; color: #ffffff; margin-bottom: 2px; }
+        .home .version { font-weight: bold; font-size: 14px; color: #ffffff; margin-bottom: 10px; }
+        .home .content { text-align: center; margin: 25px auto 0 auto; width: 80%; color: #fff; line-height: 25px; font-size: 1.3rem; }
+        .download { margin: 35px auto 0 auto; width: 240px; text-align: center; padding-bottom: 30px; }
+        .download ul { margin: 0; padding: 0; }
+        .download ul li { list-style: none; height: 35px; padding: 5px 0; margin: 24px 0 0 0; background: #fff; border-radius: 4px; position: relative; }
+        .download ul li i { background: url('../images/packages/icons.png') no-repeat; background-size: 65px; width: 33px; height: 37px; position: absolute; left: 42px; }
+        .download ul li.iphone i { background-position: 0 -37px; }
+        .download ul li.android i { background-position: -33px -37px; }
+        .download ul li.active { background: #ff9320; }
+        .download ul li.iphone.active i { background-position: 0 0; }
+        .download ul li.android.active i { background-position: -33px 0; }
+        .download ul li p { font-size: 15px; line-height: 17px; margin: 0; color: #767676; text-align: left; margin-left: 38%; }
+        .download ul li.active p { color: #fff; }
+        .download ul li a { display: inline-block; position: absolute; width: 220px; height: 45px; left: 0; top: 0; }
+        .bg { width: 100%; position: absolute; bottom: 0; left: 0; z-index: -1; }
+        @@media screen and (min-height: 450px) {
+            .applogo { margin-top: 40px; }
+
+            .btn { bottom: 60px; }
+            .leading img { height: 180px; }
+            .leading .tips { top: 210px; width: 240px; font-size: 16px; margin: 0 -120px; }
+        }
+        @@media screen and (min-height: 550px) {
+            .applogo { margin-top: 60px; }
+            .applogo img { height: 120px; width: 120px; border-radius: 20px; }
+            .btn { width: 260px; margin: 0 -130px; bottom: 90px; }
+            .btn ul li { width: 260px; }
+            .leading img { height: 220px; }
+            .leading .tips { top: 250px; }
+        }
+
+        .leading { display: none; position: absolute; z-index: 20; top: 0; width: 100%; height: 100%; color: #ffffff; }
+        .leading .curtain { width: 100%; height: 100%; position: absolute; background: #000; opacity: 0.9; }
+        .leading img { position: absolute; right: 10px; top: 20px; height: 140px; }
+        .leading .tips { width: 260px; margin: 0 -130px; top: 170px; position: absolute; left: 50%; text-align: left; font-size: 16px; }
+        .leading .tips span { color: #ffae00; }

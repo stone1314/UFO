@@ -1,0 +1,102 @@
+﻿<ion-view ng-controller="TranDetailController">
+    <ion-header-bar class="bar-header " align-title="center">
+        <a href="javascript:void(0);" style="color: #F89327; " back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title" style="color: #F89327;">
+            交易明细
+        </h1>
+    </ion-header-bar>
+
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content has-header TranDetail">
+        <div class="totalMoney">
+            <div class="row">
+                <div class="col">{{viewModel.TradeDetail.BusiType=='100000001'?'+':'-'}}{{viewModel.TradeDetail.TxAmt | currency: ""}}</div>
+            </div>
+            <div class="row">
+                <div class="col">交易金额(元)</div>
+            </div>
+        </div>
+ 
+
+        <div class="TranListContent fontSize-1">
+            <div class="row">
+                <div class="col col-30">
+                    产品名称
+                </div>
+                <div class="col  text-right">
+                    {{viewModel.TradeDetail.ProductName}}
+                </div>
+            </div>
+            <div class="row" ng-if="viewModel.TradeDetail.ContractType!='100000001' && viewModel.TradeDetail.IsExt">
+                <div class="col">
+                    预约退出天数
+                </div>
+                <div class="col  text-right">
+                    {{viewModel.TradeDetail.ExitDescription}} 天
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" ng-if="viewModel.TradeDetail.BusiType=='100000001'">
+                    收款方式
+                </div>
+                <div class="col" ng-if="viewModel.TradeDetail.BusiType!='100000001'">
+                    付款方式
+                </div>
+                <div class="col text-right">
+                    {{viewModel.TradeDetail.BankName}}（*{{viewModel.TradeDetail.BankCardNo}}）
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    交易状态
+                </div>
+                <div class="col  text-right">
+                    {{viewModel.busiTypeText}}
+                </div>
+            </div>
+            <div class="row" ng-if="viewModel.TradeDetail.BusiType!='100000001' ">
+                <div class="col">
+                    划扣金额
+                </div>
+                <div class="col  text-right">
+                    {{viewModel.TradeDetail.DeductAmt |currency: ""}} (元)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" ng-if="viewModel.TradeDetail.PayStatus=='100000001'">
+                    投资日期
+                </div>
+                <div class="col" ng-if="viewModel.TradeDetail.PayStatus=='100000003'">
+                    回款日期
+                </div>
+                <div class="col" ng-if="viewModel.TradeDetail.PayStatus!='100000003' && viewModel.TradeDetail.PayStatus!='100000001'">
+                    交易日期
+                </div>
+                <div class="col  text-right">
+                    {{viewModel.TradeDetail.TxTime}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" style="max-width:80px">
+                    交易流水
+                </div>
+                <div class="col  text-right">
+                    {{viewModel.TradeDetail.PaymentNo}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" style="max-width:80px">
+                    合同编号
+                </div>
+                <div class="col  text-right">
+                    {{viewModel.TradeDetail.ContractNo}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    -------- 具体到账以银行实际到账为准 --------
+                </div>
+            </div>
+        </div>
+        
+    </ion-content>
+</ion-view>

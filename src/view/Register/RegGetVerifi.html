@@ -1,0 +1,104 @@
+﻿ 
+
+<ion-view ng-controller="RegGetVerifiController">
+ 
+    <ion-header-bar class="bar-orange" align-title="center">
+        <a back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title">
+            注册
+        </h1>
+    </ion-header-bar>
+    <ion-content>
+        <div class="formTable">
+            <div class="row colLeft">
+                <div class="col colIcon">
+                    <img src="img/mp.png" />
+                </div> 
+                <div class="col borderBottom"> 
+                    <input type="text" ng-model="User.PhoneNumber" placeholder="请输入手机号码" style=" width: 100%; font-size:1.2rem;" maxlength="11" ><!--ng-blur="validation()"-->
+                </div>
+            </div>
+            <div class="row colLeft">
+                <div class="col colIcon">
+                    <img src="img/key.png" />
+                </div>
+                <div class="col borderBottom">
+                    <input type="{{User.pwdType1}}" placeholder="密码由6-14位数字和字母组成" ng-model="User.Pwd1" style=" width: 100%; " >
+                </div>
+                <div class="col colIcon borderBottom" style=" margin-top: 5px;  margin-right: 6px;">
+                    <ufo-img ufo-intputtype="User.pwdType1" ufo-number="1" ufo-style="width: 25px; margin-right:10px;"></ufo-img>
+                </div>
+            </div>
+            <div class="row colLeft">
+                <div class="col colIcon">
+                    <img src="img/key.png" />
+                </div>
+                <div class="col borderBottom">
+                    <input type="{{User.pwdType2}}" placeholder="请再次输入密码" ng-model="User.Pwd2" style=" width: 100%; ">
+                </div>
+                <div class="col colIcon borderBottom" style=" margin-top: 5px; margin-right: 6px;">
+                    <ufo-img ufo-intputtype="User.pwdType2" ufo-number="2" ufo-style="width: 25px; margin-right:10px;"></ufo-img>
+                </div>
+            </div>
+             
+
+            <div class="row colLeft" >
+                <div class="col colIcon">
+                    <img src="img/huoquyanzheng.png" style="width: 18px;   margin-right:10px;">
+                </div>
+                <div class="col borderBottom">
+                    <input type="text" ng-model="User.validateCode" placeholder="请输入验证码" style=" width: 100%; ">
+                </div>
+                <div class="col borderBottom" style="width:8rem;max-width:8rem">
+                    <button class=" button button-small button-light" ng-show="TimeModel.validateCodeShow" ng-click="GetSms();" style="color: #E97218;border: 1px solid #F89327;width: 6rem;float: right;margin-bottom: 0px;"> <!--ng-disabled="User.status!=0"-->
+                        获取验证码
+                    </button>
+
+                    <a class=" button button-small button-light" ng-show="!TimeModel.validateCodeShow" style="color: #E97218;border: 1px solid #F89327;width: 6rem;float: right;margin-bottom: 0px;">
+                        {{TimeModel.countdown}}秒
+                    </a>
+                </div>
+            </div>
+
+            <!--<div class="row colLeft" style="color:#656565" ng-show="viewModel.hasImgCode">
+                <div class="col colIcon">
+                    <img src="img/huoquyanzheng.png" style="width: 18px;   margin-right:10px;">
+                </div>
+                <div class="col" style=" padding-top: 15px; text-align:center;max-width: 90px;">
+                    输入验证码
+                </div>
+                <div class="col">
+                    <input type="text" style="width: 100%; border: 1px solid #f1efef; " ng-model="viewModel.validateCode">
+                </div>
+                <div class="col title " style=" padding-top: 15px;max-width:100px;">
+                    <img src="{{viewModel.imgsrc}}" ng-src="viewModel.imgsrc" ng-click="imgClick()" />
+                </div>
+            </div>--> 
+
+
+        </div>
+        <div class="row" style="margin-top: 3rem;">
+            <div class="col">
+                <a class="button button-orange button-fontsize-2 " ng-click="Commit(isshow);" style="margin:0px;" >
+                    下一步
+                </a>
+            </div>
+        </div>
+
+        <div>
+            <div class="row">
+                <div class="col-20">
+                    <div style=" float: right; margin-top: 5px;"> 
+                        <ufo-radio has-checked="User.isshow" ufo-style="width: 21px;"></ufo-radio>   
+                    </div>
+                </div>
+                <div class="col" ng-click="PreviewContrart('用户注册协议')">
+                    我已阅读并同意《用户注册协议》
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+
+
+</ion-view>

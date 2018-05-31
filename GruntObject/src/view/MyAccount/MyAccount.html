@@ -1,0 +1,121 @@
+﻿ 
+<ion-view ng-controller="MyAccountController">
+    <div class="MyAccountHeader">
+        <a href="#/MyBaseAccount">
+            <img class="headerIcon" src="img/NewUI/wode@2x.png" />
+        </a>
+
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-35 text-center fontSize-white fontSize-1" style="line-height:27px;">
+                当前总资产（元）
+            </div>
+            <div class="col text-left fontSize-white fontSize-1" ng-click="UpdateIsHideAmount()">
+                <span class="has-show">
+                    <img class="imgHasShow" ng-src="{{User.IsHideAmountImgUrl}}" />
+
+                    <span class="text-center" ng-if="User.IsWeiXinHideAmount" ng-click="WeiXinHideUserAmount()">
+                        点我，隐藏金额&ensp;&ensp;
+                        <i class="ion-close-round"></i>
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="row" style="padding-top:0px;margin-top:0px;">
+            <div class="col text-center fontSize-white fontSize-2-5" style="height:3rem;line-height: 3rem;padding-top:0px;margin-top:0px;">
+
+                {{UserInfo.IsHideAmount?"***":UserInfo.WealthAmount}}
+            </div>
+        </div>
+        <div class="row lisytitle">
+            <div class="col text-center fontSize-white fontSize-1">
+                累计收益（元）
+            </div>
+        </div>
+        <div class="row lisyvalue">
+            <div class="col text-center fontSize-white fontSize-1">
+             
+                {{UserInfo.IsHideAmount?"***":UserInfo.ProfitTotal}}
+            </div>
+        </div>
+    </div>
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content has-header has-footer" style="top:215px;background-color:#f3f0f0">
+        <div class="list ufo_list">
+            <a href="#/MyBankCards" class="item">
+                <div class=" item-content item-icon-left item-icon-right">
+                    <i class="icon"><img src="img/NewUI/yinhangka@2x.png" /></i>
+                    我的银行卡
+                    <span class="item-note">
+                        {{UserInfo.BankCardCount}} 张
+                    </span>
+                    <i class="icon ion-ios-arrow-right"></i>
+                </div>
+            </a>
+
+            <a href="#/InvestListTabs/InvestList" class="item">
+                <div class="item-content item-icon-left item-icon-right">
+                    <i class="icon"><img src="img/NewUI/jiaoyijilu@2x.png" /></i>
+                    交易记录
+                    <i class="icon ion-ios-arrow-right"></i>
+                </div>
+            </a>
+            <a href="#/InvestmentRecordTabs/RefList0" class="item" id="a_reflist">
+                <div class="item-content item-icon-left item-icon-right">
+                    <i class="icon"><img src="img/NewUI/touzijilu@2x.png" /></i>
+                    投资记录
+                    <i class="icon ion-ios-arrow-right"></i>
+                </div>
+            </a>
+        </div>
+        <div class="list ufo_list">
+ 
+            <a href="tel:{{UserInfo.ManagerMobile}}" class="item">
+                <div class="item-content item-icon-left item-icon-right">
+                    <i class="icon"><img src="img/NewUI/jingli@2x.png" /></i>
+                    理财经理
+                    <span class="badge fontColor-666666" style="right:40px;font-weight:initial;">{{UserInfo.ManagerName}}&ensp;&ensp;<label style="color:#007AFF">{{UserInfo.ManagerMobile}}</label></span>
+                    <!--<i class="icon ion-ios-arrow-right"></i>-->
+                </div>
+            </a>
+
+            <a href="tel:4006800388" class="item">
+                <div class="item-content item-icon-left item-icon-right">
+                    <i class="icon"><img src="img/NewUI/kefu@2x.png" /></i>
+                    <div class="row">
+                        <div class="col" style="line-height:3rem;">
+                            客服电话
+                        </div>
+                        <div class="col text-center">
+                            <div class="fontSize-1" style="color:#007AFF;">
+                                400-680-0388
+                            </div>
+                            <div class="fontSize-0-8 fontColor-666666">
+                                (工作日 09:00 - 18:00)
+                            </div>
+                        </div>
+                    </div>
+                    <!--<i class="icon ion-ios-arrow-right"></i>-->
+                </div>
+            </a>
+          
+
+        </div>
+
+       
+    </ion-content>
+    <div class="tabs tabs-icon-top productTabs ">
+        <a class="tab-item" href="#/ProductTabs/ValueAddedPlan/1">
+            <!--<i class="icon ion-ios-list"></i>-->
+            <img src="img/NewUI/tab@2x.png" class="icon" />
+            产品列表
+        </a>
+        <a class="tab-item fontSize-orange activated" href="#/MyAccount">
+
+            <img src="img/NewUI/my@2x.png" class="icon" />
+            我的
+        </a>
+    </div>
+    <a href="#/InvestmentRecordTabs/RefList0" class="fixed-home  " style="bottom: 53px;">
+        <img src="img/btn-fixed-home.png" />
+    </a>
+</ion-view>

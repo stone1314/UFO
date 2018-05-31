@@ -1,0 +1,48 @@
+﻿<!--position: absolute;
+    right: 50px;
+    top: 26px;-->
+ 
+<ion-view ng-controller="SubscribeListController">
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content" style="background-color:#f0f0f0">
+        <ion-refresher pulling-text="下拉刷新..."
+                       spinner="bubbles" class="spinner-balanced" spinner-class="spinner-balanced" on-refresh="doRefresh()">
+        </ion-refresher>
+        <div class="list ufo_list interval5" ng-repeat="item in Model.list">
+            <a class="item" ng-click="showDetail(item,$index)">
+                <div class="item-content item-icon-right item-note-right">
+                    <div class="row">
+                        <div class="col">
+                            <div class="fontSize-1-2 fontColor-333333">
+                                {{item.Name}}
+                            </div>
+                            <div class="fontSize-0-8 fontColor-666666">
+                                交易日期：{{item.Date}}
+                            </div>
+                        </div>
+
+                    </div>
+                    <span class="item-note fontColor-FF0000">
+                        已预约
+                    </span>
+                    <i class="icon" ng-class="{'ion-ios-arrow-up':item.hasShow,'ion-ios-arrow-down':!item.hasShow}"></i>
+                </div>
+            </a>
+            <div class="item item-info" style="display:none" ng-if="item.hasShow" id="ConsultingInfo{{$index}}">
+                <div class="row">
+                    <div class="col fontColor-666666" style="max-width:100px;">
+                        预约编号
+                    </div>
+                    <div class="col text-right fontColor-333333">
+                        {{item.OrderNo}}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <ufo-infinite-scroll pulling="noMoreItemsAvailable" ufo-loadmore="loadMore" has-data="{{Model.list.length<=0}}">
+        </ufo-infinite-scroll>
+    </ion-content>
+
+</ion-view>

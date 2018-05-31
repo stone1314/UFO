@@ -1,0 +1,117 @@
+﻿<ion-view ng-controller="BBGResultController">
+    <ion-header-bar class="bar-header " align-title="center">
+        <a href="javascript:void(0);" style="color: #F89327; " back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title" style="color: rgba(237, 121, 25, 1); ">
+           预期产品收益
+        </h1>
+    </ion-header-bar>
+
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content has-header ProDetail">
+      
+        <div class="Earnings bbg">
+            <div class="row">
+                <div class="col text-center">
+                    产品期数
+                </div>
+                <div class="col  text-center">
+                    预期年化收益率
+                </div>
+                <div class="col  text-center">
+                    预期退出收益
+                </div>
+            </div>
+        </div>
+
+        <div class="Earnings" style="margin-bottom:8rem;">
+            <div ng-repeat="data in viewModel.data">
+                <!--<div class="row " style=" padding-top: 10px; padding-bottom: 10px; color: rgba(237, 121, 25, 1);">
+            <div class="col text-center">
+                01
+            </div>
+            <div class="col text-center">
+                6.00%
+            </div>
+            <div class="col text-center">
+                101044.38
+            </div>
+        </div>
+
+        <div class="row " style=" padding-top: 10px; padding-bottom: 10px; color: rgba(237, 121, 25, 1);">
+            <div class="col text-center">
+                02
+            </div>
+            <div class="col text-center">
+                6.00%
+            </div>
+            <div class="col text-center">
+                101044.38
+            </div>
+        </div>-->
+
+                <div class="row " style=" padding-top: 10px; padding-bottom: 10px; color: rgba(237, 121, 25, 1);" ng-if="data.isInTerms==1">
+                    <div class="col text-center">
+                        {{data.terms}}
+                    </div>
+                    <div class="col text-center">
+                        {{data.profitRate}}%
+                    </div>
+                    <div class="col text-center" ng-if="data.terms==1">
+                        --
+                    </div>
+                    <div class="col text-center" ng-if="data.terms!=1">
+                        {{data.termAmt}}
+                    </div>
+                </div>
+
+
+                <div class="row " style="padding-top: 10px; padding-bottom: 10px; color: white; background-color: #FF9600; " ng-if="data.isInTerms==2">
+                    <div class="col text-center">
+                        {{data.terms}}
+                    </div>
+                    <div class="col text-center">
+                        {{data.profitRate}}%
+                    </div>
+ 
+                    <div class="col text-center" ng-if="data.terms==1">
+                        --
+                    </div>
+                    <div class="col text-center" ng-if="data.terms!=1">
+ 
+                        {{data.termAmt}}
+                    </div>
+                </div>
+
+                <div class="row " style=" padding-top: 10px;  padding-bottom: 10px;" ng-if="data.isInTerms==0">
+                    <div class="col text-center">
+                        {{data.terms}}
+                    </div>
+                    <div class="col text-center">
+                        {{data.profitRate}}%
+                    </div>
+ 
+                    <div class="col text-center" ng-if="data.terms==1">
+                        --
+                    </div>
+                    <div class="col text-center" ng-if="data.terms!=1"> 
+                        {{data.termAmt}}
+                    </div>
+                </div>
+
+                <!--<div class="row " style=" padding-top: 10px;  padding-bottom: 10px;">
+            <div class="col text-center">
+                06
+            </div>
+            <div class="col text-center">
+                6.00%
+            </div>
+            <div class="col text-center">
+                101044.38
+            </div>
+        </div>-->
+
+            </div>
+
+            </div>
+
+    </ion-content>
+</ion-view>

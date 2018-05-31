@@ -1,0 +1,245 @@
+﻿
+<ion-view ng-controller="ApplyCIController">
+    <ion-header-bar class="bar-light " align-title="center">
+        <a href="javascript:void(0);" style="color: rgba(237, 121, 25, 1);" back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title" style="color: rgba(237, 121, 25, 1);">
+            申请续投
+        </h1>
+    </ion-header-bar>
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content applyCI">
+        <div class="Apply Applyborder" style="border-bottom:0px;padding:0px;margin-bottom:10px;">
+            <div class="row rowTitle" style="padding-left:1.5rem;padding-right:1.5rem">
+                {{viewModel.ContractDetail.ProductName}}
+            </div>
+            <div class="row rowContract" style="background-color:#FF9600;color:#ffffff;padding-left:1.5rem;padding-right:1.5rem">
+                <div class="col col-50">
+                    <span ng-if="viewModel.ContractDetail.IsExt">预约退出天数：{{viewModel.ContractDetail.ExitDescription}}天</span>
+                </div>
+                <div class="col col-50 fontSize-0-8 text-right">
+                    合同编号：{{viewModel.ContractDetail.ContractNo}}
+                </div>
+            </div>
+        </div>
+        <div class="Apply Applyborder">
+
+            <div class="row rowContract" style="color:#4a4949;">
+                <div class="col col-50 text-center">
+                    投资金额(元)
+                </div>
+                <div class="col col-50 text-center">
+                    预计收益(元)
+                </div>
+            </div>
+            <div class="row rowContract">
+                <div class="col col-50 text-center fontSize-1-5" style="color:#4a4949;">
+                    {{viewModel.ContractDetail.InvestAmt}}
+                </div>
+                <div class="col col-50 text-center fontSize-1-5 fontSize-orange">
+                    {{viewModel.ContractDetail.ExpectProfitAmt}}
+                </div>
+            </div>
+            <div class="row rowDate">
+                <div class="col col-50 text-center fontSize-1">
+                    起息日<br />{{viewModel.ContractDetail.ValueDate}}
+                </div>
+                <div class="col col-50 text-center fontSize-1" ng-if="!viewModel.ContractDetail.IsExt">
+                    到期日<br />{{viewModel.ContractDetail.DueDate}}
+                </div>
+                <div class="col col-50 text-center fontSize-1" ng-if="viewModel.ContractDetail.IsExt">
+                    预约退出日<br />{{viewModel.ContractDetail.DueDate}}
+                </div>
+            </div>
+        </div>
+        <div class="Apply">
+            <div class="row rowOperation">
+                <div class="col text-right colleft">
+                    <img src="img/CI/line-chart@2x.png" />
+                </div>
+                <div class="col fontSize-1-2 colmiddle" ng-click="sortProductSheet()">
+                    选择续投产品<br />{{viewModel.SortProductName}}
+                    <i class="item-note ion-ios-arrow-down fontSize-2 fontSize-orange">
+                    </i>
+                </div>
+                <!--<a class="col text-right colright" href="javascript:void(0)" ng-click="GoCalculator()">
+                    <img src="img/CI/jisuanqi@2x.png" />
+                </a>-->
+            </div>
+            <div class="row rowOperation">
+                <div class="col text-right colleft">
+                    <img src="img/CI/dayIcon.png" />
+                </div>
+                <div class="col fontSize-1-2 colmiddle" ng-click="productSheet()">
+                    预约退出天数<br />{{viewModel.ProductName}}
+                    <i class="item-note ion-ios-arrow-down fontSize-2 fontSize-orange">
+                    </i>
+                </div>
+                <a class="col text-right colright" href="javascript:void(0)" ng-click="GoCalculator()">
+                    <img src="img/CI/jisuanqi@2x.png" />
+                </a>
+            </div>
+            <div class="row rowOperation">
+                <div class="col text-right colleft">
+                    <img src="img/CI/xutou@2x.png" />
+                </div>
+                <div class="col fontSize-1-2 colmiddle" ng-click="SelectCIMode()" style="height:4.5rem;">
+                    选择续投方式<br />{{viewModel.CIModeName}}
+                    <i class="item-note ion-ios-arrow-down fontSize-2 fontSize-orange">
+                    </i>
+                </div>
+                <div class="col text-right colright" ng-click="showAlert()">
+                    <img src="img/CI/wen@2x.png" style="bottom:13px;" />
+                </div>
+            </div>
+            <div class="row rowOperation">
+                <div class="col text-right colleft">
+                    <img src="img/CI/jine@2x.png" />
+                </div>
+                <div class="col fontSize-1-2 colmiddle" style="height:4.5rem;">
+                    续投金额<br />{{viewModel.totalAmount | currency: ""}} (元)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col text-right" style="width:1.6rem; max-width: 1.6rem;">
+
+                </div>
+                <div class="col fontSize-1">
+                    <i class="icon ion-record fontSize-orange"></i> 不收取出借咨询与服务费
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button class="button button-orange button-fontsize-2 " style="margin:0px;" ng-click="submit()">
+                    提交
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-33 text-right" style="padding-right:8px;padding-top:3px;">
+                <ufo-radio has-checked="viewModel.isshow" ufo-style="height:1.5rem" ufo-click="clicks"></ufo-radio>
+            </div>
+            <div class="col-66 fontColor fontSize-1" style="padding-top:0.2rem" ng-click="agreement()">
+                出借咨询与服务协议
+            </div>
+        </div>
+        <!--<div class="row" ng-repeat="item in arrays">
+            <div class="col-33 text-right" style="padding-right:8px;padding-top:3px;">
+                <ufo-radio has-checked="item.isshow"  has-array="true" has-morecheck="true" array-obj="arrays" field="isshow" index="{{$index}}" ufo-style="height:1.5rem"></ufo-radio>
+            </div>
+            <a class="col-66 fontColor fontSize-1" style="padding-top:0.2rem" ng-click="agreement()">
+                {{item.name}}
+            </a>
+        </div>-->
+    </ion-content>
+</ion-view>
+
+<!--<ion-view ng-controller="ApplyCIController">
+    <ion-header-bar class="bar-light " align-title="center">
+        <a href="javascript:void(0);" style="color: rgba(237, 121, 25, 1);" back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title" style="color: rgba(237, 121, 25, 1);">
+            申请续投
+        </h1>
+    </ion-header-bar>
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content applyCI">
+        <div class="Apply Applyborder">
+            <div class="row rowTitle">
+                {{viewModel.ContractDetail.ProductName}}
+            </div>
+            <div class="row rowContract">
+                <div class="col col-50">
+                    <span>{{viewModel.ContractDetail.Period}}天封闭期</span>
+                </div>
+                <div class="col col-50 fontSize-0-8 text-right">
+                    合同编号：{{viewModel.ContractDetail.ContractNo}}
+                </div>
+            </div>
+            <div class="row rowContract" style="color:#4a4949;">
+                <div class="col col-50 text-center">
+                    投资金额(元)
+                </div>
+                <div class="col col-50 text-center">
+                    预计收益(元)
+                </div>
+            </div>
+            <div class="row rowContract">
+                <div class="col col-50 text-center fontSize-1-5" style="color:#4a4949;">
+                    {{viewModel.ContractDetail.InvestAmt}} 
+                </div>
+                <div class="col col-50 text-center fontSize-1-5 fontSize-orange">
+                    {{viewModel.ContractDetail.ExpectProfitAmt}} 
+                </div>
+            </div>
+            <div class="row rowDate">
+                <div class="col col-50 text-left fontSize-1">
+                    起息日：{{viewModel.ContractDetail.ValueDate}} 
+                </div>
+                <div class="col col-50 text-right fontSize-1">
+                    到期日：{{viewModel.ContractDetail.DueDate}} 
+                </div>
+            </div>
+        </div>
+        <div class="Apply">
+            <div class="row rowOperation">
+                <div class="col text-right colleft">
+                    <img src="img/CI/line-chart@2x.png" />
+                </div>
+                <div class="col fontSize-1-2 colmiddle" ng-click="productSheet()">
+                    选择续投产品<br />{{viewModel.ProductName}}
+                    <i class="item-note ion-ios-arrow-down fontSize-2 fontSize-orange">
+                    </i>
+                </div>
+                <a class="col text-right colright" href="javascript:void(0)" ng-click="GoCalculator()">
+                    <img src="img/CI/jisuanqi@2x.png" />
+                </a>
+            </div>
+            <div class="row rowOperation" >
+                <div class="col text-right colleft" >
+                    <img src="img/CI/xutou@2x.png" />
+                </div>
+                <div class="col fontSize-1-2 colmiddle" ng-click="SelectCIMode()" style="height:4.5rem;">
+                    选择续投方式<br />{{viewModel.CIModeName}}
+                    <i class="item-note ion-ios-arrow-down fontSize-2 fontSize-orange">
+                    </i>
+                </div>
+                <div class="col text-right colright" ng-click="showAlert()">
+                    <img src="img/CI/wen@2x.png" style="bottom:13px;" />
+                </div>
+            </div>
+            <div class="row rowOperation">
+                <div class="col text-right colleft">
+                    <img src="img/CI/jine@2x.png" />
+                </div>
+                <div class="col fontSize-1-2 colmiddle" style="height:4.5rem;">
+                    续投金额<br />{{viewModel.totalAmount | currency: ""}} (元)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col text-right" style="width:1.6rem; max-width: 1.6rem;">
+
+                </div>
+                <div class="col fontSize-1">
+                    <i class="icon ion-record fontSize-orange"></i> 不收取出借咨询与服务费
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button class="button button-orange button-fontsize-2 " style="margin:0px;" ng-click="submit()">
+                    提交
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-33 text-right" style="padding-right:8px;padding-top:3px;">
+                <ufo-radio has-checked="viewModel.isshow" ufo-style="height:1.5rem" ufo-click="clicks"></ufo-radio>
+            </div>
+            <div class="col-66 fontColor fontSize-1" style="padding-top:0.2rem" ng-click="agreement()" >
+                出借咨询与服务协议
+            </div>
+        </div>
+ 
+    </ion-content>
+</ion-view>-->
+ 

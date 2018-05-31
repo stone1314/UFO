@@ -1,0 +1,111 @@
+﻿<style type="text/css">
+    .div1 {
+        border: 1px solid red;
+        display: table-cell; /* 模拟表格法*/
+        vertical-align: middle;
+        margin: 0 auto;
+    }
+</style>
+<ion-view ng-controller="CIProductListController">
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content ValueAddedPlan" style="background-color:#f3f0f0">
+        <ion-refresher pulling-text="下拉刷新..."
+                       spinner="bubbles" class="spinner-balanced" spinner-class="spinner-balanced" on-refresh="doRefresh()">
+        </ion-refresher>
+
+        <div ng-include="viewModel.viewForm" ng-show="viewModel.viewForm_state">
+        </div>
+
+
+        <div class="plateCIProductList" ng-repeat="item in viewModel.CIProductList" ng-click="GoToProDetail(item.ContractId)">
+
+            <div class="productTitle">
+                {{item.ProductName}}
+                <label ng-if="item.IsExt">预约退出天数：{{item.ExitDescription}}天</label>
+            </div>
+            <div class="row">
+                <div class="col-60 plateSize" style="color:black;">
+                    <div class="fontColor-333333">合同编号：<label class="fontColor-666666">{{item.ContractNo}}</label> </div>
+                    <div class="fontColor-333333">投资日期：<label class="fontColor-666666">{{item.TxTime}}</label></div>
+                </div>
+                <div class="col-40 plateSize fontSize-1-5">
+                    <img src="img/orthericon/moneyicon.png" />
+                    <span ng-if="item.Amount<10000" class="fontSize-1-5">
+                        {{item.Amount}}元
+                    </span>
+                    <span ng-if="item.Amount>=10000" class="fontSize-1-5">
+                        {{item.Amount/10000}}万
+                    </span>
+                    <i class="icon ion-ios-arrow-right"></i>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <ufo-infinite-scroll pulling="noMoreItemsAvailable" ufo-loadmore="loadMore" ng-show="!viewModel.viewForm_state">
+        </ufo-infinite-scroll>
+    </ion-content>
+
+</ion-view>
+
+
+
+
+<!--<style type="text/css">
+    .div1 {
+        border: 1px solid red;
+        display: table-cell; /* 模拟表格法*/
+        vertical-align: middle;
+        margin: 0 auto;
+    }
+ 
+</style> 
+<ion-view ng-controller="CIProductListController">
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content ValueAddedPlan" style="background-color:#f3f0f0">
+        <ion-refresher pulling-text="下拉刷新..."
+                       spinner="bubbles" class="spinner-balanced" spinner-class="spinner-balanced" on-refresh="doRefresh()">
+        </ion-refresher>
+
+
+        <div ng-include="viewModel.viewForm" ng-show="viewModel.viewForm_state">
+        </div>
+
+
+
+        <div ng-repeat="item in viewModel.CIProductList">
+  
+            <div class="plateCIProductList">
+                <a class="row" style="width:94%;" href="#/ProDetail/CIProductList/{{item.ContractId}}">
+                    <div class="col-60 plateSize">
+                        {{item.ProductName}}
+                    </div>
+                    <div class="col-40 plateSize">
+                        <img src="img/orthericon/moneyicon.png" />
+                        <span ng-if="item.MinAmount<10000">
+                            <label style="font-size:1.5rem;">{{item.Amount}} </label> 元
+                            <i class="icon ion-ios-arrow-right" style="font-size:2rem;padding-top:0.8rem"></i>
+                        </span>
+                        <span ng-if="item.MinAmount>=10000">
+                            <label style="font-size:1.5rem;">{{item.Amount/10000}} </label> 万
+                            <i class="icon ion-ios-arrow-right" style="font-size:2rem;padding-top:0.8rem"></i>
+                        </span>
+                    </div>
+                </a>
+                <div class="row">
+                    <div class="col">
+          
+                        <a class="button button-orange  button-fontsize-1-5" href="#/ApplyCI/{{item.ContractId}}">
+                            申请续投
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+
+        <ufo-infinite-scroll pulling="noMoreItemsAvailable" ufo-loadmore="loadMore" ng-show="!viewModel.viewForm_state">
+        </ufo-infinite-scroll>
+    </ion-content>
+
+</ion-view>-->

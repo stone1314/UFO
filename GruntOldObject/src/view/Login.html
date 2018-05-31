@@ -1,0 +1,45 @@
+﻿<ion-view ng-controller="LoginController">
+
+    <ion-header-bar class="bar-light " align-title="center">
+        <a  style="color: #F89327;" href="#/ProductTabs/ValueAddedPlan/1" class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title" style="color: #F89327;">
+            登录
+        </h1>
+    </ion-header-bar>
+ 
+
+    <ion-content has-bouncing="true" overflow-scroll="false" style="padding-left:20px;padding-right:20px;" class="MyAccountContent">
+        <div style="text-align:center;margin-top:2rem;margin-bottom:2rem;">
+            <img src="img/logo.png" style="width: 90px;margin-top: 40px;margin-bottom: 40px;" />
+        </div>
+
+        <div class="row">
+            <div class="col" style="max-width:40px;min-width:40px;padding-top: 10px;"><img src="img/mp.png" class="imgleft" style="width:20px;" /></div>
+            <div class="col" style="border-bottom:1px solid #f1efef;position:relative;padding-bottom:0px;">
+                <input type="text" maxlength="11" ng-model="user.txtNum" style="margin-right:20px;width:80%;line-height:3rem;height:3rem;font-size:1.2rem;" placeholder="请输入手机号码">
+                <img src="img/chechu.png" style="width:20px; position:absolute;right:5px;top:15px;" ng-click="DelNum()" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col" style="max-width:40px;min-width:40px;padding-top: 10px;"><img src="img/key.png" class="imgleft" style="width:20px;" /></div>
+            <div class="col" style="border-bottom:1px solid #f1efef;position:relative;padding-bottom:0px;">
+                <input type="{{pwdState}}" id="user_pwd" style="margin-right:20px;width:80%;line-height:3rem;height:3rem;font-size:1.2rem!important;" placeholder="请输入正确密码" />
+                <div style="width:30px; position:absolute;right:0px;top:10px;height:40px;padding-top:14px;"><img src="{{pwdIoc}}" style="width:30px;" ng-click="Show();" /></div>
+            </div>
+        </div>
+        <div style=" margin-top: 8px;">
+            <a style="float: left; margin-left: 45px; color: #F89327; font-size:1rem; text-decoration: blink;" href="#/RegChose">注册</a>
+            <a style="float: right; margin-right: 20px; color: #F89327; font-size: 1rem; text-decoration: blink;" href="#/PwdGetCode">忘记密码? </a>
+        </div>
+        <!--button-block-->
+        <div class="row" style="margin-top:8rem;">
+            <div class="col">
+                <a class="button button-orange button-fontsize-2 " ng-click="Login()" style="margin:0px;">
+                    确认
+                </a>
+
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

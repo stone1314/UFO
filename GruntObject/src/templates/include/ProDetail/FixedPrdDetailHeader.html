@@ -1,0 +1,94 @@
+﻿<div style="margin-bottom:1px;background-color:#ffffff;">
+    <div class="row">
+        <div class="row fontSize-1-2 fontColor-333333">
+            {{ Model.data.ProductName}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col re_del_contno">
+            <img src="img/NewUI/hetong@2x.png" />
+            <span>合同编号：{{ Model.data.ContractNo}}</span>
+
+        </div>
+
+    </div>
+    <div class="row" ng-if="Model.data.InviteCode!=null">
+        <div class="col re_del_contno">
+            <img src="img/newVersion/yaoqingma@2x.png" style="width:20px;" />
+            <span>邀请码：{{ Model.data.InviteCode}}</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center fontSize-2-5 fontColor-fb4747">
+            <label class="fontSize-2" ng-if="Model.data.ContractType == '100000001'"> ≧ </label>{{Model.data.ExpectProfitAmt | currency:''}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center fontSize-1-5 fontColor-333333 padding-top">
+            预期收益(元)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col re_del_list text-center col_right_line">
+            <div class="fontColor-fb4747 fontSize-1-2"><label ng-if="Model.data.ContractType == '100000001'">≧</label>{{Model.data.ExpectRate | currency:''}} %</div>
+            <div class="">预期年化</div>
+        </div>
+        <div class="col re_del_list text-center col_right_line" ng-if="Model.data.IsExt">
+            <div ng-if="Model.data.ContractType != '100000001'">
+                <div class="fontColor-fb4747 fontSize-1-2">{{Model.data.ExitDescription}}</div>
+                <div class="">预约退出天数(天)</div>
+            </div>
+            <div class="fontColor-fb4747 fontSize-1" style="line-height:40px;" ng-if="Model.data.ContractType == '100000001'">
+                随时申请退出
+            </div>
+        </div>
+        <div class="col re_del_list text-center">
+            <div class="fontColor-fb4747 fontSize-1-2">{{Model.data.InvestAmt| currency:''}}</div>
+            <div class="">投资本金(元)</div> 
+        </div>
+    </div>
+</div>
+<div ng-if="Model.data.ContractType == '100000001'">
+    <div class="row">
+        <div class="col"><i class="ion-record fontSize-0-8"></i> &nbsp;&nbsp;"预期收益"以持有360天计；</div>
+    </div>
+    <div class="row">
+        <div class="col"><i class="ion-record fontSize-0-8"></i> &nbsp;&nbsp;不满360天退出，需要支付退出手续费，详见<a ng-click="ContactHref_CJ(1,'出借咨询与服务协议','100000001')" class="fontColor-fb4747">《出借咨询与服务协议》</a>；</div>
+    </div>
+    <div class="row">
+        <div class="col"><i class="ion-record fontSize-0-8"></i> &nbsp;&nbsp;360天后退出免手续费；</div>
+    </div>
+</div>
+<!--<hr style="margin:20px 0px;border:none;border-top:1px solid #f0f0f0;" />-->
+<div class="dateline">
+    <div class="row" ng-class="{'ufo_rowPadding':!Model.data.IsExt}">
+        <div class="col text-center reimgsize ufo_iconleft" ng-if="Model.data.IsExt">
+            <div class="datepanle text-center">
+                <div class="fontSize-1">投资日期</div>
+                <div class="fontSize-1">{{Model.data.InvestDate}}</div>
+            </div>
+            <img src="img/NewUI/touziriqi@2x.png" />
+        </div>
+        <div class="col ufo_iconleft_line" ng-if="Model.data.IsExt"></div>
+        <div class="col text-center reimgsize " ng-class="{'ufo_iconmiddle':Model.data.IsExt,'ufo_iconleft':!Model.data.IsExt}">
+            <div class="datepanle text-center">
+                <div class="fontSize-1">开始计息</div>
+                <div class="fontSize-1">{{Model.data.ValueDate}}</div>
+            </div>
+            <img src="img/NewUI/jixi@2x.png" />
+        </div>
+
+        <div class="col text-center fontSize-0-8 ufo_iconright_line">
+        </div>
+        <div class="col text-center reimgsize ufo_iconright">
+            <div class="datepanle text-center" ng-if="!(Model.data.ContractType == '100000001' && Model.data.QuitStatus != '100000002')">
+                <div class="fontSize-1">退出日期</div>
+                <div class="fontSize-1">{{Model.data.DueDate}}</div>
+            </div>
+            <div class="datepanle text-center" ng-if="Model.data.ContractType == '100000001' && Model.data.QuitStatus != '100000002'">
+                <div class="fontSize-1">随时申请退出</div>
+            </div>
+            <img src="img/NewUI/tuichu@2x.png" />
+        </div>
+    </div>
+</div>

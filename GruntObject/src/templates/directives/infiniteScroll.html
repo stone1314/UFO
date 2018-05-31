@@ -1,0 +1,10 @@
+﻿<div style="text-align:center;" ng-show="!pulling"><i class="ion-android-arrow-up" style="font-size:1.2rem;color:#d9d5d5;"> 上拉加载数据</i></div>
+<div style="text-align: center; padding-top: 10px;" ng-show="pulling">
+    <i class="ion-android-hand" style="font-size: 1.2rem; color: #d9d5d5;" ng-if="hasData=='false'">已经到底了，别扯了</i>
+    <div ng-if="hasData=='true'" class="infiniteScroll_ON_Data">
+        暂时无记录
+    </div>
+        
+</div>
+
+<ion-infinite-scroll ng-if="!pulling" spinner="bubbles" on-infinite="loadMore()" distance="1%"></ion-infinite-scroll>

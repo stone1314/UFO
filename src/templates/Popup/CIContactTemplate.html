@@ -1,0 +1,15 @@
+﻿<div style="width:100%;text-align:left;margin-top:15px;padding-left:10px;" >
+    <p>
+        <a style="color:#F89327; text-decoration: underline; " ng-click="ContactHref(1,'出借咨询与服务协议')">出借咨询与服务协议</a>
+        
+    </p>
+    <p>
+        <a style="color:#F89327; text-decoration: underline; " ng-click="ContactHref(2,'授权委托书-出借确认和债权转让')">授权委托书-出借确认和债权转让</a>
+    </p>
+    <p>
+        <a style="color:#F89327; text-decoration: underline; " ng-click="ContactHref(3,'授权委托书-催收及诉讼')">授权委托书-催收及诉讼</a>
+    </p> 
+    <p ng-if="viewModel.HasPayProduct">
+        <a style="color:#F89327; text-decoration: underline; " ng-click="ContactHref(4,'出借本金确认书')">出借本金确认书</a>
+    </p>
+</div>

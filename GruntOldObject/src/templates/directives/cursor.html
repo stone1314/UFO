@@ -1,0 +1,43 @@
+﻿<div class="cursor-container">
+
+
+    <div class="cursor-title"style="width:100%;">
+        <!--<h3>
+            收益预算(期)
+        </h3>
+
+        <h2>
+            <span style="width:100%;">{{text}}</span>
+        </h2>-->
+
+        <div class="pointer" style="height:60px;">
+
+        </div>
+    </div>
+
+
+    <ion-scroll direction="x" delegate-handle="cursorHandle" class="cursor-scroll"
+                on-release="onComplete()"
+                on-drag="onDrag()"
+                on-scroll="onScroll();"
+                has-bouncing="false" overflow-scroll="false">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="cursor-svg" ng-style="svgStyle">
+            <!--底部细线-->
+            <line ng-x1="0" ng-y1="{{height}}" ng-x2="{{svgStyle.width}}" ng-y2="{{height}}"
+                  style="stroke:#cccccc;stroke-width:2" />
+            <!--底部刻度尺细线-->
+            <line ng-repeat="item in lineArr" ng-x1="{{item.x1}}" ng-y1="{{item.y1}}" ng-x2="{{item.x2}}"
+                  ng-y2="{{item.y2}}" style="stroke:#cccccc;stroke-width:1" ng-if="item.isShow"></line>
+
+            <line ng-if="currentLine!={}&&item.isShow" ng-x1="{{currentLine.x1}}" ng-y1="{{currentLine.y1}}"
+                  ng-x2="{{currentLine.x2}}"
+                  ng-y2="{{currentLine.y2}}" style="stroke:#ff9912;stroke-width:1"></line>
+
+            <!--文字-->
+            <text ng-repeat="item in textArr" ng-x="{{item.x}}" ng-y="{{item.y}}" ng-transform="{{item.translate}}"
+                  style="fill: #cccccc">
+                {{item.text}}
+            </text>
+        </svg>
+    </ion-scroll>
+</div>

@@ -1,0 +1,69 @@
+﻿ 
+<ion-view ng-controller="TranListController" ng-init="init()">
+    <ion-header-bar class="bar-orange" align-title="center">
+        <a back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title">
+            续投记录
+        </h1>
+    </ion-header-bar>
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content has-header TranList">
+
+        <div class="totalMoney">
+            <div class="row">
+                <div class="col">-{{viewModel.QueryReinvestInfo.TxAmt| currency: ""}}</div>
+            </div>
+            <div class="row">
+                <div class="col">交易金额(元)</div>
+            </div>
+        </div>
+
+        <div class="CITitle">续投明细</div>
+ 
+        <div class="row TranListContent">
+            <div class="col-34 text-right TranLeft">
+                <div>
+                    <ufo-dateformat ng-if="viewModel.QueryReinvestInfo!=null" ufo-date="viewModel.QueryReinvestInfo.TxTime" ufo-format="date"></ufo-dateformat>
+                </div>
+            </div>
+            <div class="col-66 TranRight">
+                <div class="DivStatus" ng-if="viewModel.QueryReinvestInfo.ReinvestType=='100000001'">
+                    本金续投
+                </div>
+                <div class="DivStatus" ng-if="viewModel.QueryReinvestInfo.ReinvestType!='100000002'">
+                    本息续投
+                </div>
+
+                <div class="TTitle">
+                    <div style=" color: white;  margin-left: 24px;padding:5px;min-height:30px; font-size:1rem">{{viewModel.QueryReinvestInfo.ExpectProductName}}</div>
+                </div>
+
+                <div class="fontSize-1 History">
+                    <div>
+                        续投金额：{{viewModel.QueryReinvestInfo.TxAmt| currency: ""}} 元
+                    </div>
+                    <div>
+                        续投合同号：{{viewModel.QueryReinvestInfo.ExpectContractNo}}
+                    </div>
+                    <div ng-if ="viewModel.QueryReinvestInfo.ContractType!='100000001' && viewModel.QueryReinvestInfo.ContractType!='100000008'">
+                        预计收益：{{viewModel.QueryReinvestInfo.ExpectAmt | currency: ""}} 元
+</div>
+                    <div >
+                        预计起息日：<ufo-dateformat ufo-date="viewModel.QueryReinvestInfo.ExpectValueDate" ufo-format="date" ng-if="viewModel.QueryReinvestInfo.ExpectValueDate!=null"></ufo-dateformat>
+                    </div>
+                    <div ng-if="viewModel.QueryReinvestInfo.ContractType!='100000001'">
+                        预计到期日：<ufo-dateformat ufo-date="viewModel.QueryReinvestInfo.ExpectDueDate" ufo-format="date" ng-if="viewModel.QueryReinvestInfo.ExpectDueDate!=null"></ufo-dateformat>
+                    </div>
+                    <div style="margin-top:10px;color:#a09b9b">
+                        原产品：{{viewModel.QueryReinvestInfo.OldProductName}}
+                    </div>
+
+                    <div style="color:#a09b9b;">
+                        原合同号：{{viewModel.QueryReinvestInfo.OldContractNo}}
+                    </div>
+                </div>
+            </div>
+        </div>
+         
+    </ion-content>
+ 
+</ion-view>

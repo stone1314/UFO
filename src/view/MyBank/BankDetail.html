@@ -1,0 +1,28 @@
+﻿ 
+<ion-view ng-controller="BankDetaillController">
+    <ion-header-bar class="bar-orange" align-title="center">
+        <a back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title">
+            银行卡详情
+        </h1>
+    </ion-header-bar>
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content has-header" style="background-color:#f0f0f0;">
+        <div class="pal_bankdetail">
+            <div class="carTitle">
+                <img src="img/NewUI/308.png" />
+                <div class="fontSize-1-2 fontColor-333333 ">{{Model.detail.BankName}}</div>
+                <div class="fontSize-0-8">储蓄卡</div>
+                <div class="fontSize-1">{{Model.detail.HeadTailNo}}</div> 
+            </div>
+            <div class="row text-center fontColor-333333" ng-if="Model.detail.TxtDealLimit!='' ||Model.detail.TxtDayLimit!='' ">
+                <div class="col">{{Model.detail.TxtDealLimit}}</div>
+                <div class="col col_left_line" ng-if="Model.detail.DayLimit!='-1'">{{Model.detail.TxtDayLimit}}</div>
+            </div>
+        </div>
+        <div class="ufo_btn_full">
+            <button class="button button-full" ng-click="delBank()">
+                删除银行卡
+            </button>
+        </div>
+    </ion-content>
+</ion-view>

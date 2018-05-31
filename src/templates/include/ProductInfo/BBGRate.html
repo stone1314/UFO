@@ -1,0 +1,21 @@
+﻿<div style="height:330px;padding-bottom:10px;background-image:initial;background-color:rgba(252, 152, 126, 1)" class="rateBlock">
+    <div style="width: 100%;height:100px;background-color:rgba(252, 116, 82, 1)">
+        <div class=" row bbgWidth" style="width: 95%; padding-left: 0rem; color: #FFFF00;">
+            <div class="col">预计年化收益</div>
+        </div>
+        <div class="row bbgWidth" style="width: 95%;padding-left: 0rem;color: #FFFF00;height: 55px;">
+            <div class="col" style="font-size:3rem;margin-top: 4%;">
+                {{viewModel.productInfo.MinAndMaxRate}}
+            </div>
+        </div>
+        <div class="row bbgWidth" style="width: 95%; padding-left: 0rem; padding-right: 0rem;  ">
+            <div class="col">起投金额：{{viewModel.productInfo.TxtMinAmount / 10000}}万元</div>
+            <div class="col" style=" text-align: right;"> 单期理财天数：{{viewModel.productInfo.SinglePeriod}}天</div>
+        </div>
+
+    </div>
+    <div id="main" style="width: 100%; height: 200px; text-align: -webkit-center;"></div>
+    <div style="width:100%;text-align:right;color:#ffffff;font-size:12px;padding-right:10px;">
+        [期数]
+    </div>
+</div>

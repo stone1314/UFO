@@ -1,0 +1,109 @@
+﻿<style>
+    .AddBankCards { 
+        min-width: 80px;
+    }
+</style>
+
+<ion-view ng-controller="AddBankCardsController"  >
+    <ion-header-bar class="bar-orange" align-title="center">
+        <a back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title">
+            添加银行卡
+        </h1>
+    </ion-header-bar>
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content has-header">
+
+        <div class="formTable">
+            <div class="row colLeft">
+                <div class="col coltitle AddBankCards" style="font-size: 1.2rem;">
+                    持&nbsp;&nbsp;卡&nbsp;&nbsp;人
+                </div>
+                <div class="col borderBottom">
+                    <input type="text" placeholder="请输入持卡人" ng-model="User.cardName">
+                </div>
+            </div>
+
+            <div class="row colLeft">
+                <div class="col coltitle AddBankCards" style="font-size: 1.2rem;padding-bottom:20px;">
+                    所属银行
+                </div>
+                 
+                <div class="col borderBottom" ng-if="!User.bankNameState" ng-click="GetBanks()" style="color: #AAAAAA; margin-top: 8px; font-size: 1rem;">
+                    {{User.bankName}}
+                </div>
+                <div class="col borderBottom" ng-if="User.bankNameState" ng-click="GetBanks()" style="color: #111111; margin-top: 8px; font-size: 1rem;">
+                    {{User.bankName}}
+                </div>
+
+
+                <div class="col colIcon" style="border-bottom: 1px solid #f1efef">
+                    <a ng-click="GetBanks()"> <img src="img/arrows.png" style="width: 10px" /></a>
+                </div>
+            </div>
+
+            <div class="row colLeft">
+                <div class="col coltitle AddBankCards" style="font-size: 1.2rem;">
+                    卡&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号
+                </div>
+                <div class="col borderBottom" style="padding-top: 8px;">
+                    <input type="text" placeholder="输入储蓄卡号" ng-model="User.cardId">
+                </div>
+            </div>
+
+
+            <div class="row colLeft">
+                <div class="col coltitle AddBankCards" style="font-size: 1.2rem;">
+                    预留号码
+                </div>
+                <div class="col borderBottom">
+                    <input type="text" placeholder="请输入预留号码" maxlength="11" ng-model="User.phoneNumber">
+                </div>
+                <div class="col colIcon" ng-click="Clear();" style="border-bottom: 1px solid #f1efef">
+                    <img src="img/chechu.png" style="width: 20px" />
+                </div>
+            </div>
+
+            <div class="row colLeft">
+ 
+                <div class="col coltitle AddBankCards" style="font-size: 1.2rem; padding-top: 18px;">
+                    验&nbsp;&nbsp;证&nbsp;&nbsp;码
+ 
+                </div>
+                <div class="col borderBottom" style="min-width: 80px; padding-top: 10px;"> 
+                    <input type="text" ng-model="User.validateCode" placeholder="请输入验证码">
+ 
+                </div> 
+                <div class="col coltitle" style="min-width: 100px; padding-top: 12px; ">
+                    <button class=" button button-small button-light" ng-show="TimeModel.validateCodeShow" ng-click="GetSms();" style="color: #E97218; border: 1px solid #F89327; width: 6.5rem; float: right; margin-right: 17px;">
+                         获取验证码
+                    </button>
+
+                    <a class=" button button-small button-light" ng-show="!TimeModel.validateCodeShow" style="color: #E97218;border: 1px solid #F89327;width: 6rem;float: right;margin-bottom: 0px;">
+                        {{TimeModel.countdown}}秒
+                    </a>
+                </div>
+            </div>
+
+        </div>
+      
+        <div class="row " style="margin-top:2rem;">
+            <div class="col-20"> 
+                <ufo-radio has-checked="User.isshow" ufo-style="width: 18px; float: right; margin-right: 8px; margin-top: 2px;"></ufo-radio>
+            </div>
+            <a class="col-70" ng-click="PreviewContrart(1,'快捷支付服务协议')" style=" color: #656565;font-size:1rem "> 我已阅读并同意《快捷支付服务协议》 </a>
+        </div>
+        <div class="row" style="margin-top:0.2rem;">
+            <div class="col-20">
+                <ufo-radio has-checked="User.isshow9" ufo-style="width: 18px; float: right; margin-right: 8px; margin-top: 2px;"></ufo-radio>
+            </div>
+            <div class="col-70" ng-click="PreviewContrart(2,'委托扣款授权书')" style=" color: #656565;font-size:1rem ">我已阅读并同意《委托扣款授权书》</div>
+        </div>
+ 
+        <div class="padding">
+            <button class="button button-block" style="background-color: #F89327; color: #fff;" ng-click="Commit();">确认</button>
+        </div>
+
+
+    </ion-content>
+</ion-view>
+ 

@@ -1,0 +1,57 @@
+﻿<style>
+    .InvestList .list .item{
+        height: 92px;
+        color: #656565
+    }
+    .InvestList .list .item .proName{
+       width:100%;white-space:normal;
+    }
+     .InvestList .list .item .proName>span{
+        font-size:1.2rem;
+        margin-right: 20px;
+    }
+
+</style>
+<ion-view ng-controller="InvestListController">
+    <ion-header-bar class="bar-header " align-title="center">
+        <a href="javascript:void(0);" style="color: #F89327; " back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title" style="color: #F89327;  ">
+            交易记录
+        </h1>
+    </ion-header-bar>
+    <div style="background-color: #F89327;height:87px;display: block;" class="bar bar-subheader">
+        <div class="text-center" style="color:#ffffff;height:36px;font-size:3rem;margin-top:10px;line-height:36px">
+             {{viewModel.sumAllocatedAmt}}
+        </div>
+        <div class="row">
+            <div class="col" style="text-align: center; color: white;">交易收益(元)</div>
+        </div>
+    </div>
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content has-header InvestList  has-subheader" style="top:131px;">
+        <ion-refresher pulling-text="下拉刷新..."
+                       spinner="bubbles" class="spinner-balanced" spinner-class="spinner-balanced" on-refresh="doRefresh()">
+        </ion-refresher>
+        <div class="list refList">
+            <div ng-repeat="item in viewModel.InvestList">
+                <a class="item item-input" href="#/{{item.BusiType=='100000002'?'TranList':'TranDetail'}}/{{item.TradeDetailId}}">
+                    <div style="width:100%;white-space:normal;">
+                        <span class="fontSize-1" style=" margin-right: 20px; color: #656565 ;">{{item.ProductName}}</span><br />
+                        <span class="fontSize-1" style=" margin-right: 20px; color: #989898 ;" ng-if="item.IsExt && item.ContractType!='100000001'">预约退出天数：{{item.ExitDescription}}天<br /></span>
+                        <span class="fontSize-0-9" style="color: #989898; ">交易日期：<ufo-dateformat ufo-date="item.TxTime" ufo-format="date"></ufo-dateformat></span>
+
+                    </div>
+
+                    <div style="min-width:9rem" class="text-right">
+                        <ufo-mondyformat ufo-busitype="{{item.BusiType}}" ufo-money="{{item.TxAmt}}" ufo-paystatus="{{item.PayStatus}}"></ufo-mondyformat>
+
+                    </div>
+                    <i style=" margin-right: 20px;" ng-click="show();"><img src="img/arrows.png" style="width: 10px; float: right;" /></i>
+                </a>
+
+            </div>
+        </div>
+
+        <ufo-infinite-scroll pulling="noMoreItemsAvailable" ufo-loadmore="loadMore">
+        </ufo-infinite-scroll>
+    </ion-content>
+</ion-view>

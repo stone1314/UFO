@@ -1,0 +1,83 @@
+﻿
+<ion-view ng-controller="ProductInfoController">
+ 
+    <!--<ion-header-bar class="bar-orange" align-title="center">
+        <a back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title">
+            产品详情
+        </h1>
+    </ion-header-bar>--> 
+    <ion-content id="ProductInfoContent" has-bouncing="true" overflow-scroll="false" class="scroll scroll-content" ng-class="{Has_been_sold_out:viewModel.productInfo.raiseState==2}" style="background-color:#f3f0f0" delegate-handle="ProductInfoScroll">
+
+        <div class="row " style="background-color:#ffffff">
+
+            <div class="col fontSize-1-2 productName" style="position:relative">
+                {{viewModel.product.Name}}   <span class="fontSize-0-8 tags" style="height:auto;" ng-repeat="tag in viewModel.product.Tags">{{tag}}</span>
+            </div>
+        </div>
+
+
+
+        <div ng-include="viewModel.RateView">
+        </div>
+        <div class="list ufo_list2">
+            <!--<a class="item item-icon-right fontColor-222222" ng-click=" ProductDescribeFun(viewModel.productInfo.DetailUrl)">
+                产品描述
+                <i class="icon ion-ios-arrow-right fontColor-999999"></i>
+            </a>-->
+            <div class="item  item-icon-left fontColor-666666" ng-if="viewModel.productInfo.IsMultiRate">
+                <i class="icon"><img src="img/ProductInfo/iconfont-shouyi.png" /></i>
+                预期收益率
+                <div class="content-text">
+                    <p class="fontColor-222222"> 累计投资金额&lt;{{viewModel.productInfo.MultiRates[1].TxtLeft}}，预期年化收益率为{{viewModel.productInfo.MultiRates[0].Rate | currency:''}}%；</p>
+                    <p class="fontColor-222222"> 累计投资金额≧{{viewModel.productInfo.MultiRates[1].TxtLeft}}，预期年化收益率为{{viewModel.productInfo.MultiRates[1].Rate | currency:''}}%；</p>
+                </div>
+            </div>
+            <div class="item item-icon-left fontColor-666666" ng-if="viewModel.productInfo.ContractType=='100000009'">
+                <i class="icon"><img src="img/ProductInfo/newusertitlt.png" /></i>
+                新手专享：
+                <div class="content-text fontColor-222222">
+                    {{viewModel.productInfo.ProductDescription}}
+                </div>
+            </div>
+            <div class="item  item-icon-left fontColor-666666">
+                <i class="icon"><img src="img/ProductInfo/DateIcon.png" /></i>
+                起 息 日：
+                <span class="item-note fontColor-222222">
+                    {{viewModel.productInfo.TxtValueDate}}
+                </span>
+            </div>
+
+            <div class="item  item-icon-left fontColor-666666">
+                <i class="icon"><img src="img/ProductInfo/huankuan_icon.png" /></i>
+                还款方式：
+                <span class="item-note fontColor-222222">
+                    {{viewModel.productInfo.TxtRepaymentWay}}
+                </span>
+            </div>
+
+            <div class="item  item-icon-left fontColor-666666">
+
+                <i class="icon"><img src="img/ProductInfo/exit_icon.png" /></i>
+                退出方式：
+                <span class="item-note fontColor-222222">
+                    {{viewModel.productInfo.TxtExitWay}}
+                </span>
+            </div>
+            <div class="item item-icon-left fontColor-666666">
+                <i class="icon "><img src="img/ProductInfo/purse.png" /></i>
+                资金回款：
+                <div class="content-text fontColor-222222">
+                    {{viewModel.productInfo.TxtFundCollect}}
+                </div>
+            </div>
+        </div>
+        <div class="text-center fontColor-999999">
+            <i class="icon ion-arrow-up-c"></i> 向上滑动,查看描述
+        </div>
+        <ion-infinite-scroll spinner="bubbles" on-infinite="loadMore()" distance="-10%" style="height:10px;"></ion-infinite-scroll>
+
+    </ion-content>
+
+
+</ion-view>

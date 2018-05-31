@@ -1,0 +1,109 @@
+﻿<style>
+    .MyAccountContent .list .item {
+        padding-bottom: 0px;
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
+</style>
+<ion-view ng-controller="MyAccountController">
+    <ion-header-bar class="bar-light " align-title="center">
+        <a href="javascript:void(0);" style="color: #F89327;" back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title" style="color: #F89327; ">
+            我的资产
+        </h1>
+    </ion-header-bar>
+
+
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content has-header has-footer MyAccountContent">
+        <div style="text-align:center">
+
+            <div class="imgtest" style="margin-top: 8px;margin-bottom: 0px;">
+                <figure>
+                    <div>
+                        <a href="#/MyBaseAccount"><img src="{{User.headImg}}" /></a>
+                    </div>
+                </figure>
+            </div>
+
+            <div style="margin-bottom: 10px; color: #656565; "> </div>
+        </div>
+        <div style="background-color: #F89327">
+            <div class="row">
+                <div class="col text-center light">累计收益(元)</div>
+            </div>
+            <div class="row">
+                <div class="col text-center light fontSize-2-5">{{UserInfo.ProfitTotal}}</div>
+            </div>
+            <div class="row">
+                <div class="col text-center light">理财总额{{ UserInfo.WealthAmount }}元</div>
+            </div>
+        </div>
+        <div class="list">
+            <a class="item item-input" href="#/MyBankCards">
+                <img src="img/bankCard.png" class="imgleft" />
+                <div>
+                    银&nbsp;&nbsp;行&nbsp;&nbsp;卡 
+                </div>
+                <img src="img/arrows.png" class="imgright" />
+            </a>
+            <a class="item item-input" href="#/InvestList">
+                <img src="img/transaction.png" class="imgleft" />
+                <div>交易记录</div>
+                <img src="img/arrows.png" class="imgright" />
+            </a>
+            <a class="item item-input" href="#/RefList">
+                <img src="img/returnMoney.png" class="imgleft" />
+                <div>投资记录</div>
+                <img src="img/arrows.png" class="imgright" />
+            </a>
+            <a class="item item-input" href="#/Agreement">
+                <img src="img/hetong.png" class="imgleft" />
+                <div>合同查询</div>
+                <img src="img/arrows.png" class="imgright" />
+            </a>
+            <div class="row" style="margin-left: 21px; font-size: 12px; margin-top: 12px;">
+                <div style="margin-right:10px;"><img src="img/man.png" style="width: 18px;" /></div>
+                <div class="col-15"><span style="float:left">理财经理</span></div>
+                <div class="col-15" style="margin-left:13px;"><span style=" float:left">{{UserInfo.ManagerName}}</span></div>
+                <div class="col-15"><a style="padding-left: 1rem;" href="tel:{{UserInfo.ManagerMobile}}">{{UserInfo.ManagerMobile}}</a></div>
+                <div class="col-10"><a style="padding-left: 1rem;" href="tel:{{UserInfo.ManagerMobile}}"><img src="img/phone.png" style="width: 18px; margin-left: 10px;" /></a></div>
+                <div class="col"></div>
+            </div>
+            <div class="row" style="margin-left: 21px; font-size: 12px;margin-bottom:20px;">
+                <div style="margin-right:10px;"><img src="img/tel.png" style="width: 18px;" /></div>
+                <div class="col-15"><div>客服电话</div></div>
+                <div class="col-50" style="margin-left:13px;"><a href="tel:4006800388">400-680-0388</a></div>
+                <div class="col"></div>
+            </div>
+        </div>
+
+
+
+
+    </ion-content>
+    <div class="tabs tabs-icon-top">
+        <a class="tab-item" href="#/ProductTabs/ValueAddedPlan/1">
+            <div class="row">
+                <div class="col">
+                    <img src="img/unline-chart.png" style="width: 30px; float: right;" />
+                </div>
+                <div class="col">
+                    <span style=" float: left; margin-top: 10px; ">产品</span>
+                </div>
+            </div>
+        </a>
+        <a class="tab-item">
+            <div class="row">
+                <div class="col">
+                    <img src="img/my.png" style="width: 30px; float: right;" />
+                </div>
+                <div class="col">
+                    <span style=" float: left; margin-top: 10px; ">我的</span>
+                </div>
+            </div>
+        </a>
+    </div>
+    <a href="#/RefList" class="fixed-home  " style="bottom: 53px;">
+        <img src="img/btn-fixed-home.png" />
+    </a>
+</ion-view>

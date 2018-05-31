@@ -1,0 +1,46 @@
+﻿ <style> 
+     .Agreement .item { 
+         border-top: 0px;
+         border-bottom: 2px solid #f1efef;
+     }
+
+ </style>
+<ion-view ng-controller="AgreementController">
+    <ion-header-bar class="bar-header " align-title="center"> 
+        <a href="javascript:void(0);" style="color: #F89327; " back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <div style="width:100%;text-align:center;">
+            <button class="button {{btnState[0].bgValue}}" style="color:{{btnState[0].colorValue}}; height: 28px; width: 70px; font-size: 1.2rem; margin-right: 0.5rem; " ng-click="GetFinance('100000000');">理财中</button>
+            <button class="button {{btnState[1].bgValue}}" style="color:{{btnState[1].colorValue}}; height: 28px; width: 70px; font-size: 1.2rem; margin-right: 0.5rem; " ng-click="GetFinance('100000001');">退出中</button>
+            <button class="button {{btnState[2].bgValue}}" style="color:{{btnState[2].colorValue}}; height: 28px; width: 70px; font-size: 1.2rem; " ng-click="GetFinance('100000002');">已退出</button>
+        </div>
+
+    </ion-header-bar>
+
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content has-header">
+          
+        <ion-refresher pulling-text="下拉刷新..."
+                       spinner="bubbles" class="spinner-balanced" spinner-class="spinner-balanced" on-refresh="doRefresh()">
+        </ion-refresher>
+         
+        <div class="list Agreement">
+            <div ng-repeat="Agreement in viewModel.AgreementList">
+                <a class="item item-input" ng-click="agreement(Agreement.ContractId);">
+                    <div style="width:100%;white-space:normal;">
+                        <!--<div class="fontSize-1" style=" margin-right: 20px; color: #656565 ;">{{Agreement.productName}}</div>-->
+                        <div class="row" style="color: #656565; margin:0px;padding:0px;">
+                            <div class="col fontSize-1" style=" margin:0px;padding:0px;">
+                                {{Agreement.ProductName}}
+                            </div>
+                            <div class="col text-right  fontSize-0-9" style=" margin:0px;padding:0px;padding-right:15px;" ng-show="Agreement.IsExt">
+                                {{Agreement.ExitDescription}}
+                            </div>
+                        </div>
+                        <div class="fontSize-0-9" style="color: #989898; ">生成时间：<ufo-dateformat ufo-date="Agreement.TxTime" ufo-format="date"></ufo-dateformat></div>
+                    </div>
+                </a>
+            </div>
+        </div> 
+        <ufo-infinite-scroll pulling="noMoreItemsAvailable" ufo-loadmore="loadMore">
+        </ufo-infinite-scroll>
+</ion-content>
+</ion-view>

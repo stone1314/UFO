@@ -1,0 +1,92 @@
+﻿
+<ion-view ng-controller="POrderConfirmController" ng-init="init()">
+
+    <ion-header-bar class="bar-orange" align-title="center">
+        <a href="javascript:void(0);" back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title">
+            确认购买信息
+        </h1>
+    </ion-header-bar>
+    <ion-content has-bouncing="true" class="scroll has-footer" style="background-color:#f0f0f0">
+
+        <div class="list ufo_list">
+            <div class="item item-icon-right fontSize-1-2" style="font-weight:bold;padding-bottom:5px;">
+                {{viewModel.dataDetail.Name}}
+            </div>
+            <div class="item item-content-row item-content-row-icon-left item-content-row-first item-icon-left   fontColor-000000" ng-if="viewModel.dataDetail.ProductDetail.ContractType!='100000001'">
+                <i class="icon"><img src="img/NewUI/PayOrder/date@2x.png" style="width:16px;" /></i>
+                预约退出天数
+                <span class="item-note item-note-red">
+                    {{viewModel.dataDetail.ExitDescription}} 天
+                </span>
+            </div>
+            <div class="item item-content-row item-content-row-icon-left item-content-row-first item-icon-left   fontColor-000000" ng-if="viewModel.dataDetail.ProductDetail.ContractType=='100000001'">
+                <i class="icon"><img src="img/NewUI/PayOrder/date@2x.png" style="width:16px;" /></i>
+                随时申请退出 
+            </div>
+            <div class="item item-content-row item-content-row-icon-left item-icon-left">
+                <i class="icon"><img src="img/NewUI/PayOrder/benjin@2x.png" style="width:16px;" /></i>
+                投资本金
+                <span class="item-note item-note-red">
+                    {{viewModel.txAmt | currency:''}} 元
+                </span>
+            </div>
+            <div class="item item-content-row  item-content-row-icon-left  item-icon-left">
+                <i class="icon"><img src="img/NewUI/PayOrder/shouyilv@2x.png" style="width:16px;" /></i>
+                预期收益率
+                <span class="item-note item-note-red">
+                  {{viewModel.dataDetail.ProductDetail.ContractType=='100000001'?'≧':''}}  {{viewModel.dataDetail.ProductDetail.ExpectedRate | currency:''}}%
+                </span>
+            </div>
+        </div>
+
+        <div class="list ufo_list" ng-if="viewModel.InviteCode!='' && viewModel.InviteCode!=null">
+            <div class="item item-content item-icon-left" style="padding-left: 30px;">
+                <i class="icon"><img src="img/NewUI/PayOrder/yaoqingma_01010@2x.png" style="width:16px;" /></i>
+                邀请码
+                <span class="item-note item-note-red">
+                    {{viewModel.InviteCode}}
+                </span>
+            </div>
+
+        </div>
+        <div class="list ufo_list" >
+
+            <div class="item item-content-row fontColor-999999"> 
+                支付信息： 
+            </div>
+            <div class="item item-content-row item-content-row-icon-left item-content-row-first item-icon-left   fontColor-000000 fontSize-1-5">
+                <i class="icon"><img src="img/NewUI/PayOrder/zhifu@2x.png" style="width:16px;" /></i>
+                {{viewModel.dataCard.BankName}}<label class="fontSize-1 fontColor-666666" style="margin-left:15px;">（尾号{{viewModel.dataCard.TailNo}}）</label>
+
+            </div>
+        </div>
+        <div class="list ufo_list" ng-if="viewModel.dataDetail.ProductDetail.ContractType=='100000007'">
+            <div class="item  item-content-row-icon-left item-icon-left">
+                <i class="icon"><img src="img/NewUI/PayOrder/yuqishouyi@2x.png" style="width:16px;" /></i>
+                预期收益
+                <span class="item-note fontColor-666666">
+                    {{model.ExpectedProfitAmt}} 元
+                </span>
+            </div>
+            <div class="item ">
+                <div class="row text-center">
+                    <div class="col">
+                        <div class="fontColor-666666 fontSize-1">实际收益</div>
+                        <div class="fontColor-FF0000 fontSize-1-2">{{model.ActualProfitAmt}}元</div>
+                    </div>
+                    <div class="col">
+                        <div class="fontColor-666666 fontSize-1">捐赠收益</div>
+                        <div class="fontColor-FF0000 fontSize-1-2">{{model.DonateProfitAmt}}元</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </ion-content>
+    <ion-footer-bar class="ufo-bar-footer" align-title="center" style="padding:0px;">
+        <button class="button button-fd8026  button-full" ng-click="Commit()">
+            确认支付
+        </button>
+    </ion-footer-bar>
+</ion-view>

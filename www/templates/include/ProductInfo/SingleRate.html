@@ -1,0 +1,19 @@
+﻿<div style="padding-top:2.2rem" class="rateBlock" >
+
+    <div class="img_circular">
+        <div style=" ">
+            <div class="fontSize-2-2">
+                <ufo-rate value="{{viewModel.productInfo.ExpectedRate}}" ufo-style="font-size:1rem;" ufo-contractagreement="{{viewModel.productInfo.ContractType}}" class="ng-binding" ng-if="viewModel.productInfo.ExpectedRate!=null"> </ufo-rate>
+            </div>
+            <div class="fontSize-1">预计年化 </div>
+        </div>
+    </div>
+    <div class="row" style="width:100%;padding-left:1.3rem;padding-right:1.3rem">
+        <div class="col  fontSize-1-2"> {{viewModel.productInfo.MinAmount}}</div>
+        <div class="col text-right  fontSize-1-2">{{viewModel.productInfo.Period}}</div>
+    </div>
+    <div class="row" style="width:100%;">
+        <div class="col  fontSize-1-2">起投金额(元)</div>
+        <div class="col text-right  fontSize-1-2">理财期限({{viewModel.productInfo.PeriodUnit}})</div>
+    </div>
+</div>

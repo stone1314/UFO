@@ -1,0 +1,53 @@
+﻿<ion-view ng-controller="PwdSetNewPwdController">
+    <ion-header-bar class="bar-light " align-title="center">
+        <a href="javascript:void(0);" style="color: #F89327; " back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title" style="color: #F89327; ">
+            重置密码
+        </h1>
+    </ion-header-bar>
+
+    <ion-content> 
+        <div class="formTable">
+            <!--<div class="row colLeft">
+                <div class="col coltitle"  style="min-width: 80px; font-size: 1.2rem;">
+                    当前密码
+                </div>
+                <div class="col borderBottom">
+                    <input type="text" style="font-size: 12px;" placeholder="请输入当前密码">
+                </div>
+            </div>-->
+
+            <div class="row colLeft">
+                <div class="col coltitle" style="min-width: 80px; font-size: 1.2rem;">
+                    新&nbsp;&nbsp;密&nbsp;&nbsp;码
+                </div>
+                <div class="col borderBottom borderBottom">
+                    <input type="{{pwdType}}" style="font-size:1.2rem; width:100%" placeholder="密码由6-14位数字和字母组成" ng-model="viewModel.newPwd" maxlength="16" ng-minlength="6">
+                </div>
+                <div class="col colIcon " style=" margin-top: 5px; margin-right: 6px;">
+                    <ufo-img ufo-intputtype="pwdType" ufo-number="2" ufo-style="width: 25px; margin-right:10px;"></ufo-img>
+                </div>
+            </div>
+
+            <div class="row colLeft">
+                <div class="col coltitle" style="min-width: 80px; font-size: 1.2rem;">
+                    再次输入
+                </div>
+                <div class="col borderBottom">
+                    <input type="{{rePwdType}}" style="font-size:1.2rem; width:100%;" placeholder="请再次输入密码" ng-model="viewModel.reNewPwd" maxlength="16" ng-minlength="6">
+                </div>
+                <div class="col colIcon borderBottom" style=" margin-top: 5px; margin-right: 6px;">
+                    <ufo-img ufo-intputtype="rePwdType" ufo-number="2" ufo-style="width: 25px; margin-right:10px;"></ufo-img>
+                </div>
+            </div>
+        </div> 
+
+        <div class="row">
+            <div class="col">
+                <button class="button button-orange button-fontsize-2 " ng-click="ConfirmUpd()" style="margin:0px;">
+                    确定修改
+                </button>
+            </div>
+        </div>  
+    </ion-content>
+</ion-view>

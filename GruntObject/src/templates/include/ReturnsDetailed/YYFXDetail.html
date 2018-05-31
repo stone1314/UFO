@@ -1,0 +1,39 @@
+﻿ 
+<div class="list">
+    <div ng-repeat=" data in Model.list" class="item" style="padding:5px 10px;margin:5px 10px;border-radius: 10px;" ng-class="{'fontColor-333333':data.IsRepay,'fontColor-orange':!data.IsRepay}">
+        <div class="row" ng-class="{'fontColor-FB8026':data.IsRepay}">
+            <div class="col">
+                <div class="fontSize-1-2">
+                    {{data.Interest}} 元
+                </div>
+                <div class="fontSize-0-8">
+                    {{data.RepayDate}}
+
+                </div>
+            </div>
+            <div class="col text-right  fontSize-1-2" style="line-height:3rem;">
+
+                {{data.TxtIsRepay}}
+            </div>
+        </div>
+    </div>
+</div>
+<!--<div class="text-center IncomeContent">
+
+
+    <div class="row" style="height: 66px;  " ng-repeat=" data in Model.list">
+        <div class="col-30 Date text-right">
+            {{data.RepayDate}} 
+        </div>
+        <div class="col middle">
+            <img src="img/refund2.png" style="width: 15px;">
+        </div>
+
+        <div class="col-45 conts" ng-class="{'refund':data.IsRepay}">
+            <div>
+                <div class="divleft">{{data.TxtIsRepay}}</div>
+                <div class="divright">{{data.Interest}}元</div>
+            </div>
+        </div>
+    </div>
+</div>-->

@@ -1,0 +1,22 @@
+﻿ 
+<ion-view ng-controller="ProductDescribeController">
+ 
+    <!--<ion-header-bar class="bar-orange" align-title="center">
+        <a href="javascript:void(0);" back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title">
+            产品描述
+        </h1>
+    </ion-header-bar>-->
+    <ion-content id="ProductDescribeContent" has-bouncing="true" overflow-scroll="false" class="scroll scroll-content">
+        <ion-refresher ng-if="viewModel.IsBanner==false" pulling-text="下拉显示产品详情"
+                       spinner="bubbles" class="spinner-balanced" spinner-class="spinner-balanced" on-refresh="doRefresh()">
+        </ion-refresher>
+        <img src="{{viewModel.url}}" style="width:100%;max-width:100%" ng-if="fileExtension != 'html'" /> 
+ 
+        <div ng-include="viewModel.url" ng-if="fileExtension == 'html'">
+
+        </div>
+
+        <!--<iframe class="iframeAgree" ng-src="{{viewModel.url}}"></iframe>-->
+    </ion-content>
+</ion-view>

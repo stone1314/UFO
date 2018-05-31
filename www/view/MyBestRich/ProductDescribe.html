@@ -1,0 +1,18 @@
+﻿<style>
+    #ProductDescribeContent img{
+        width:100%;
+        max-width:100%;
+    }
+</style>
+<ion-view ng-controller="ProductDescribeController">
+    <ion-header-bar class="bar-light " align-title="center">
+        <a href="javascript:void(0);" style="color: rgba(237, 121, 25, 1);" back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title" style="color: rgba(237, 121, 25, 1);">
+            产品描述
+        </h1>
+    </ion-header-bar>
+    <ion-content id="ProductDescribeContent" has-bouncing="true" overflow-scroll="false" class="scroll scroll-content">
+        <img src="{{viewModel.url}}" /> 
+  
+    </ion-content>
+</ion-view>

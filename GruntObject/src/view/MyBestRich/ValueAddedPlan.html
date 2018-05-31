@@ -1,0 +1,43 @@
+﻿ 
+<ion-view ng-controller="ValueAddedPlanController" ng-init="DataLoad()">
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content ValueAddedPlan" style="background-color:#f3f0f0">
+        <ion-refresher pulling-text="下拉刷新..."
+                       spinner="bubbles" class="spinner-balanced" spinner-class="spinner-balanced" on-refresh="doRefresh()">
+        </ion-refresher>
+
+        <div class="newplate" ng-repeat="product in viewModel.ProductList" ng-click="productInfo(product.Id)">
+            <img src="{{product.CornerIconUrl}}" />
+            <div class="row">
+                <div class="col productName fontSize-1-2">
+                    {{product.Name}}  <span class="fontSize-0-8 tags" ng-repeat="Tag in product.Tags">{{Tag}}</span>
+                </div>
+            </div>
+            <div class="row " style="margin-top:5px;margin-bottom:10px;">
+                <div class="col text-center  prdRate">
+                    <div class="fontSize-1-2">{{product.StartProfitRate==null?'':product.StartProfitRate+'%~'}}{{product.SortId==6?'≧':''}}<lable class="fontSize-2">{{product.EndProfitRate}}</lable>%</div>
+                    <div>预期年化</div>
+                </div>
+                <div class="col text-center prdDay">
+                    <div class="fontSize-1-2" style="line-height:45px">
+                        {{product.Description}}
+                    </div>
+                </div>
+                <div class="col-10 text-right arrowRight">
+                    <i class="icon ion-ios-arrow-right"></i>
+                </div>
+            </div>
+            <div class="text-right fontSize-1 rowBottom">
+                {{product.Introduction}}
+            </div>
+        </div>
+        <div class="text-center buttomBlank">
+            <img src="../../img/newVersion/safe@2x.png" /> 恒丰银行资金存管
+        </div>
+
+        <ufo-infinite-scroll pulling="noMoreItemsAvailable" ufo-loadmore="loadMore" has-data="false">
+        </ufo-infinite-scroll>
+    </ion-content>
+    <a href="#/InvestmentRecordTabs/RefList0" class="fixed-home" ng-if="viewModel.LoginState==true">
+        <img src="img/btn-fixed-home.png" /> {{viewModel.LoginState}}
+    </a>
+</ion-view>

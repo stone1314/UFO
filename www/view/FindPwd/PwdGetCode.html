@@ -1,0 +1,50 @@
+﻿<ion-view ng-controller="PwdGetCodeController">
+
+    <ion-header-bar class="bar-light " align-title="center">
+        <a href="javascript:void(0);" style="color: #F89327;" back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title" style="color: #F89327;  ">
+            找回密码
+        </h1>
+    </ion-header-bar>
+     
+    <ion-content>
+        <div class="formTable">
+            <div class="row colLeft">
+                <div class="col colIcon">
+                    <img src="img/mp.png" />
+                </div> 
+                <div class="col borderBottom">
+ 
+                    <input type="text" id="User_PhoneNumber" maxlength="11" ng-model="viewModel.User.PhoneNumber" placeholder="请输入手机号码" ng-blur="SaveNumber();" style="width: 100%;">
+ 
+                </div>
+            </div>
+
+
+            <div class="row colLeft">
+                <div class="col colIcon">
+                    <img src="img/huoquyanzheng.png" style="width: 18px;   margin-right:10px;">
+                </div>
+                <div class="col borderBottom">
+                    <input type="text" placeholder="请输入验证码" style=" width: 100%; " ng-model="viewModel.User.validateCode" maxlength="6">
+                </div>
+                <div class="col borderBottom" style="width:6rem;max-width:8rem">
+                    <button class=" button button-small button-light" ng-show="TimeModel.validateCodeShow" ng-click="GetSms();" style="color: #E97218;border: 1px solid #F89327;width: 6rem;float: right;margin-bottom: 0px;" ><!--ng-disabled="viewModel.User.status!=2 && viewModel.User.status!=3"-->
+                        获取验证码
+                    </button>
+                    <a class=" button button-small button-light" ng-show="!TimeModel.validateCodeShow" style="color: #E97218;border: 1px solid #F89327;width: 6rem;float: right;margin-bottom: 0px;">
+                        {{TimeModel.countdown}} 秒
+                    </a>
+                </div>
+            </div> 
+        </div> 
+        <div class="row">
+            <div class="col">
+                <button class="button button-orange button-fontsize-2 " ng-click="nextPage()" style="margin:0px;" >
+                    下一步
+                </button>
+            </div>
+        </div>  
+       
+</ion-content>
+</ion-view>

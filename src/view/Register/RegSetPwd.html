@@ -1,0 +1,62 @@
+﻿<ion-view ng-controller="RegSetPwdController">
+    <ion-header-bar class="bar-orange" align-title="center">
+        <a back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title">
+            注册
+        </h1>
+    </ion-header-bar>
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content has-header">
+
+        <div class="formTable">
+            <div class="row colLeft">
+                <div class="col coltitle" style="min-width:80px;">
+                    密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码
+                </div>
+                <div class="col borderBottom">
+                    <input type="{{txt1}}">
+                </div> 
+                <div class="col colIcon">
+                    <img src="{{image1}}"  ng-click="changImg(1)" />
+                </div>
+            </div>
+            <div class="row colLeft">
+                <div class="col coltitle" style="min-width:80px;">
+                    再次输入
+                </div>
+                <div class="col borderBottom">
+                    <input type="{{txt2}}">
+                </div>
+                <div class="col colIcon">
+                    <img src="{{image2}}" ng-click="changImg(2)" />
+                </div>
+            </div>
+          
+
+        </div>
+
+        <div style="margin-left: 50px; margin-top:30px;">
+            <div class="row">
+                <div class="col-15"> 
+                    <ufo-radio has-checked="isshow" ufo-style="width: 20px; float: right; margin-right:10px;"></ufo-radio>  
+                </div>
+                <div class="col-85"><span style="font-size:12px; color:#656565;"> 我已阅读并同意《用户注册协议》</span></div>
+            </div>
+            <div class="row" style="margin-top: 6px;">
+                <div class="col-15"> 
+                    <ufo-radio has-checked="isshow2" ufo-style="width: 20px; float: right; margin-right:10px;"></ufo-radio>  
+                </div>
+                <div class="col-85"><span style="font-size:12px; color:#656565;">我已阅读并同意《电子签章CA协议》</span></div>
+            </div>
+        </div>
+
+           
+        <div class="row" style=" margin-top: 15px;">
+            <div class="col">
+                <button class="button button-orange button-fontsize-2 " style="margin:0px;" ng-click="subscribe()">
+                    下一步
+                </button>
+            </div>
+        </div> 
+       
+</ion-content> 
+</ion-view>

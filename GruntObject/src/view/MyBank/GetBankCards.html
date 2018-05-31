@@ -1,0 +1,35 @@
+﻿ 
+<ion-view ng-controller="GetBankCardsController">
+    <ion-header-bar class="bar-orange" align-title="center">
+        <a back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title">
+            选择银行卡
+        </h1>
+        <i ng-click="AddBankCardsFun();" class="button button-icon icon ion-ios-plus-empty fontSize-white"></i>
+    </ion-header-bar>
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content has-header" style="background-color:#f0f0f0;">
+ 
+
+
+
+        <div class="list ufo_car_list">
+            <a class="item item-icon-right item-avatar  " ng-repeat="bank in banks" ng-click="ChoseCard(bank)" ng-class="{'Has_been_sold_out':!bank.IsEnable}">
+                <img src="{{bank.BankImgUrl}} ">
+                <span class="fontColor-333333 fontSize-1-2">{{bank.BankName}} <label class="fontColor-666666 fontSize-1" style="margin-left:10px;">(尾号{{bank.TailNo}})</label></span>
+                <p>
+                    <span class="fontSize-1">
+                        {{bank.TxtDealLimit}} <label ng-if="bank.DayLimit!='-1'" style="margin-left:10px;">{{ bank.TxtDayLimit}}</label>
+                    </span>
+                </p>
+
+                <i class="icon icon_radio" ng-if="viewModel.bankRecordId==bank.BankCardId">
+                    <ufo-radio has-checked="viewModel.chose" ufo-style="width: 30px;"></ufo-radio>
+                </i>
+            </a>
+        </div>
+
+    </ion-content>
+
+
+
+</ion-view>

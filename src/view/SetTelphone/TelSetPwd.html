@@ -1,0 +1,57 @@
+﻿<ion-view ng-controller="TelSetPwdController">
+    <ion-header-bar class="bar-orange" align-title="center">
+        <a back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title">
+            修改密码
+        </h1>
+    </ion-header-bar>
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content has-header">
+
+        <div class="formTable">
+            <div class="row colLeft">
+                <div class="col coltitle" style="min-width:80px;">
+                    当前密码
+                </div>
+                <div class="col borderBottom">
+                    <input type="{{viewModel.oldPwdType}}" placeholder="请输入当前密码" ng-model="viewModel.oldPwd" maxlength="14" ng-minlength="6">
+                </div>
+                <div class="col colIcon borderBottom" style=" margin-top: 5px; margin-right: 6px;">
+                    <ufo-img ufo-intputtype="viewModel.oldPwdType" ufo-number="2" ufo-style="width: 25px; margin-right:10px;"></ufo-img>
+                </div>
+            </div> 
+
+            <div class="row colLeft">
+                <div class="col coltitle" style="min-width:80px;">
+                    新&nbsp;&nbsp;密&nbsp;&nbsp;码
+                </div>
+                <div class="col borderBottom">
+                    <input type="{{viewModel.newPwdType}}" placeholder="由6-14位数字和字母组成" ng-model="viewModel.newPwd" maxlength="14" ng-minlength="6">
+                </div>
+                <div class="col colIcon borderBottom" style=" margin-top: 5px; margin-right: 6px;">
+                    <ufo-img ufo-intputtype="viewModel.newPwdType" ufo-number="2" ufo-style="width: 25px; margin-right:10px;"></ufo-img>
+                </div>
+            </div>
+
+            <div class="row colLeft">
+                <div class="col coltitle" style="min-width:80px;">
+                    再次输入
+                </div>
+                <div class="col borderBottom">
+                    <input type="{{viewModel.reNewPwdType}}" placeholder="请再次输入密码" ng-model="viewModel.reNewPwd" maxlength="14" ng-minlength="6">
+                </div>
+                <div class="col colIcon borderBottom" style=" margin-top: 5px; margin-right: 6px;">
+                    <ufo-img ufo-intputtype="viewModel.reNewPwdType" ufo-number="2" ufo-style="width: 25px; margin-right:10px;"></ufo-img>
+                </div>
+            </div> 
+        </div> 
+
+        <div class="row">
+            <div class="col">
+                <button class="button button-orange button-fontsize-2 " style="margin:0px;" ng-click="ModifyPwd()" ng-minlength="6">
+                    确认修改
+                </button>
+            </div>
+        </div>  
+      
+    </ion-content>
+</ion-view>

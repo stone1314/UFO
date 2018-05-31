@@ -1,0 +1,37 @@
+﻿ 
+
+<ion-view ng-controller="MyBankCardsController">
+    <ion-header-bar class="bar-header " align-title="center">
+        <a href="javascript:void(0);" back-button class="button icon-left ion-ios-arrow-left button-clear" style="color: #F89327;"></a>
+        <h1 class="title">
+            我的银行卡
+        </h1>
+        <a class="button light" ng-click="showConfirm();">删除</a>
+    </ion-header-bar>
+
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content has-header">
+        <div class="list MyBankCards" id="divMybankCardsList">
+            <div class="item item-input" ng-repeat="bank in banks">
+                <i style="margin-right: 12px;  ">  <img src={{bank.BankImgUrl}} style="width:36px;" /></i>
+                <div style="width: 100%; height: 60px; border-bottom: 1px solid #f1efef;padding-top:6px; ">
+ 
+                    <!--<span style="  font-size: 1.2rem;">{{bank.BankName}}</span><span style="color: #989898; font-size: 1rem; ">(尾号{{bank.tailNo}})</span><br />
+                    <span style="color: #989898; font-size: 0.9rem; ">{{bank.deal}}万/笔 
+                        <label ng-if="bank.limit!='-1'" style="color: #989898; font-size: 0.9rem;">{{ bank.limit}}万/日</label></span>-->
+ 
+                    <span style="  font-size: 1.2rem;">{{bank.BankName}}</span><span style="color: #989898; font-size: 1rem; ">(尾号{{bank.TailNo}})</span><br />
+                    <span style="color: #989898; font-size: 0.9rem; ">{{bank.TxtDealLimit}}
+                    <label ng-if="bank.DayLimit!='-1'" style="color: #989898; font-size: 0.9rem;">{{ bank.TxtDayLimit}}</label></span>
+ 
+                </div>
+                <i style="margin-right: 20px; height: 60px; border-bottom: 1px solid #f1efef;padding-top:9px;">
+                    <ufo-radio has-checked="bank.hasDel" has-array="true" has-morecheck="true" array-obj="banks" field="hasDel" index="{{$index}}" ufo-style="width: 30px; margin-top: 3px;"></ufo-radio>
+                </i>
+             </div> 
+        </div>
+         
+        <div class="padding" style="text-align:center;">
+            <img src="img/addbank.png" style="width:60px;" ng-click="AddBankCardsFun()" /> 
+        </div>
+    </ion-content>
+</ion-view>

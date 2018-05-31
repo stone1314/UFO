@@ -1,0 +1,26 @@
+﻿<div class="Fixed"> 
+    <div class="row">
+        <div class="col text-left">回款至</div>
+        <div class="col text-right">{{Model.data.BankName}}(*{{Model.data.BankCardNo}})</div>
+    </div>
+    <div class="row">
+        <div class="col text-left">实际投资</div>
+        <div class="col text-right">{{Model.data.InvestAmt| currency:''}} 元</div>
+    </div>
+    <div class="row">
+        <div class="col text-left">意向投资</div>
+        <div class="col text-right">{{Model.data.IntentionAmt| currency:''}} 元</div>
+    </div>
+    <!--<div class="row">
+        <div class="col text-left">预期收益</div>
+        <div class="col text-right">{{Model.data.ExpectProfitAmt| currency:''}} 元</div>
+    </div>-->
+    <div class="row">
+        <div class="col text-left">未分配收益</div>
+        <div class="col text-right" ng-class="{'fontColor-fb4747':Model.data.UnallocatedAmt>0}"><label ng-if="Model.data.ContractType == '100000001' && Model.data.UnallocatedAmt>0">≧</label>{{Model.data.UnallocatedAmt| currency:''}} 元</div>
+    </div>
+    <div class="row">
+        <div class="col text-left">已分配收益</div>
+        <div class="col text-right" ng-class="{'fontColor-fb4747':Model.data.AllocatedAmt>0}">{{Model.data.AllocatedAmt| currency:''}} 元</div>
+    </div> 
+</div>

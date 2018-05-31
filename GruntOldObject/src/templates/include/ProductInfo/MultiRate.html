@@ -1,0 +1,38 @@
+﻿<div style="padding-top:9rem;" class="rateBlock" >
+
+    <div class="row morerate">
+        <div class="col text-center fontSize-orange fontSize-1-2">
+            < {{viewModel.productInfo.MultiRates[0].TxtRight}}
+
+            <div class="HeadPortrait">
+                <div style="font-size:1.5rem;">
+                    <ufo-rate value="{{viewModel.productInfo.MultiRates[0].Rate}}"  ufo-style="font-size:1rem;">
+                    </ufo-rate>
+
+                </div>
+                优享
+            </div>
+        </div>
+        <div class="col text-center fontSize-red fontSize-1"> 累计投资 </div>
+        <div class="col text-center fontSize-orange fontSize-1-2">
+            ≥ {{viewModel.productInfo.MultiRates[0].TxtRight}}
+            <div class="HeadPortrait">
+
+                <div style="font-size:1.5rem;">
+                    <ufo-rate value="{{viewModel.productInfo.MultiRates[1].Rate}}" ufo-style="font-size:1rem;" ng-if="viewModel.productInfo.ExpectedRate!=null">
+                    </ufo-rate>
+                </div>
+                VIP
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="width:100%;">
+        <div class="col fontSize-1-5"> {{viewModel.productInfo.MinAmount}}</div>
+        <div class="col text-right  fontSize-1-5">{{viewModel.productInfo.Period}}</div>
+    </div>
+    <div class="row" style="width:100%;">
+        <div class="col  fontSize-1-2">起投金额(元)</div>
+        <div class="col text-right  fontSize-1-2">理财期限({{viewModel.productInfo.PeriodUnit}})</div>
+    </div>
+</div>

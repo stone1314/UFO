@@ -1,0 +1,45 @@
+﻿<style>
+
+</style>
+
+<ion-view ng-controller="FundDetaiTabsController">
+
+
+    <ion-header-bar class="bar-orange" align-title="center">
+        <a back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title">
+            私募详情
+        </h1>
+    </ion-header-bar>
+    <ion-content has-bouncing="true" scroll="false" overflow-scroll="false" class="has-header has-footer" style="background-color:#f3f0f0;top:44px">
+        <div class="slider" style="width:100%;height:100%;visibility: visible;">
+            <div class="slider-slides">
+                <div class="slider-slide" data-index="0" style="width: 100%; left: 0px; transition-duration:1s; transform: translate(0px,{{height}}px) translateZ(0px);">
+
+                    <ion-nav-view name="tab-FundDetai"></ion-nav-view>
+
+                </div>
+
+                <div class="slider-slide" data-index="1" style="width: 100%; left: 0px; transition-duration: 1s; transform: translate(0px,{{height}}px) translateZ(0px);">
+                    <ion-nav-view name="tab-FundDes"></ion-nav-view>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+
+    <ion-footer-bar class="ufo-bar-footer" align-title="center" style="padding:0px;">
+        <ion-footer-bar class="ufo-bar-footer" align-title="center" style="padding:0px;">
+            <button class="button button-full button-fd8026" ng-click="Consulting()" ng-class="{'dis-orange':tabModel.productInfo.Status=='100000001'}" ng-disabled="tabModel.productInfo.IsOrdered">
+
+                <lable ng-if="tabModel.productInfo.Status=='100000001'">
+                    即将发售
+                </lable>
+                <lable ng-if="tabModel.productInfo.Status=='100000002'">
+                    咨询
+                </lable>
+                <lable ng-if="tabModel.productInfo.Status=='100000003'">
+                    售罄
+                </lable>
+            </button>
+        </ion-footer-bar>
+</ion-view>

@@ -1,0 +1,115 @@
+﻿
+<ion-view ng-controller="PaymentOrderController" ng-init="init()">
+
+    <ion-header-bar class="bar-orange" align-title="center">
+        <a href="javascript:void(0);" back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title">
+            购买
+        </h1>
+    </ion-header-bar>
+    <ion-content has-bouncing="true" class="scroll" style="background-color:#f0f0f0">
+        <div style="background-color:#ffffff;margin-bottom:10px;">
+            <div class="row">
+                <div class="col fontSize-1-2 fontColor-000000">
+                    {{viewModel.dataDetail.Name}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col fontColor-333333" ng-if="viewModel.dataDetail.ProductDetail.ContractType!='100000001'">
+                    <img src="img/NewUI/yuyue@2x.png" style="width: 16px;
+    margin-right: 10px;
+    vertical-align: sub;" /> 预约退出天数：<label class="fontSize-1 fontColor-FF0000">{{viewModel.dataDetail.ExitDescription}}天</label>
+                </div>
+                <div class="col fontColor-333333" ng-if="viewModel.dataDetail.ProductDetail.ContractType=='100000001'">
+                    <img src="img/NewUI/yuyue@2x.png" style="width: 16px;
+    margin-right: 10px;
+    vertical-align: sub;" />随时申请退出
+                </div>
+            </div>
+        </div>
+
+
+        <div class="list ufo_list" style="margin-bottom:0px;">
+
+            <div class="item item-info">
+                <div class="row">
+                    <div class="col fontColor-010101">
+                        输入金额（元）
+                    </div>
+                </div>
+                <div class="fontSize-0-8 fontColor-666666 " style="white-space: initial;">
+                    {{viewModel.dataDetail.PurchaseDescription}}
+                </div>
+                <div class="row" style="margin-top:20px;">
+                    <div class="col" style="max-width:45px;"><img src="img/NewUI/PayOrder/{{viewModel.txAmt<1000?'jian_hui@2x':'jian_se@2x'}}.png" st style="width:40px" ng-click="operation_Amount('-',500000)" /></div>
+                    <div class="col text-center" style="position:relative;padding-top:8px;">
+                        <input class="input_icon_clear" type="number" placeholder="1000的整数倍" style="font-size: 2rem;color:#fb7474;line-height: 40px;height:40px" id="txAmt" ng-model="viewModel.txAmt" maxlength="11" />
+                        <a class="btn_input_clear" ng-click="input_Clear()" ng-show="viewModel.txAmt!=''"></a>
+                    </div>
+                    <div class="col text-right" style="max-width:45px;"><img src="img/NewUI/PayOrder/jia@2x.png" style=" width:40px" ng-click="operation_Amount('+',500000)" /></div>
+                </div>
+            </div>
+
+            <a class="item" ng-click="InviteCode()" ng-if="viewModel.InviteCode==''">
+                <div class=" item-content item-icon-left item-icon-right  fontColor-000000">
+                    <i class="icon"><img src="img/NewUI/yaoqingma@2x.png" /></i>
+                    邀请码
+                    <span class="item-note fontColor-000000">
+                        选填
+                    </span>
+                    <i class="icon ion-ios-arrow-right"></i>
+                </div>
+            </a>
+            <div class="item item-content item-icon-left item-icon-right  fontColor-000000" ng-if="viewModel.InviteCode!=''">
+                <i class="icon"><img src="img/NewUI/yaoqingma@2x.png" /></i>
+                邀请码
+                <span class="item-note fontColor-000000">
+                    {{viewModel.InviteCode}}
+                </span>
+                <i class="icon  ion-android-cancel fontColor-cccccc" ng-click="viewModel.InviteCode=''"></i>
+            </div>
+        </div>
+        <div class="line-prompt" ng-if="viewModel.InviteCode!=''">
+            {{viewModel.InviteCodeMessage}}
+        </div>
+        <div class="list ufo_list" ng-if="viewModel.dataCard==null" style="margin-top:10px;">
+            <a class="item" ng-click="AddBankCardsFun()">
+                <div class="item-content item-icon-left item-icon-right">
+                    <i class="icon"><img src="img/NewUI/PayOrder/yinhangka@2x.png" /></i>
+                    请添加银行卡
+                    <i class="icon ion-ios-arrow-right "></i>
+                </div>
+            </a>
+        </div>
+
+        <div class="list ufo_car_list" ng-if="viewModel.dataCard!=null" style="margin-bottom:0px">
+            <a class="item item-icon-right item-avatar  " ng-click="ChoseCard()">
+                <img src="{{viewModel.dataCard.BankImgUrl}} ">
+                <span class="fontColor-333333 fontSize-1-2">{{viewModel.dataCard.BankName}} <label class="fontColor-666666 fontSize-1" style="margin-left:10px;">(尾号{{viewModel.dataCard.TailNo}})</label></span>
+                <p>
+                    <span class="fontSize-1">
+                        {{viewModel.dataCard.TxtDealLimit}} <label ng-if="viewModel.dataCard.TxtDayLimit!=''" style="margin-left:10px;">{{  viewModel.dataCard.TxtDayLimit}}</label>
+                    </span>
+                </p>
+                <i class="icon ion-ios-arrow-right"></i>
+            </a>
+        </div>
+        <div class="row" style="padding: 0px 15px;">
+            <div class="col" style="max-width:25px">
+                <!--<i class="icon ion-ios-checkmark fontColor-fb4747 fontSize-1-5" style="vertical-align:sub"></i>-->
+                <ufo-radio2 has-checked="viewModel.haschecked"></ufo-radio2>
+            </div>
+            <div class="col fontColor-666666 text-left fontSize-0-8" >
+                  我已确认可承受该出借投资所包含的资金流动性风险、借款人信用风险、政策风险、不可抗力风险，并知晓历史收益不代表未来收益，预期收益存在不确定性。我已阅读并同意签署<label class="fontColor-fb4747 fontSize-0-8" ng-click="agreement()">《出借咨询与服务协议》</label>
+            </div>
+        </div>
+
+
+
+    </ion-content>
+    <ion-footer-bar class="ufo-bar-footer" align-title="center" style="padding:0px;">
+        <button class="button button-fd8026  button-full" ng-click="Commit()" >
+            立即支付
+        </button>
+    </ion-footer-bar>
+</ion-view>

@@ -1,0 +1,53 @@
+﻿<style>
+    .RegChose {
+        text-align: center;
+        margin-top: 5rem;
+    }
+        .RegChose .imgNewUser {
+            width: 50px; 
+        }
+        .RegChose .imgOldUser {
+            width: 80px; 
+        }
+        .RegChose .divTop1 {
+            margin-top: 4px;
+        }
+        .RegChose .divTop2 {
+            margin-top: 5rem;
+        }
+        .RegChose .divTop3 {
+            margin-top: 5rem;
+        }
+
+</style>
+
+<ion-view ng-controller="RegChoseController">
+    <ion-header-bar class="bar-orange" align-title="center">
+        <a back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title">
+            选择新老客户
+        </h1>
+    </ion-header-bar>
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content has-header">
+        <div class="RegChose">
+            <div>
+                <img src="img/Nuser.png" class="imgNewUser" />
+            </div>
+            <div class="divTop1">
+                <a class="button  button-small-orange " ng-click="SelectType(true)" href="#/RegGetVerifi">新客户</a>
+            </div> 
+
+            <div class="divTop2">
+                <div>
+                    <img src="img/Ouser.png" class="imgOldUser" />
+                </div>
+                <div class="divTop1">
+                    <a class="button button-small-orange" ng-click="SelectType(false)" href="#/RegGetOldVerifi">老客户</a>
+                </div>
+                <div class="divTop1" style="margin-top:10px;">
+                    <span  style="font-size:1rem;" class="fontSize-orange"  >*已经线下购买夸客理财产品的客户</span>
+                </div>
+            </div>
+        </div>
+</ion-content>
+</ion-view>

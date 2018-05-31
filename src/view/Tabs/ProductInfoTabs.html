@@ -1,0 +1,39 @@
+﻿<style>
+
+</style>
+
+<ion-view ng-controller="ProductInfoTabsController">
+
+
+    <ion-header-bar class="bar-orange" align-title="center">
+        <a back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title">
+            {{headerTitle}}
+        </h1>
+    </ion-header-bar>
+    <ion-content has-bouncing="true" scroll="false" overflow-scroll="false" class="has-header has-footer" style="background-color:#f3f0f0;top:44px">
+        <div class="slider" style="width:100%;height:100%;visibility: visible;">
+            <div class="slider-slides">
+                <div class="slider-slide" data-index="0" style="width: 100%; left: 0px; transition-duration:1s; transform: translate(0px,{{height}}px) translateZ(0px);"> 
+
+                    <ion-nav-view name="tab-ProductInfo"></ion-nav-view>
+
+                </div>
+
+                <div class="slider-slide" data-index="1" style="width: 100%; left: 0px; transition-duration: 1s; transform: translate(0px,{{height}}px) translateZ(0px);">
+                    <ion-nav-view name="tab-ProductDes"></ion-nav-view> 
+                </div>
+            </div>
+        </div>
+    </ion-content>
+
+    <ion-footer-bar class="ufo-bar-footer" align-title="center" style="padding:0px;">
+        <button class="button button-fd8026  button-full" ng-click="lijitouzi()" ng-disabled="pdtDis">
+            <!--{{viewModel.btnText}}-->
+            {{btnText}}
+        </button>
+        <a class="button button-fd8026  button-full" style="width:80px;" href="#/Calculator/{{viewModel.productInfo.ProductId}}/0">
+            <img src="img/shisuanqi.png" />
+        </a>
+    </ion-footer-bar>
+</ion-view>

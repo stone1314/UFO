@@ -1,0 +1,50 @@
+﻿<ion-view ng-controller="MyBaseAccountController">
+    <ion-header-bar class="bar-orange" align-title="center">
+        <a back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title">
+            个人中心
+        </h1>
+    </ion-header-bar>
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content has-header" style="background-color:#f3f0f0">
+       
+        <div class="list ufo_list">
+            <div class="item item-icon-left">
+                <i class="icon"><img src="img/NewUI/Account/sign-in@2x.png" /></i>
+                姓名
+                <span class="item-note">
+                    {{User.name}}
+                </span>
+            </div>
+            <div class="item item-icon-left">
+                <i class=" icon">
+                    <img src="img/NewUI/Account/shouji@2x.png" />
+                </i>
+                绑定手机号
+                <span class="item-note">
+                    {{User.phone}}
+                </span>
+            </div>
+            <div class="item item-icon-left">
+                <i class="icon"><img src="img/NewUI/Account/iconfont-shenfenzhenghaoma@2x.png" /></i>
+                身份证号
+                <span class="item-note">
+                    {{User.identificationNo}}
+                </span>
+            </div>
+        </div> 
+        <div class="list ufo_list">
+            <a class="item" href="#/TelSetPwd">
+                <div class="item-content item-icon-left item-icon-right">
+                    <i class="icon"><img src="img/NewUI/Account/key@2x.png" /></i>
+                    修改登录密码
+                    <i class="icon ion-ios-arrow-right "></i>
+                </div>
+            </a>
+        </div> 
+        <div class="ufo_btn_full">
+            <button class="button button-full" ng-click="Loginout()">
+                安全退出
+            </button>
+        </div>
+    </ion-content>
+</ion-view>

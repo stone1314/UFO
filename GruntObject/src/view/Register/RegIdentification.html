@@ -1,0 +1,63 @@
+﻿ <ion-view ng-controller="RegIdentificationController">
+ 
+     <ion-header-bar class="bar-orange" align-title="center">
+         <a ng-click="goBack()" class="button icon-left ion-ios-arrow-left button-clear"></a>
+         <h1 class="title">
+             实名验证
+         </h1>
+     </ion-header-bar>
+    <ion-content>
+
+        <div class="formTable">
+            <div class="row colLeft">
+                <div class="col colIcon">
+                    <img src="img/user.png"  style="padding-top: 3px; margin-left: 1px;"/>
+                </div> 
+                <div class="col borderBottom">
+                    <input type="text" ng-model="user.name" placeholder="请输入姓名">
+                </div>
+            </div>
+
+            <div class="row colLeft">
+                <div class="col colIcon">
+                    <img src="img/idcard.png" style="padding-top: 8px;width: 21px;margin-right: 8px;">
+                </div> 
+                <div class="col borderBottom">
+                    <input type="text" ng-model="user.idcard" placeholder="请输入身份证">
+                </div>
+            </div>
+
+            <div class="row colLeft">
+                <div class="col colIcon">
+                    <img src="img/email.png" style="padding-top: 4px; margin-left: 1px;" />
+                </div>
+                 
+                <div class="col borderBottom">
+                    <input type="text" ng-model="user.email" placeholder="请输入正确邮箱">
+                </div>
+            </div>  
+        </div>
+          
+            <div class="row">
+                <div class="col">
+                    <a class="button button-orange button-fontsize-2 " ng-click="Commit();" style="margin:0px;">
+                        确认
+                    </a>
+                </div>
+            </div>
+
+        <div class="row">
+            <div class="col-20">
+                <div style=" float: right; margin-top: 5px;"> 
+                    <ufo-radio has-checked="user.isshow" ufo-style="width: 21px;"></ufo-radio>  
+                </div>
+            </div>
+            <div class="col" style="color:#656565" ng-click="PreviewContrart()">
+                我同意《电子签章授权书》
+            </div>
+        </div>
+        <div style=" margin-top: 8px;">
+            <a style="float: right; margin-right: 20px; color: #F89327; font-size: 1rem; text-decoration: blink;" href="#/ProductTabs/ValueAddedPlan/1">忽略 </a>
+        </div>
+</ion-content>
+</ion-view>

@@ -1,0 +1,55 @@
+﻿<ion-view ng-controller="PaymentResultController">
+ 
+    <ion-header-bar class="bar-orange" align-title="center">
+        <a href="javascript:void(0);" back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title">
+            交易结果
+        </h1>
+    </ion-header-bar>
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content">
+            <div class="row">
+                <div class="col text-center">
+                    <img src="img/queding.png" style="width:5rem" />
+                </div>
+            </div>
+        <div class="row">
+            <div class="col text-center fontSize-1-2" style="color:#656565">
+                您的投资申请已成功提交
+            </div>
+        </div>
+        <div class="row" style="margin-bottom:15px;">
+            <div class="col text-center fontSize-1-2" style="color:#656565">
+                稍后为您提供《出借本金确认书》
+            </div>
+        </div>
+        <div class="row" style="font-weight:bold;background-color:rgba(236, 236, 236, 1);padding-top:5px;padding-bottom:5px;margin-bottom:10px;">
+            <div class="col text-center fontColor-FF0000 fontSize-1-2">
+                《出借本金确认书》：我的-合同查询
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-left fontSize-1-2" style="color:#656565;max-width: 150px;padding-left:20px;">
+                意向投资：
+            </div>
+            <div class="col text-right fontSize-1-2" style="color:#656565;padding-right:20px;">
+                {{tolMoney| currency: ""}}元
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-left fontSize-1-2" style="color:#656565;max-width: 150px;padding-left:20px;">
+                实际投资：
+            </div>
+            <div class="col text-right fontSize-1-2" style="color:#656565;padding-right:20px;">
+                (以银行划扣为准)元
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button class="button button-orange button-fontsize-2 " style="margin:0px;" ng-click="OK()" >
+                    确认
+                </button>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

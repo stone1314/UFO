@@ -1,0 +1,12 @@
+﻿ 
+<img src="img/NewUI/PayOrder/chacha@2x.png" class="closeImg" ng-click="alertPopupClose()" />
+<div style="height:100%;" ng-class="{'iosS':Alert_Agreement.hasIos,'androidS':!Alert_Agreement.hasIos}">
+
+    <ion-scroll direction="y"
+                overflow-scroll="true" style="height: 100%;  ">
+        <iframe class="iframeAgree" ng-src="{{Alert_Agreement.Url}}"></iframe>
+    </ion-scroll>
+</div>
+<div class="popup-body-footer" ng-show="{{Alert_Agreement.hasfooter}}">
+    <i class="icon ion-checkmark-circled"></i> 我已阅读并同意该协议
+</div>

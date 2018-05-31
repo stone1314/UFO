@@ -1,0 +1,77 @@
+﻿
+<ion-view ng-controller="RefListController">
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content" style="background-color:#f0f0f0">
+
+        <ion-refresher pulling-text="下拉刷新..."
+                       spinner="bubbles" class="spinner-balanced" spinner-class="spinner-balanced" on-refresh="doRefresh()">
+        </ion-refresher>
+
+
+        <div class="ref_panle" ng-repeat="item in viewModel.TradeQueryContractList">
+            <div class="ref_panle_title" ng-click="goProDetail(item.ContractId)">
+                <div class="row fontColor-333333 fontSize-1-2">
+                    {{item.ProductName}}
+                </div>
+                <div class="row fontColor-666666">
+                    合同编号：{{item.ContractNo}}
+                </div>
+                <span ng-if="item.IsReinvest=='100000001'">
+                    已申请续投
+                </span>
+                <span ng-if="item.InvestQuitStatus">
+                    已申请退出
+                </span>
+                <i class="ion-ios-arrow-right"></i>
+            </div>
+            <div class="row" ng-if="item.IsExt">
+                <div class="col text-left fontColor-666666">
+                    预约退出天数
+                </div>
+                <div class="col text-right fontColor-333333" ng-if="item.ContractType != '100000001'">
+                    {{item.ExitDescription}} 天
+                </div>
+                <div class="col text-right fontColor-333333" ng-if="item.ContractType == '100000001'">
+                    随时申请退出
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-left fontColor-666666">
+                    起息日
+                </div>
+                <div class="col text-right fontColor-333333">
+                    {{item.ValueDate}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-left fontColor-666666">
+                    结息日
+                </div>
+                <div class="col text-right fontColor-333333">
+                    <ufo-reflistduedate  ufo-date="item.DueDate" ufo-quittime="item.TxTime" ufo-pontractagreement="item.ContractType" ufo-status="viewModel.quitStatus">
+                    </ufo-reflistduedate>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-left fontColor-666666">
+                    实际投资
+                </div>
+                <div class="col text-right fontSize-orange">
+                    {{item.ContractAmt | currency:''}} 元
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-left fontColor-666666">
+                    意向投资
+                </div>
+                <div class="col text-right fontColor-333333">
+                    {{item.IntentionalAmt | currency:''}} 元
+                </div>
+            </div>
+        </div>
+
+
+        <ufo-infinite-scroll pulling="noMoreItemsAvailable" ufo-loadmore="loadMore">
+        </ufo-infinite-scroll>
+    </ion-content>
+</ion-view>
+

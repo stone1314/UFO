@@ -1,0 +1,290 @@
+﻿
+<ion-view ng-controller="InvestListController">
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content " style="background-color:#f0f0f0">
+        <ion-refresher pulling-text="下拉刷新..."
+                       spinner="bubbles" class="spinner-balanced" spinner-class="spinner-balanced" on-refresh="doRefresh()">
+        </ion-refresher>
+
+
+
+        <!--<div class="list ufo_list">
+            <a class="item" ng-click="showDetail(item,'100')">
+                <div class="item-content item-icon-right">
+                    <div class="row">
+                        <div class="col">
+                            <div class="fontSize-1-2 fontColor-333333">
+                                月月付息
+                            </div>
+                            <div class="fontSize-0-8 fontColor-666666">
+                                交易日期：2016-09-21
+                            </div>
+                        </div>
+                        <div class="col text-right">
+                            <div class="fontSize-1-2 fontColor-222222">
+                                -10,000.00元
+                            </div>
+                            <div class="fontSize-1 fontColor-fb4747">
+                                付款成功
+                            </div>
+
+                        </div>
+                    </div>
+                    <i class="icon ion-ios-arrow-up"></i>
+                </div>
+            </a>
+            <div class="item item-info" id="InvestListInfo100" style="display:none">
+                <div class="row">
+                    <div class="col fontColor-666666">
+                        预约退出时间
+                    </div>
+                    <div class="col text-right fontColor-333333">
+                        60天
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col fontColor-666666">
+                        付款方式
+                    </div>
+                    <div class="col text-right fontColor-333333">
+                        招商银行（*08888）
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col fontColor-666666">
+                        交易流水
+                    </div>
+                    <div class="col text-right fontColor-333333">
+                        201609020000516464
+                    </div>
+                </div>
+            </div>
+            <div class="item item-info" id="InvestListInfo2100" style="display:none">
+                <div class="row">
+                    <div class="col fontColor-666666">
+                        预约退出时间
+                    </div>
+                    <div class="col text-right fontColor-333333">
+                        60天
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col fontColor-666666">
+                        付款方式
+                    </div>
+                    <div class="col text-right fontColor-333333">
+                        招商银行（*08888）
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col fontColor-666666">
+                        交易流水
+                    </div>
+                    <div class="col text-right fontColor-333333">
+                        201609020000516464
+                    </div>
+                </div>
+            </div>
+        </div>-->
+
+
+
+
+        <div class="list ufo_list interval10" ng-repeat="item in viewModel.InvestList">
+
+            <a class="item" ng-click="showDetail(item,$index)">
+                <div class="item-content item-icon-right">
+                    <div class="row">
+                        <div class="col fontSize-1-2">
+
+                            <div class="fontSize-1-2 fontColor-333333">
+                                {{item.ProductName}}
+                            </div>
+                            <div class="fontSize-0-8 fontColor-666666">
+                                交易日期：{{item.TxTime}}
+                            </div>
+                        </div>
+                        <div class="col text-right">
+                            <div class="fontSize-1-2 fontColor-222222">
+                                {{item.BusiType=='100000001'?'+':'-'}}{{item.TxAmt| currency:''}}元
+                            </div>
+                            <div class="fontSize-0-8 fontColor-fb4747">
+                                <ufo-mondyformat ufo-busitype="{{item.BusiType}}" ufo-paystatus="{{item.PayStatus}}"></ufo-mondyformat>
+                            </div>
+
+                        </div>
+                    </div>
+                    <i class="icon " ng-class="{'ion-ios-arrow-up':item.hasShow,'ion-ios-arrow-down':!item.hasShow}"></i>
+                </div>
+            </a>
+
+            <div class="item item-info interval5" id="InvestListInfo{{$index}}" style="display:none" ng-if="item.hasShow && item.BusiType != '100000002'">
+                <div class="row" ng-if="item.IsExt">
+                    <div class="col fontColor-666666">
+                        预约退出时间
+                    </div>
+                    <div class="col text-right fontColor-333333">
+                        {{item.ExitDescription}} 天
+                    </div>
+                </div>
+                <div class="row" ng-if="item.BusiType=='100000000' && item.PayStatus=='100000002'">
+                    <div class="col fontColor-666666">
+                        划扣金额
+                    </div>
+                    <div class="col text-right fontColor-333333">
+                        {{item.DeductAmt |currency: ""}} 元
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col fontColor-666666">
+                        付款方式
+                    </div>
+                    <div class="col text-right fontColor-333333">
+                        {{item.BankName}}（*{{item.BankCardNo}}）
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col fontColor-666666">
+                        交易流水
+                    </div>
+                    <div class="col text-right fontColor-333333">
+                        {{item.PaymentNo}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col fontColor-666666">
+                        合同编号
+                    </div>
+                    <div class="col text-right fontColor-333333">
+                        {{item.ContractNo}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center  bottom-prompt">
+                        <span style="">具体到账以银行实际到账为准</span>
+                    </div>
+                </div>
+            </div>
+            <div class="item item-info interval5" id="InvestListInfo{{$index}}" style="display:none" ng-if="item.hasShow && item.BusiType == '100000002'">
+                <div class="row">
+                    <div class="col fontColor-666666">
+                        续投方式
+                    </div>
+                    <div class="col text-right fontColor-fb4747">
+                        <label ng-if="item.ReinvestType=='100000001'">
+                            本金续投
+                        </label>
+                        <label ng-if="item.ReinvestType=='100000002'">
+                            本息续投
+                        </label>
+                    </div>
+                </div>
+                <div class="row" ng-if="item.IsExt">
+                    <div class="col fontColor-666666">
+                        预约退出时间
+                    </div>
+                    <div class="col text-right fontColor-333333">
+                        {{item.ExitDescription}} 天
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col fontColor-666666">
+                        续投金额
+                    </div>
+                    <div class="col text-right fontColor-333333">
+                        {{item.TxAmt| currency: ""}} 元
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col fontColor-666666">
+                        预期收益
+                    </div>
+                    <div class="col text-right fontColor-333333">
+                        {{item.ExpectAmt | currency: ""}} 元
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col fontColor-666666">
+                        续投合同编号
+                    </div>
+                    <div class="col text-right fontColor-333333">
+                        {{item.ContractNo}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col fontColor-666666">
+                        预期起息日
+                    </div>
+                    <div class="col text-right fontColor-333333">
+                        {{item.ExpectValueDate}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col fontColor-666666">
+                        预期退出日
+                    </div>
+                    <div class="col text-right fontColor-333333">
+                        {{item.ExpectDueDate}}
+                    </div>
+                </div>
+            </div>
+            <div class="item item-info" id="InvestListInfo2{{$index}}" style="display:none" ng-if="item.hasShow && item.BusiType == '100000002'">
+                <div class="row">
+                    <div class="col fontColor-999999">
+                        原产品
+                    </div>
+                    <div class="col text-right fontColor-999999">
+                        {{item.OldProductName}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col fontColor-999999">
+                        原产品预约退出天数
+                    </div>
+                    <div class="col text-right fontColor-999999">
+                        {{item.OldExitDescription}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col fontColor-999999">
+                        原合同号
+                    </div>
+                    <div class="col text-right fontColor-999999">
+                        {{item.OldContractNo}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--<div class="list ufo_list interval5">
+            <a class="item">
+                <div class="item-content item-icon-right">
+                    <div class="row">
+                        <div class="col">
+                            <div class="fontSize-1-2 fontColor-333333">
+                                月月付息
+                            </div>
+                            <div class="fontSize-0-8 fontColor-666666">
+                                交易日期：2016-09-21
+                            </div>
+                        </div>
+                        <div class="col text-right">
+                            <div class="fontSize-1-2 fontColor-222222">
+                                -10,000.00元
+                            </div>
+                            <div class="fontSize-1 fontColor-fb4747">
+                                付款成功
+                            </div>
+
+                        </div>
+                    </div>
+                    <i class="icon ion-ios-arrow-down"></i>
+                </div>
+            </a>
+        </div>-->
+
+       
+
+        <ufo-infinite-scroll pulling="noMoreItemsAvailable" ufo-loadmore="loadMore">
+        </ufo-infinite-scroll>
+    </ion-content>
+</ion-view>

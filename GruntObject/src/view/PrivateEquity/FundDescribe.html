@@ -1,0 +1,13 @@
+﻿
+<ion-view ng-controller="FundDescribeController">
+ 
+    <ion-content  has-bouncing="true" overflow-scroll="false" class="scroll scroll-content"> 
+        <ion-refresher  pulling-text="下拉显示产品详情"
+                       spinner="bubbles" class="spinner-balanced" spinner-class="spinner-balanced" on-refresh="doRefresh()">
+        </ion-refresher>
+        <img src="{{viewModel.url}}" style="width:100%;max-width:100%" /> 
+        <!--<div ng-include="viewModel.url">-->
+
+        </div>
+    </ion-content>
+</ion-view>

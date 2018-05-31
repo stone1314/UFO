@@ -1,0 +1,65 @@
+﻿<div class="FGJH" style="margin-top:5px;">
+    <div class="row">
+        <div class="col text-left">回款至</div>
+        <div class="col text-right">{{Model.data.BankName}}(*{{Model.data.BankCardNo}})</div>
+    </div>
+    <div class="row" ng-if="Model.data.QuitStatus != '100000002'">
+        <div class="col text-left">本期投资</div>
+        <div class="col text-right">{{Model.data.TermContractAmt| currency:''}}元</div>
+    </div>
+    <div class="row" ng-if="Model.data.QuitStatus == '100000002'">
+        <div class="col text-left">起息日</div>
+        <div class="col text-right">{{Model.data.ValueDate}}元</div>
+    </div>
+    <div class="row" ng-if="Model.data.QuitStatus == '100000002'">
+        <div class="col text-left">结息日</div>
+        <div class="col text-right">{{Model.data.DueDate}}元</div>
+    </div>
+    <div class="row">
+        <div class="col text-left">初始实际投资</div>
+        <div class="col text-right">{{Model.data.InvestAmt| currency:''}}元</div>
+    </div>
+    <div class="row">
+        <div class="col text-left">初始意向投资</div>
+        <div class="col text-right fontColor-FF0000">{{Model.data.IntentionAmt| currency:''}}元</div>
+    </div>
+</div>
+<div class="FGJH" style="border-top:5px solid #f0f0f0" ng-if="Model.data.QuitStatus != '100000002'">
+    <div class="row" ng-click="goIncomeList()">
+        <div class="col text-left">收益明细</div>
+        <div class="col text-right  fontColor-FF0000 " style="overflow:auto;">查看详情 <img src="img/NewUI/arow@2x.png" style="width: 8px;margin-left:10px;" /></div>
+    </div>
+    <div class="row">
+        <div class="col text-left">当期本金及收益</div>
+        <div class="col text-right">{{Model.data.TermEndContractAmt| currency:''}}元</div>
+    </div>
+    <div class="row">
+        <div class="col text-left">当期预期收益</div>
+        <div class="col text-right">{{Model.data.TermProfit| currency:''}}元</div>
+    </div>
+</div>
+<div class="FGJH bbg_sy" style="border-top:1px solid #f0f0f0;margin-left:10px;" ng-if="Model.data.QuitStatus == '100000002'">
+    <div class="row" ng-click="goIncomeList()">
+        <div class="col text-left">收益明细</div>
+        <div class="col text-right  fontColor-FF0000 " style="overflow:auto;">查看详情 <img src="img/NewUI/arow@2x.png" style="width: 8px;margin-left:10px;" /></div>
+    </div>
+    <div class="row">
+        <div class="col text-left">本息总收益</div>
+        <div class="col text-right">{{Model.data.TotalContractAmt| currency:''}}元</div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

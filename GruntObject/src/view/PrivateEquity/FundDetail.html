@@ -1,0 +1,166 @@
+﻿
+<ion-view ng-controller="FundDetailController">
+    <!--<ion-header-bar class="bar-orange" align-title="center">
+        <a back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title">
+            私募详情
+        </h1>
+    </ion-header-bar>-->
+    <ion-content has-bouncing="true" overflow-scroll="false" class="scroll scroll-content  ProDetail" style="background-color:#f0f0f0;">
+        <div style="margin-bottom:1px;background-color:#ffffff;height: 300px;" class="newRateBlock">
+            <div class="row">
+                <div class="row fontSize-1-2 fontColor-222222">
+                    {{Model.productInfo.Name}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col re_del_contno fontColor-666666"> 
+                    <img src="img/NewUI/PayOrder/riqi@2x.png" />
+                    <span>募集开始日期：<label class="fontColor-fb4747">{{Model.productInfo.StartDate}}</label></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center fontSize-2-5 fontColor-fb4747" ng-if="!Model.Rage.IsMultiRate">
+                    {{Model.Rage.Rate}}<label class="fontSize-1-5" ng-if="Model.Rage.Rate!=null">%</label>
+                </div>
+                <div class="col text-center fontSize-2-5 fontColor-fb4747" ng-if="Model.Rage.IsMultiRate">
+                    <label class="fontSize-1-5">{{Model.Rage.Rate}}%</label>~{{Model.Rage.Rate2}}<label class="fontSize-1-5">%</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center fontSize-1 fontColor-333333">
+                    比较基准收益率
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center fontSize-1 fontColor-666666 col_right_line">
+                   <div>
+                       <label class="fontColor-333333 fontSize-1-2" style="margin-left:10px">{{Model.productInfo.MinAmount}}万元</label>
+                    </div>
+                    <div>
+                        <img src="img/NewUI/PayOrder/jine@2x.png" style="width: 1.2rem;
+    vertical-align: sub;" />    起投金额
+                    </div>
+                </div>
+                <div class="col text-center fontSize-1 fontColor-666666">
+                   <div>
+                       <label class="fontColor-333333 fontSize-1-2" style="margin-left:10px">{{Model.productInfo.Period}}天</label>
+                    </div>
+                    <div><img src="img/NewUI/PayOrder/qixian@2x.png" style="width: 1.2rem;
+    vertical-align: sub;" />  产品期限 </div>
+                </div>
+            </div>
+            <div class="Pointer"> 
+                <img src="img/NewUI/PayOrder/touzijine@3x.png" />
+            </div>
+            <div class="cursor-container" style="position:relative;height:auto;">
+                <ion-scroll direction="x" delegate-handle="fundDetailHandle" class="cursor-scroll productInfoDay"
+                            on-release="onCompleteT()"
+                            on-drag="onDragT()"
+                            on-scroll="onScrollT();" has-bouncing="false" overflow-scroll="false">
+                    <div class="productNameDayscroll">
+                        <div class="dayShow width33">
+
+                        </div>
+                        <div class="dayShow width33" ng-repeat="rate in Model.productInfo.Rates" ng-class="{'FundDetailMiddle':(($index+1)==rateIndex)}" ng-click="changePrd($index)">
+                            <span  ng-if="rate.Right!=null">{{rate.Left}}万~{{rate.Right}}万</span> 
+                            <span ng-if="rate.Right==null"> ≧{{rate.Left}}万</span>
+                        </div>
+                        
+                        <div class="dayShow width33">
+
+                        </div>
+                    </div>
+                </ion-scroll>
+            </div>
+            <!--<div class="list ufo_list" style="margin-bottom:5px">
+                <a class="item " ng-click="FundDescribeFun(Model.productInfo.ProductUrl)">
+                    <div class="item-content  item-icon-left  item-icon-right fontColor-222222">
+                        <i class="icon "><img src="img/NewUI/message@2x.png" /></i>
+                        私募基金描述
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </div>
+                </a>
+            </div>-->
+            <div class="list ufo_list">
+
+                <div class="item   item-icon-left fontColor-222222 fontSize-1-2">
+                    <i class="icon "><img src="img/NewUI/miaoshu@2x.png" /></i>
+                    产品信息
+                </div>
+
+                <div class="item item-content-row p10 item-content-row-first fontColor-666666 fontSize-0-9">
+                    基金管理人：
+                    <div class="fontColor-222222 content-text fontSize-1">
+                        {{Model.productInfo.FundManager}}
+                    </div>
+                </div>
+                <div class="item item-content-row p10  fontColor-666666  fontSize-0-9">
+                    贷款管理机构：
+                    <div class="fontColor-222222 content-text  fontSize-1">
+                        {{Model.productInfo.DebitManager}}
+                    </div>
+                </div>
+                <div class="item item-content-row  p10  fontColor-666666  fontSize-0-9">
+                    信托机构：
+                    <div class="fontColor-222222 content-text  fontSize-1">
+                        {{Model.productInfo.TrustAccount}}
+                    </div>
+                </div>
+                <div class="item item-content-row  p10  fontColor-666666  fontSize-0-9">
+                    资金托管机构：
+                    <div class="fontColor-222222 content-text  fontSize-1">
+                        {{Model.productInfo.CustodianInstitution}}
+                    </div>
+                </div>
+                <div class="item item-content-row  p10  fontColor-666666  fontSize-0-9">
+                    认购金额：
+                    <div class="fontColor-222222 content-text  fontSize-1">
+                        {{Model.productInfo.SubscribAmount}}
+                    </div>
+                </div>
+                <div class="item item-content-row  p10  fontColor-666666  fontSize-0-9">
+                    收益分配：
+                    <div class="fontColor-222222 content-text  fontSize-1">
+                        {{Model.productInfo.ProfitAllocate}}
+                    </div>
+                </div>
+                <div class="item item-content-row p10  fontColor-666666  fontSize-0-9">
+                    优先级：劣后级
+                    <div class="fontColor-222222 content-text  fontSize-1">
+                        {{Model.productInfo.Proportion}}
+                    </div>
+                </div>
+                <div class="item item-content-row p10  fontColor-666666  fontSize-0-9">
+                    劣后级投资人：
+                    <div class="fontColor-222222 content-text  fontSize-1">
+                        {{Model.productInfo.Inferior}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center buttomBlank fontColor-999999">
+                <img src="img/NewUI/huadong@2x.png" style="width: 1rem;
+    vertical-align: middle;" /> 向上滑动,查看详情
+            </div>
+        </div>
+
+      
+        <ion-infinite-scroll spinner="bubbles" on-infinite="loadMore()" distance="-10%" style="height:10px;margin-top:{{viewModel.scorll }}px"></ion-infinite-scroll>
+    </ion-content>
+    <!-- ng-class="{'button-fd8026':!Model.productInfo.IsOrdered}"   ng-disabled="Model.productInfo.IsOrdered"-->
+    <!--<ion-footer-bar class="ufo-bar-footer" align-title="center" style="padding:0px;" >
+        <button class="button button-full button-fd8026" ng-click="Consulting()" ng-class="{'dis-orange':!Model.productInfo.Status=='100000001'}" ng-disabled="Model.productInfo.IsOrdered">
+           
+            <lable ng-if="Model.productInfo.Status=='100000001'">
+                即将发售
+            </lable>
+            <lable ng-if="Model.productInfo.Status=='100000002'">
+                咨询
+            </lable>
+            <lable ng-if="Model.productInfo.Status=='100000003'">
+                售罄
+            </lable>
+        </button>-->
+    <!--</ion-footer-bar>-->
+</ion-view>

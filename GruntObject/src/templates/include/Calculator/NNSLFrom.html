@@ -1,0 +1,23 @@
+﻿<div class="row">
+    <div class="col text-center fontSize-orange fontSize-1" style="padding-bottom:0px;">
+        <img src="img/orthericon/DateTime.png" class="dateIocn" />
+        <lable>投资日期</lable>
+        <input type="text" ng-model="viewModel.InvestmentDate" class="dateInput" mo-date="date" mo-dateparameter="moDateparameter" />
+    </div>
+
+</div>
+<div class="row" style="color:#666666;padding-bottom:5px;padding-top:15px;">
+    <div class="col text-center  fontSize-1" style="border-right:1px solid #666666;padding:0px;">
+        <div>起息日期 </div>
+        <div style="margin-top:5px;" ng-bind="viewModel.VoteDate">
+            2016-07-15
+        </div>
+    </div>
+    <div class="col text-center  fontSize-1" style="padding:0px;">
+        <div>到期日期 </div>
+        <div class="text-center">
+            <input type="text" ng-model="viewModel.EndDate" id="viewModel_EndDate" ng-click="setDate()" style="border-bottom: 1px solid #666666;width:94px;text-align:center;font-size:1rem!important;display:initial;line-height: 1.2rem!important;height:1.8rem;color:#666666" />
+        </div>
+
+    </div>
+</div>

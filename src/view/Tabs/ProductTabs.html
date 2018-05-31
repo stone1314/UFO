@@ -1,0 +1,101 @@
+﻿<ion-view ng-controller="ProductTabsController">
+ 
+    
+    <ion-header-bar class="bar-orange" align-title="center">
+        <a back-button class="button icon-left ion-ios-arrow-left button-clear"></a>
+        <h1 class="title">
+            产品列表
+        </h1>
+    </ion-header-bar>
+    <div class="bar bar-subheader">
+
+        <!--<ion-tabs class="tabs-icon-top tabs-orange">
+
+            <ion-tab title="Home" icon="ion-home"  >
+
+            </ion-tab>
+            <ion-tab title="About" icon="ion-ios-information"  >
+
+            </ion-tab>
+
+        </ion-tabs>-->
+        <div class="tabs tabs-stable tabs-orange tabs-icon-bottom">
+
+            <a class="tab-item" ng-class="{'tab-item-active':ViewModel.indexRef==0}" ng-click="status(0)"  >
+                <span class="tab-title">增值计划</span>
+                <!--<i class="icon" ng-show="ViewModel.indexRef==0">
+                    
+                </i>-->
+
+                <img src="img/NewUI/subHeaderIcon.png" ng-show="ViewModel.indexRef==0" />
+            </a>
+            <!--<a class="tab-item active" href="#/ProductTabs/FundList">
+                <div ng-class="ViewModel.tab3">私募基金</div>
+            </a>-->
+            <a class="tab-item" ng-class="{'tab-item-active':ViewModel.indexRef==1}" ng-click="status(1)"  >
+                <span class="tab-title">私募基金</span>
+                <!--<i class="icon" ng-show="ViewModel.indexRef==1">
+            <img src="img/NewUI/subHeaderIcon.png" style="height:20px;" />
+        </i>-->
+                <img src="img/NewUI/subHeaderIcon.png" ng-show="ViewModel.indexRef==1" />
+            </a>
+            <a class="tab-item" ng-class="{'tab-item-active':ViewModel.indexRef==2}" ng-click="status(2)"  >
+                <span class="tab-title">续投产品</span>
+                <!--<i class="icon" ng-show="ViewModel.indexRef==2">
+            <img src="img/NewUI/subHeaderIcon.png" style="height:20px;" />
+        </i>-->
+                <img src="img/NewUI/subHeaderIcon.png" ng-show="ViewModel.indexRef==2" />
+            </a>
+        </div>
+    </div>
+    <!--<ion-nav-view name="tab-product"></ion-nav-view>-->
+    <ion-content has-bouncing="true" scroll="false" overflow-scroll="false" class="has-header has-footer has-subheader" style="background-color:#f3f0f0;top:93px;">
+        <ion-slide-box on-slide-changed="slideHasChangeds(index)" style="width:100%;height:100%;" show-pager="false" delegate-handle="slideimgs" shouldenable="false">
+            <ion-slide>
+                <ion-nav-view name="tab-ValueAddedPlan" animation='no-animation'></ion-nav-view>
+            </ion-slide>
+            <ion-slide>
+                <ion-nav-view name="tab-FundList"></ion-nav-view>
+            </ion-slide>
+            <ion-slide>
+                <ion-nav-view name="tab-CIProductList"></ion-nav-view>
+            </ion-slide>
+
+        </ion-slide-box>
+    </ion-content>
+
+
+    <!--<div class="tabs tabs-icon-top">
+        <a class="tab-item">
+            <div class="row">
+                <div class="col">
+                    <img src="img/line_chart.png" style="width: 30px; float: right;" />
+                </div>
+                <div class="col">
+                    <span style=" float: left; margin-top: 10px; ">产品</span>
+                </div>
+            </div>
+        </a>
+        <a class="tab-item" href="#/MyAccount">
+            <div class="row">
+                <div class="col">
+                    <img src="img/unmy.png" style="width: 30px; float: right;" />
+                </div>
+                <div class="col">
+                    <span style=" float: left; margin-top: 10px; ">我的</span>
+                </div>
+            </div>
+        </a>
+    </div>-->
+    <div class="tabs tabs-icon-top productTabs">
+        <a class="tab-item fontSize-orange activated">
+            <!--<i class="icon ion-ios-list"></i>-->
+            <img src="img/NewUI/tab@1x.png" class="icon" />
+            产品
+        </a>
+        <a class="tab-item" href="#/MyAccount">
+            <img src="img/NewUI/my_01@2x.png" class="icon" />
+            我的
+        </a>
+    </div>
+</ion-view>

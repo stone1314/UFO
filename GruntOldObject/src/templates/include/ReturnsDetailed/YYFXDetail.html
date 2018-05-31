@@ -1,0 +1,17 @@
+﻿<div class="text-center IncomeContent">
+    <div class="row" style="height: 66px;  " ng-repeat=" data in Model.list">
+        <div class="col-30 Date text-right">
+            {{data.RepayDate}} <!--2015-02-11-->
+        </div>
+        <div class="col middle">
+            <img src="img/refund2.png" style="width: 15px;">
+        </div>
+
+        <div class="col-45 conts" ng-class="{'refund':data.IsRepay}">
+            <div>
+                <div class="divleft">{{data.TxtIsRepay}}</div>
+                <div class="divright">{{data.Interest | currency:''}}元<!--200元--></div>
+            </div>
+        </div>
+    </div> 
+</div>
